@@ -27,3 +27,5 @@ RoxygenNote: 7.1.1
 SystemRequirements: C++11
 Suggests: 
     testthat
+URL: https://github.com/rossellhayes/fracture
+BugReports: https://github.com/rossellhayes/fracture/issues
