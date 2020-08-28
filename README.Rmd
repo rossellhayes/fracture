@@ -1,0 +1,121 @@
+---
+output: github_document
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "man/figures/README-",
+  out.width = "100%"
+)
+
+library(fracture)
+# remotes::install_github("GuangchuangYu/badger")
+library(badger)
+```
+
+# fracture <img src="man/figures/logo.png?raw=TRUE" align="right" height="138" />
+
+<!-- badges: start -->
+`r # badge_cran_release(color = "brightgreen")`
+`r badge_lifecycle("maturing")`
+`r badge_license(color = "blueviolet")`
+`r # badge_github_actions(action = "R-CMD-check")`
+`r # badge_codecov()`
+`r # badge_dependencies()`
+<!-- badges: end -->
+
+Convert decimals to fractions in R
+
+## Installation
+
+<!-- You can install the released version of **fracture** from [CRAN](https://CRAN.R-project.org) with: -->
+
+<!-- ``` {r eval = FALSE} -->
+<!-- install.packages("fracture") -->
+<!-- ``` -->
+
+You can install the development version of **fracture** from [GitHub](https://github.com/rossellhayes/fracture) with:
+
+``` {r eval = FALSE}
+# install.packages("remotes")
+remotes::install_github("rossellhayes/fracture")
+```
+
+## Usage
+
+### Convert decimals to a character vector of fractions
+
+**fracture** converts decimals into fractions.
+
+```{r}
+fracture(0.5)
+
+fracture((1:11) / 12)
+```
+
+Additional arguments help you get exactly the result you expect:
+
+#### Common denominators
+
+```{r}
+fracture((1:11) / 12, common_denom = TRUE)
+```
+
+#### Base-10 denominators
+
+```{r}
+fracture(1 / (2:12), base_10 = TRUE)
+```
+
+#### Maximum denominators
+
+```{r}
+fracture(1 / (2:12), base_10 = TRUE, max_denom = 100)
+fracture(1 / (2:12), base_10 = TRUE, common_denom = TRUE, max_denom = 100)
+```
+
+#### Mixed fractions
+
+```{r}
+fracture((1:9) / 3, mixed = TRUE)
+```
+
+### Convert decimals to a fraction matrix
+
+For more advanced work, you may prefer to 
+
+### Just a fun example
+
+Use **fracture** to find the best approximations of π given for each maximum denominator.
+
+```{r}
+unique(purrr::map_chr(1:17000, ~ fracture(pi, max_denom = .x)))
+```
+
+Isn't is interesting that there's such a wide gap between 355/113 and 52163/16604?
+
+## Advantages `r emo::ji("rocket")`
+
+**fracture** is implemented using C++ with [**Rcpp**](http://rcpp.org/).
+This allows it to run faster than alternatives like [`MASS::fractions()`](https://stat.ethz.ch/R-manual/R-devel/library/MASS/html/fractions.html) written in R.
+
+```{r}
+x <- round(runif(1e6, 1, 1e6)) / round(runif(1e6, 1, 1e6))
+
+# Performance with a single value
+bench::mark(fracture(x[1]), MASS::fractions(x[1]), check = FALSE)
+
+# Performace with a large vector
+bench::mark(fracture(x), MASS::fractions(x), check = FALSE)
+```
+
+---
+
+Hex sticker fonts are [Source Code Pro](https://github.com/adobe-fonts/source-code-pro) by [Adobe](https://adobe.com) and [Hasklig](https://github.com/i-tu/Hasklig) by [Ian Tuomi](https://github.com/i-tu).
+
+Please note that **fracture** is released with a [Contributor Code of Conduct](https://contributor-covenant.org/version/2/0/CODE_OF_CONDUCT.html).
+By contributing to this project, you agree to abide by its terms.
