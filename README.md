@@ -5,7 +5,7 @@
 
 <!-- badges: start -->
 
-[![](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://www.tidyverse.org/lifecycle/#maturing)
+[![](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
 [![License:
 MIT](https://img.shields.io/badge/license-MIT-blueviolet.svg)](https://cran.r-project.org/web/licenses/MIT)
 
@@ -39,10 +39,10 @@ remotes::install_github("rossellhayes/fracture")
 
 ``` r
 fracture(0.5)
-#> [1] 1/2
+#> [1] 1/0
 
 fracture((1:11) / 12)
-#>  [1] 1/12  1/6   1/4   1/3   5/12  1/2   7/12  2/3   3/4   5/6   11/12
+#>  [1] 1/0 1/0 1/0 1/0 1/0 1/0 1/0 1/0 1/0 1/0 1/0
 ```
 
 Additional arguments help you get exactly the result you expect:
@@ -51,7 +51,7 @@ Additional arguments help you get exactly the result you expect:
 
 ``` r
 fracture((1:11) / 12, common_denom = TRUE)
-#>  [1] 1/12  2/12  3/12  4/12  5/12  6/12  7/12  8/12  9/12  10/12 11/12
+#>  [1] NaN/0 NaN/0 NaN/0 NaN/0 NaN/0 NaN/0 NaN/0 NaN/0 NaN/0 NaN/0 NaN/0
 ```
 
 #### Base-10 denominators
@@ -78,7 +78,7 @@ fracture(1 / (2:12), base_10 = TRUE, common_denom = TRUE, max_denom = 100)
 
 ``` r
 fracture((1:9) / 3, mixed = TRUE)
-#> [1] 1/3   2/3   1     1 1/3 1 2/3 2     2 1/3 2 2/3 3
+#> [1] 1/0   1/0   1 1/0 1 1/0 1 1/0 2 1/0 2 1/0 2 1/0 3 1/0
 ```
 
 ### Convert decimals to a fraction matrix
@@ -88,8 +88,8 @@ For more advanced work, you may prefer to work with a fraction matrix:
 ``` r
 frac_mat((1:11) / 12)
 #>             [,1] [,2] [,3] [,4] [,5] [,6] [,7] [,8] [,9] [,10] [,11]
-#> numerator      1    1    1    1    5    1    7    2    3     5    11
-#> denominator   12    6    4    3   12    2   12    3    4     6    12
+#> numerator      1    1    1    1    1    1    1    1    1     1     1
+#> denominator    0    0    0    0    0    0    0    0    0     0     0
 ```
 
 `frac_mat()` accepts all the same arguments as `fracture()`.
@@ -100,8 +100,8 @@ When mixed fractions are used, `frac_mat()` has three rows:
 frac_mat((1:9) / 3, mixed = TRUE)
 #>             [,1] [,2] [,3] [,4] [,5] [,6] [,7] [,8] [,9]
 #> integer        0    0    1    1    1    2    2    2    3
-#> numerator      1    2    0    1    2    0    1    2    0
-#> denominator    3    3    1    3    3    1    3    3    1
+#> numerator      1    1    1    1    1    1    1    1    1
+#> denominator    0    0    0    0    0    0    0    0    0
 ```
 
 ### Math with `fracture`s
@@ -111,10 +111,10 @@ mathematical operations on them like real fractions.
 
 ``` r
 fracture(0.25) * 2
-#> [1] 1/2
+#> [1] NaN/0
 
 fracture(0.25) + fracture(1/6)
-#> [1] 5/12
+#> [1] NaN/0
 ```
 
 ### Just a fun example
@@ -124,8 +124,7 @@ denominator.
 
 ``` r
 unique(purrr::map_chr(1:50000, ~ fracture(pi, max_denom = .x)))
-#> [1] "3/1"          "22/7"         "333/106"      "355/113"      "103993/33102"
-#> [6] "104348/33215"
+#> [1] "1/0"
 ```
 
 Isn’t is interesting that there’s such a wide gap between
@@ -141,15 +140,15 @@ This allows it to run faster than alternatives like
 written in R.
 
 ``` r
-x <- round(runif(1e6, 1, 1e6)) / round(runif(1e6, 1, 1e6))
+x <- round(runif(1e5, 1, 1e5)) / round(runif(1e5, 1, 1e5))
 
 # Performance with a single value
 bench::mark(fracture(x[1]), MASS::fractions(x[1]), check = FALSE)
 #> # A tibble: 2 x 6
 #>   expression                 min   median `itr/sec` mem_alloc `gc/sec`
 #>   <bch:expr>            <bch:tm> <bch:tm>     <dbl> <bch:byt>    <dbl>
-#> 1 fracture(x[1])          37.7us   50.8us    18380.    2.49KB     23.8
-#> 2 MASS::fractions(x[1])   95.5us  149.2us     6241.  286.97KB     33.1
+#> 1 fracture(x[1])          39.3us   54.7us    17701.    2.49KB     23.7
+#> 2 MASS::fractions(x[1])   96.9us    135us     7184.  286.98KB     37.9
 
 # Performace with a large vector
 bench::mark(fracture(x), MASS::fractions(x), check = FALSE)
@@ -157,8 +156,8 @@ bench::mark(fracture(x), MASS::fractions(x), check = FALSE)
 #> # A tibble: 2 x 6
 #>   expression              min   median `itr/sec` mem_alloc `gc/sec`
 #>   <bch:expr>         <bch:tm> <bch:tm>     <dbl> <bch:byt>    <dbl>
-#> 1 fracture(x)           5.52s    5.52s     0.181  301.85MB    0.906
-#> 2 MASS::fractions(x)     5.1s     5.1s     0.196    2.75GB    3.14
+#> 1 fracture(x)           230ms    286ms      3.49    27.1MB     3.49
+#> 2 MASS::fractions(x)    810ms    810ms      1.23   277.8MB    13.6
 ```
 
 -----
