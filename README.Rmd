@@ -15,6 +15,8 @@ knitr::opts_chunk$set(
 library(fracture)
 # remotes::install_github("GuangchuangYu/badger")
 library(badger)
+# remotes::install_github("rossellhayes/tex2img")
+library(tex2img)
 ```
 
 # fracture <img src="man/figures/logo.png?raw=TRUE" align="right" height="138" />
@@ -86,17 +88,39 @@ fracture((1:9) / 3, mixed = TRUE)
 
 ### Convert decimals to a fraction matrix
 
-For more advanced work, you may prefer to 
+For more advanced work, you may prefer to work with a fraction matrix:
+
+```{r}
+frac_mat((1:11) / 12)
+```
+
+`frac_mat()` accepts all the same arguments as `fracture()`.
+
+When mixed fractions are used, `frac_mat()` has three rows:
+
+```{r}
+frac_mat((1:9) / 3, mixed = TRUE)
+```
+
+### Math with `fracture`s
+
+`fracture`s are implemented using an S3 class. This means we can perform mathematical operations on them like real fractions.
+
+```{r}
+fracture(0.25) * 2
+
+fracture(0.25) + fracture(1/6)
+```
 
 ### Just a fun example
 
-Use **fracture** to find the best approximations of π given for each maximum denominator.
+Use **fracture** to find the best approximations of π for each maximum denominator.
 
 ```{r}
-unique(purrr::map_chr(1:17000, ~ fracture(pi, max_denom = .x)))
+unique(purrr::map_chr(1:50000, ~ fracture(pi, max_denom = .x)))
 ```
 
-Isn't is interesting that there's such a wide gap between 355/113 and 52163/16604?
+Isn't is interesting that there's such a wide gap between `r tex2img("\\frac{355}{113}")` and `r tex2img("\\frac{103993}{33102}")`?
 
 ## Advantages `r emo::ji("rocket")`
 
@@ -104,7 +128,7 @@ Isn't is interesting that there's such a wide gap between 355/113 and 52163/1660
 This allows it to run faster than alternatives like [`MASS::fractions()`](https://stat.ethz.ch/R-manual/R-devel/library/MASS/html/fractions.html) written in R.
 
 ```{r}
-x <- round(runif(1e6, 1, 1e6)) / round(runif(1e6, 1, 1e6))
+x <- round(runif(1e5, 1, 1e5)) / round(runif(1e5, 1, 1e5))
 
 # Performance with a single value
 bench::mark(fracture(x[1]), MASS::fractions(x[1]), check = FALSE)

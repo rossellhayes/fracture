@@ -83,20 +83,55 @@ fracture((1:9) / 3, mixed = TRUE)
 
 ### Convert decimals to a fraction matrix
 
-For more advanced work, you may prefer to
+For more advanced work, you may prefer to work with a fraction matrix:
+
+``` r
+frac_mat((1:11) / 12)
+#>             [,1] [,2] [,3] [,4] [,5] [,6] [,7] [,8] [,9] [,10] [,11]
+#> numerator      1    1    1    1    5    1    7    2    3     5    11
+#> denominator   12    6    4    3   12    2   12    3    4     6    12
+```
+
+`frac_mat()` accepts all the same arguments as `fracture()`.
+
+When mixed fractions are used, `frac_mat()` has three rows:
+
+``` r
+frac_mat((1:9) / 3, mixed = TRUE)
+#>             [,1] [,2] [,3] [,4] [,5] [,6] [,7] [,8] [,9]
+#> integer        0    0    1    1    1    2    2    2    3
+#> numerator      1    2    0    1    2    0    1    2    0
+#> denominator    3    3    1    3    3    1    3    3    1
+```
+
+### Math with `fracture`s
+
+`fracture`s are implemented using an S3 class. This means we can perform
+mathematical operations on them like real fractions.
+
+``` r
+fracture(0.25) * 2
+#> [1] 1/2
+
+fracture(0.25) + fracture(1/6)
+#> [1] 5/12
+```
 
 ### Just a fun example
 
-Use **fracture** to find the best approximations of π given for each
-maximum denominator.
+Use **fracture** to find the best approximations of π for each maximum
+denominator.
 
 ``` r
-unique(purrr::map_chr(1:17000, ~ fracture(pi, max_denom = .x)))
-#> [1] "3/1"     "22/7"    "333/106" "355/113"
+unique(purrr::map_chr(1:50000, ~ fracture(pi, max_denom = .x)))
+#> [1] "3/1"          "22/7"         "333/106"      "355/113"      "103993/33102"
+#> [6] "104348/33215"
 ```
 
-Isn’t is interesting that there’s such a wide gap between 355/113 and
-52163/16604?
+Isn’t is interesting that there’s such a wide gap between
+![](http://www.sciweavers.org/tex2img.php?eq=%5Cfrac%7B355%7D%7B113%7D&bc=white&fc=black&im=jpg&fs=8&ff=arev)
+and
+![](http://www.sciweavers.org/tex2img.php?eq=%5Cfrac%7B103993%7D%7B33102%7D&bc=white&fc=black&im=jpg&fs=8&ff=arev)?
 
 ## Advantages 🚀
 
@@ -106,23 +141,24 @@ This allows it to run faster than alternatives like
 written in R.
 
 ``` r
-x <- round(runif(10000, 1, 2000)) / round(runif(10000, 1, 2000))
+x <- round(runif(1e6, 1, 1e6)) / round(runif(1e6, 1, 1e6))
 
 # Performance with a single value
 bench::mark(fracture(x[1]), MASS::fractions(x[1]), check = FALSE)
 #> # A tibble: 2 x 6
 #>   expression                 min   median `itr/sec` mem_alloc `gc/sec`
 #>   <bch:expr>            <bch:tm> <bch:tm>     <dbl> <bch:byt>    <dbl>
-#> 1 fracture(x[1])          37.4us     45us    21269.    2.49KB     25.8
-#> 2 MASS::fractions(x[1])   71.8us   86.7us    10960.  286.47KB     40.6
+#> 1 fracture(x[1])          37.7us   50.8us    18380.    2.49KB     23.8
+#> 2 MASS::fractions(x[1])   95.5us  149.2us     6241.  286.97KB     33.1
 
 # Performace with a large vector
 bench::mark(fracture(x), MASS::fractions(x), check = FALSE)
+#> Warning: Some expressions had a GC in every iteration; so filtering is disabled.
 #> # A tibble: 2 x 6
 #>   expression              min   median `itr/sec` mem_alloc `gc/sec`
 #>   <bch:expr>         <bch:tm> <bch:tm>     <dbl> <bch:byt>    <dbl>
-#> 1 fracture(x)          20.8ms   22.3ms      45.0    2.71MB     4.28
-#> 2 MASS::fractions(x)   20.4ms   23.8ms      42.3   26.06MB    78.5
+#> 1 fracture(x)           5.52s    5.52s     0.181  301.85MB    0.906
+#> 2 MASS::fractions(x)     5.1s     5.1s     0.196    2.75GB    3.14
 ```
 
 -----

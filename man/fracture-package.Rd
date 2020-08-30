@@ -18,6 +18,14 @@ Provides functions for converting decimals to a matrix of
   greatest common divisor for a vector of integers.
   Implemented using C++ for maximum speed.
 }
+\seealso{
+Useful links:
+\itemize{
+  \item \url{https://github.com/rossellhayes/fracture}
+  \item Report bugs at \url{https://github.com/rossellhayes/fracture/issues}
+}
+
+}
 \author{
 \strong{Maintainer}: Alexander Rossell Hayes \email{alexander@rossellhayes.com} (\href{https://orcid.org/0000-0001-9412-0457}{ORCID}) [copyright holder]
 

@@ -5,32 +5,6 @@
 
 using namespace Rcpp;
 
-// decimal_to_fraction_cont
-IntegerVector decimal_to_fraction_cont(double x, int max_denom, double sqrt_eps);
-RcppExport SEXP _fracture_decimal_to_fraction_cont(SEXP xSEXP, SEXP max_denomSEXP, SEXP sqrt_epsSEXP) {
-BEGIN_RCPP
-    Rcpp::RObject rcpp_result_gen;
-    Rcpp::RNGScope rcpp_rngScope_gen;
-    Rcpp::traits::input_parameter< double >::type x(xSEXP);
-    Rcpp::traits::input_parameter< int >::type max_denom(max_denomSEXP);
-    Rcpp::traits::input_parameter< double >::type sqrt_eps(sqrt_epsSEXP);
-    rcpp_result_gen = Rcpp::wrap(decimal_to_fraction_cont(x, max_denom, sqrt_eps));
-    return rcpp_result_gen;
-END_RCPP
-}
-// decimal_to_fraction_base_10
-IntegerVector decimal_to_fraction_base_10(double x, int max_denom, double epsilon);
-RcppExport SEXP _fracture_decimal_to_fraction_base_10(SEXP xSEXP, SEXP max_denomSEXP, SEXP epsilonSEXP) {
-BEGIN_RCPP
-    Rcpp::RObject rcpp_result_gen;
-    Rcpp::RNGScope rcpp_rngScope_gen;
-    Rcpp::traits::input_parameter< double >::type x(xSEXP);
-    Rcpp::traits::input_parameter< int >::type max_denom(max_denomSEXP);
-    Rcpp::traits::input_parameter< double >::type epsilon(epsilonSEXP);
-    rcpp_result_gen = Rcpp::wrap(decimal_to_fraction_base_10(x, max_denom, epsilon));
-    return rcpp_result_gen;
-END_RCPP
-}
 // decimal_to_fraction
 IntegerMatrix decimal_to_fraction(NumericVector x, bool base_10, int max_denom);
 RcppExport SEXP _fracture_decimal_to_fraction(SEXP xSEXP, SEXP base_10SEXP, SEXP max_denomSEXP) {
@@ -69,8 +43,6 @@ END_RCPP
 }
 
 static const R_CallMethodDef CallEntries[] = {
-    {"_fracture_decimal_to_fraction_cont", (DL_FUNC) &_fracture_decimal_to_fraction_cont, 3},
-    {"_fracture_decimal_to_fraction_base_10", (DL_FUNC) &_fracture_decimal_to_fraction_base_10, 3},
     {"_fracture_decimal_to_fraction", (DL_FUNC) &_fracture_decimal_to_fraction, 3},
     {"_fracture_gcd", (DL_FUNC) &_fracture_gcd, 1},
     {"_fracture_lcm", (DL_FUNC) &_fracture_lcm, 2},

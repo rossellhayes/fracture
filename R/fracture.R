@@ -52,13 +52,12 @@ as.fracture <- function(x) {
       )
 
     } else {
-      numeric <- x[1, ] / x[2, ]
-
-      structure(
+      x <- structure(
         paste0(x[1, ], "/", x[2, ]),
-        numeric = numeric,
-        class   = c("fracture", "character")
+        numeric = unname(x[1, ] / x[2, ])
       )
+      class(x) <- c("fracture", "character")
+      x
     }
   } else {
     fracture(x)
@@ -72,16 +71,31 @@ is.fracture <- function(x) {
   inherits(x, "fracture")
 }
 
-#' @export fracture
+#' @export
 
-as.character.fraction <- function(x, ...) {
+as.character.fracture <- function(x, ...) {
   attr(x, "numeric") <- NULL
+  class(x)           <- "character"
+  x
 }
 
 #' @export
 
 as.numeric.fracture <- function(x, ...) {
   attr(x, "numeric")
+}
+
+#' @export
+
+as.double.fracture <- function(x, ...) {
+  attr(x, "numeric")
+}
+
+#' @export
+
+as.integer.fracture <- function(x, ...) {
+  x <- attr(x, "numeric")
+  NextMethod()
 }
 
 #' @export

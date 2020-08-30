@@ -6,6 +6,22 @@ test_that("scalar frac_mat()", {
   expect_equal(rownames(mat), c("numerator", "denominator"))
 })
 
+test_that("big frac_mat()", {
+  mat <- frac_mat((1e4 - 1) / 1e5)
+  expect_equivalent(mat, c(9999, 100000))
+  expect_equal(nrow(mat), 2)
+  expect_equal(ncol(mat), 1)
+  expect_equal(rownames(mat), c("numerator", "denominator"))
+})
+
+test_that("small scalar frac_mat()", {
+  mat <- frac_mat(1 / 1e5)
+  expect_equivalent(mat, c(1, 100000))
+  expect_equal(nrow(mat), 2)
+  expect_equal(ncol(mat), 1)
+  expect_equal(rownames(mat), c("numerator", "denominator"))
+})
+
 test_that("vector frac_mat()", {
   mat <- frac_mat(c(0.5, 0.75, 2/3))
   expect_equivalent(mat, matrix(c(1, 2, 3, 4, 2, 3), nrow = 2))
