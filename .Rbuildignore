@@ -6,3 +6,4 @@
 ^CODE_OF_CONDUCT\.md$
 ^.covrignore$
 ^data-raw$
+^\.github$
