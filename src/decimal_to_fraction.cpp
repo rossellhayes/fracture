@@ -33,13 +33,13 @@ IntegerVector decimal_to_fraction_cont(double x, int max_denom) {
 
 IntegerVector decimal_to_fraction_base_10(double x, int max_denom) {
   int n = 0;
-  int d = 1;
+  int d;
 
-  while (d <= max_denom) {
-    n      = (int) R::fround(x * d, 0);
+  for (int i = 1; i <= max_denom; i *= 10) {
+    d = i;
+    n = (int) R::fround(x * d, 0);
     if (fabs(x - (double) n / (double) d) <=
         std::numeric_limits<double>::epsilon()) {break;}
-    d      = d * 10;
   }
 
   return IntegerVector::create(n, d);
