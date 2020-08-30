@@ -8,6 +8,9 @@
 [![](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
 [![License:
 MIT](https://img.shields.io/badge/license-MIT-blueviolet.svg)](https://cran.r-project.org/web/licenses/MIT)
+[![R build
+status](https://github.com/rossellhayes/fracture/workflows/R-CMD-check/badge.svg)](https://github.com/rossellhayes/fracture/actions)
+[![](https://codecov.io/gh/rossellhayes/fracture/branch/master/graph/badge.svg)](https://codecov.io/gh/rossellhayes/fracture)
 
 <!-- badges: end -->
 
@@ -147,8 +150,8 @@ bench::mark(fracture(x[1]), MASS::fractions(x[1]), check = FALSE)
 #> # A tibble: 2 x 6
 #>   expression                 min   median `itr/sec` mem_alloc `gc/sec`
 #>   <bch:expr>            <bch:tm> <bch:tm>     <dbl> <bch:byt>    <dbl>
-#> 1 fracture(x[1])          39.3us   54.7us    17701.    2.49KB     23.7
-#> 2 MASS::fractions(x[1])   96.9us    135us     7184.  286.98KB     37.9
+#> 1 fracture(x[1])          41.8us     55us    16974.    2.49KB     21.7
+#> 2 MASS::fractions(x[1])   94.4us    235us     3483.  286.98KB     12.9
 
 # Performace with a large vector
 bench::mark(fracture(x), MASS::fractions(x), check = FALSE)
@@ -156,8 +159,8 @@ bench::mark(fracture(x), MASS::fractions(x), check = FALSE)
 #> # A tibble: 2 x 6
 #>   expression              min   median `itr/sec` mem_alloc `gc/sec`
 #>   <bch:expr>         <bch:tm> <bch:tm>     <dbl> <bch:byt>    <dbl>
-#> 1 fracture(x)           230ms    286ms      3.49    27.1MB     3.49
-#> 2 MASS::fractions(x)    810ms    810ms      1.23   277.8MB    13.6
+#> 1 fracture(x)           252ms    321ms      3.11    27.1MB     3.11
+#> 2 MASS::fractions(x)    527ms    527ms      1.90   277.8MB    22.8
 ```
 
 -----

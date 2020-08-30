@@ -25,8 +25,8 @@ library(tex2img)
 `r # badge_cran_release(color = "brightgreen")`
 `r badge_lifecycle("experimental")`
 `r badge_license(color = "blueviolet")`
-`r # badge_github_actions(action = "R-CMD-check")`
-`r # badge_codecov()`
+`r badge_github_actions(action = "R-CMD-check")`
+`r badge_codecov()`
 `r # badge_dependencies()`
 <!-- badges: end -->
 
