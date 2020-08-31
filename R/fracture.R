@@ -81,12 +81,6 @@ as.character.fracture <- function(x, ...) {
 
 #' @export
 
-as.numeric.fracture <- function(x, ...) {
-  attr(x, "numeric")
-}
-
-#' @export
-
 as.double.fracture <- function(x, ...) {
   attr(x, "numeric")
 }
