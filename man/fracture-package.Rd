@@ -4,19 +4,18 @@
 \name{fracture-package}
 \alias{fracture-package}
 \alias{_PACKAGE}
-\alias{reprex-package}
-\title{fracture: Convert decimals to fractions}
+\title{fracture: Convert Decimals to Fractions}
 \description{
 \if{html}{\figure{logo.png}{options: align='right' alt='logo' width='120'}}
 
-Provides functions for converting decimals to a matrix of
-  numerators and denominators or a character vector of fractions.
-  Supports mixed or improper fractions, finding common denominators for vectors
-  of fractions, limiting denominators to powers of ten, and limiting
-  denominators to a maximum value.
-  Also includes helper functions for finding the least common multiple and
-  greatest common divisor for a vector of integers.
-  Implemented using C++ for maximum speed.
+Provides functions for converting decimals to a
+    matrix of numerators and denominators or a character vector of
+    fractions.  Supports mixed or improper fractions, finding common
+    denominators for vectors of fractions, limiting denominators to powers
+    of ten, and limiting denominators to a maximum value.  Also includes
+    helper functions for finding the least common multiple and greatest
+    common divisor for a vector of integers.  Implemented using C++ for
+    maximum speed.
 }
 \seealso{
 Useful links:
