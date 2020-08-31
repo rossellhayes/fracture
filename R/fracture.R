@@ -139,8 +139,8 @@ Ops.fracture <- function(e1, e2) {
   }
 
   if (is.fracture(e2)) {
-    e2       <- attr(e2, "numeric")
-    mode(e2) <- mode(e1)
+    e2 <- attr(e2, "numeric")
+    if (!is.null(e1)) {mode(e2) <- mode(e1)}
     return(NextMethod(.Generic))
   }
 }

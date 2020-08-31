@@ -211,6 +211,8 @@ test_that("Ops.fracture()", {
   expect_true(fracture(1.5) == fracture(1.5, base_10 = TRUE))
   expect_true(fracture(1.5) == fracture(1.5, mixed = TRUE))
   expect_false(is.na(fracture(0.5)))
+  expect_length(fracture(0.5) + NULL, 0)
+  expect_length(NULL + fracture(0.5), 0)
 })
 
 test_that("recover_fracture_args()", {
