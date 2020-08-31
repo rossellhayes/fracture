@@ -112,7 +112,7 @@ Math.fracture <- function(x, ...) {
 
 Ops.fracture <- function(e1, e2) {
   is.numericish <- function(x) {
-    is.numeric(x) | !is.null(attr(x, "numeric"))
+    is.numeric(x) | is.logical(x) | !is.null(attr(x, "numeric"))
   }
 
   if (is.numericish(e1) && is.numericish(e2)) {
@@ -146,8 +146,6 @@ Ops.fracture <- function(e1, e2) {
 }
 
 recover_fracture_args <- function(e1, e2 = NULL) {
-  if (is.null(e2)) {e2 <- e1}
-
   if (!is.fracture(e1) && !is.fracture(e2)) {
     return(NULL)
   }
@@ -157,7 +155,7 @@ recover_fracture_args <- function(e1, e2 = NULL) {
   } else if (is.numeric(e1)) {
     e1 <- frac_mat(e1, base_10 = TRUE, common_denom = TRUE)
   } else {
-    e1 <- e2
+    e1 <- NULL
   }
 
   if (is.fracture(e2)) {
@@ -165,8 +163,11 @@ recover_fracture_args <- function(e1, e2 = NULL) {
   } else if (is.numeric(e2)) {
     e2 <- frac_mat(e2, base_10 = TRUE, common_denom = TRUE)
   } else {
-    e2 <- e1
+    e2 <- NULL
   }
+
+  if (is.null(e1)) {e1 <- e2}
+  if (is.null(e2)) {e2 <- e1}
 
   list(
     mixed        = nrow(e1) == 3 || nrow(e2) == 3,
