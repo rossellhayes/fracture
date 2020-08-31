@@ -42,10 +42,10 @@ remotes::install_github("rossellhayes/fracture")
 
 ``` r
 fracture(0.5)
-#> [1] 1/0
+#> [1] 1/2
 
 fracture((1:11) / 12)
-#>  [1] 1/0 1/0 1/0 1/0 1/0 1/0 1/0 1/0 1/0 1/0 1/0
+#>  [1] 1/12  1/6   1/4   1/3   5/12  1/2   7/12  2/3   3/4   5/6   11/12
 ```
 
 Additional arguments help you get exactly the result you expect:
@@ -54,7 +54,7 @@ Additional arguments help you get exactly the result you expect:
 
 ``` r
 fracture((1:11) / 12, common_denom = TRUE)
-#>  [1] NaN/0 NaN/0 NaN/0 NaN/0 NaN/0 NaN/0 NaN/0 NaN/0 NaN/0 NaN/0 NaN/0
+#>  [1] 1/12  2/12  3/12  4/12  5/12  6/12  7/12  8/12  9/12  10/12 11/12
 ```
 
 #### Base-10 denominators
@@ -81,7 +81,7 @@ fracture(1 / (2:12), base_10 = TRUE, common_denom = TRUE, max_denom = 100)
 
 ``` r
 fracture((1:9) / 3, mixed = TRUE)
-#> [1] 1/0   1/0   1 1/0 1 1/0 1 1/0 2 1/0 2 1/0 2 1/0 3 1/0
+#> [1] 1/3   2/3   1     1 1/3 1 2/3 2     2 1/3 2 2/3 3
 ```
 
 ### Convert decimals to a fraction matrix
@@ -91,8 +91,8 @@ For more advanced work, you may prefer to work with a fraction matrix:
 ``` r
 frac_mat((1:11) / 12)
 #>             [,1] [,2] [,3] [,4] [,5] [,6] [,7] [,8] [,9] [,10] [,11]
-#> numerator      1    1    1    1    1    1    1    1    1     1     1
-#> denominator    0    0    0    0    0    0    0    0    0     0     0
+#> numerator      1    1    1    1    5    1    7    2    3     5    11
+#> denominator   12    6    4    3   12    2   12    3    4     6    12
 ```
 
 `frac_mat()` accepts all the same arguments as `fracture()`.
@@ -103,8 +103,8 @@ When mixed fractions are used, `frac_mat()` has three rows:
 frac_mat((1:9) / 3, mixed = TRUE)
 #>             [,1] [,2] [,3] [,4] [,5] [,6] [,7] [,8] [,9]
 #> integer        0    0    1    1    1    2    2    2    3
-#> numerator      1    1    1    1    1    1    1    1    1
-#> denominator    0    0    0    0    0    0    0    0    0
+#> numerator      1    2    0    1    2    0    1    2    0
+#> denominator    3    3    1    3    3    1    3    3    1
 ```
 
 ### Math with `fracture`s
@@ -114,10 +114,10 @@ mathematical operations on them like real fractions.
 
 ``` r
 fracture(0.25) * 2
-#> [1] NaN/0
+#> [1] 1/2
 
 fracture(0.25) + fracture(1/6)
-#> [1] NaN/0
+#> [1] 5/12
 ```
 
 ### Just a fun example
@@ -127,7 +127,8 @@ denominator.
 
 ``` r
 unique(purrr::map_chr(1:50000, ~ fracture(pi, max_denom = .x)))
-#> [1] "1/0"
+#> [1] "3/1"          "22/7"         "333/106"      "355/113"      "103993/33102"
+#> [6] "104348/33215"
 ```
 
 Isn’t is interesting that there’s such a wide gap between
@@ -150,8 +151,8 @@ bench::mark(fracture(x[1]), MASS::fractions(x[1]), check = FALSE)
 #> # A tibble: 2 x 6
 #>   expression                 min   median `itr/sec` mem_alloc `gc/sec`
 #>   <bch:expr>            <bch:tm> <bch:tm>     <dbl> <bch:byt>    <dbl>
-#> 1 fracture(x[1])          41.8us     55us    16974.    2.49KB     21.7
-#> 2 MASS::fractions(x[1])   94.4us    235us     3483.  286.98KB     12.9
+#> 1 fracture(x[1])          41.5us   54.7us    17246.    2.49KB     23.8
+#> 2 MASS::fractions(x[1])   95.4us  134.1us     7371.  286.97KB     37.7
 
 # Performace with a large vector
 bench::mark(fracture(x), MASS::fractions(x), check = FALSE)
@@ -159,8 +160,8 @@ bench::mark(fracture(x), MASS::fractions(x), check = FALSE)
 #> # A tibble: 2 x 6
 #>   expression              min   median `itr/sec` mem_alloc `gc/sec`
 #>   <bch:expr>         <bch:tm> <bch:tm>     <dbl> <bch:byt>    <dbl>
-#> 1 fracture(x)           252ms    321ms      3.11    27.1MB     3.11
-#> 2 MASS::fractions(x)    527ms    527ms      1.90   277.8MB    22.8
+#> 1 fracture(x)           398ms    405ms      2.47    28.1MB     4.93
+#> 2 MASS::fractions(x)    575ms    575ms      1.74   276.8MB    13.9
 ```
 
 -----
