@@ -196,6 +196,8 @@ test_that("Ops.fracture()", {
   expect_comparable(fracture(0.5) + fracture(0.25), "3/4")
   expect_comparable(fracture(0.5) + TRUE, "3/2")
   expect_comparable(TRUE + fracture(0.5), "3/2")
+  expect_comparable(1i + fracture(0.5), 0.5 + 1i)
+  expect_comparable(fracture(0.5) + 1i, 0.5 + 1i)
   expect_true(fracture(0.5) == "1/2")
   expect_true("1/2" == fracture(0.5))
   expect_true(fracture(0.5) == 0.5)
