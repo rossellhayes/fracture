@@ -140,3 +140,11 @@ test_that("epsilon with common_denom frac_mat()", {
 test_that("big max_denom frac_mat()", {
   expect_warning(frac_mat(0.5, max_denom = 1e10))
 })
+
+test_that("as.frac_mat()", {
+  expect_equal(frac_mat(1.5), as.frac_mat(fracture(1.5)))
+  expect_equal(
+    frac_mat(1.5, mixed = TRUE), as.frac_mat(fracture(1.5, mixed = TRUE))
+  )
+  expect_equal(frac_mat(1.5), as.frac_mat(1.5))
+})

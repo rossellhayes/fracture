@@ -146,3 +146,63 @@ test_that("as.fracture() from frac_mat()", {
     fracture(c(1e-10, 1 - 1e-10, 1/3), common_denom = TRUE)
   )
 })
+
+frac_half <- fracture(0.5)
+
+test_that("is.fracture()", {
+  expect_true(is.fracture(frac_half))
+  expect_true(is.fracture(as.fracture(0.5)))
+})
+
+test_that("as.character.fracture()", {
+  chr <- as.character(frac_half)
+  expect_equal(chr, "1/2")
+  expect_type(chr, "character")
+})
+
+test_that("as.numeric.fracture()", {
+  num <- as.numeric(frac_half)
+  expect_equal(num, 0.5)
+  expect_type(num, "double")
+})
+
+test_that("as.double.fracture()", {
+  dbl <- as.double(frac_half)
+  expect_equal(dbl, 0.5)
+  expect_type(dbl, "double")
+})
+
+test_that("as.integer.fracture()", {
+  int <- as.integer(frac_half)
+  expect_equal(int, 0)
+  expect_type(int, "integer")
+})
+
+test_that("print.fracture()", {
+  expect_output(print(frac_half), "1/2")
+})
+
+test_that("Math.fracture()", {
+  expect_comparable(abs(fracture(-0.5)), "1/2")
+  expect_comparable(log(fracture(0.5), 4), "-1/2")
+})
+
+test_that("Ops.fracture()", {
+  expect_comparable(fracture(0.5) * 3, "3/2")
+  expect_comparable(3 * fracture(0.5), "3/2")
+  expect_comparable(fracture(0.5) + 1, "3/2")
+  expect_comparable(1 + fracture(0.5), "3/2")
+  expect_comparable(fracture(0.5) * fracture(0.5), "1/4")
+  expect_comparable(fracture(0.5) + fracture(0.25), "3/4")
+  expect_true(fracture(0.5) == "1/2")
+  expect_true("1/2" == fracture(0.5))
+  expect_true(fracture(0.5) == 0.5)
+  expect_true(0.5 == fracture(0.5))
+  expect_true(fracture(0.5) > 0)
+  expect_true(0 < fracture(0.5))
+  expect_true(fracture(1) == TRUE)
+  expect_true(TRUE == fracture(1))
+  expect_true(fracture(1.5) == fracture(1.5, base_10 = TRUE))
+  expect_true(fracture(1.5) == fracture(1.5, mixed = TRUE))
+  expect_false(is.na(fracture(0.5)))
+})
