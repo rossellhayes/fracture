@@ -7,3 +7,5 @@
 ^.covrignore$
 ^data-raw$
 ^\.github$
+^CRAN-RELEASE$
+^cran-comments.md$
