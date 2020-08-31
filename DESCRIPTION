@@ -7,17 +7,21 @@ Authors@R:
            role = c("aut", "cre", "cph"),
            email = "alexander@rossellhayes.com",
            comment = c(ORCID = "0000-0001-9412-0457"))
-Description: Provides functions for converting decimals to a matrix of
-  numerators and denominators or a character vector of fractions.
-  Supports mixed or improper fractions, finding common denominators for vectors
-  of fractions, limiting denominators to powers of ten, and limiting
-  denominators to a maximum value.
-  Also includes helper functions for finding the least common multiple and
-  greatest common divisor for a vector of integers.
-  Implemented using C++ for maximum speed.
+Description: Provides functions for converting decimals to a
+    matrix of numerators and denominators or a character vector of
+    fractions.  Supports mixed or improper fractions, finding common
+    denominators for vectors of fractions, limiting denominators to powers
+    of ten, and limiting denominators to a maximum value.  Also includes
+    helper functions for finding the least common multiple and greatest
+    common divisor for a vector of integers.  Implemented using C++ for
+    maximum speed.
 License: MIT + file LICENSE
+URL: https://github.com/rossellhayes/fracture
+BugReports: https://github.com/rossellhayes/fracture/issues
 Imports: 
     Rcpp
+Suggests: 
+    testthat
 LinkingTo: 
     Rcpp
 Encoding: UTF-8
@@ -25,7 +29,3 @@ LazyData: true
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.1.1
 SystemRequirements: C++11
-Suggests: 
-    testthat
-URL: https://github.com/rossellhayes/fracture
-BugReports: https://github.com/rossellhayes/fracture/issues
