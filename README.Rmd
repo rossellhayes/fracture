@@ -140,7 +140,7 @@ bench::mark(fracture(x), MASS::fractions(x), check = FALSE)
 
 ---
 
-Hex sticker fonts are [Source Code Pro](https://github.com/adobe-fonts/source-code-pro) by [Adobe](https://adobe.com) and [Hasklig](https://github.com/i-tu/Hasklig) by [Ian Tuomi](https://github.com/i-tu).
+Hex sticker fonts are [Source Code Pro](https://github.com/adobe-fonts/source-code-pro) by [Adobe](https://www.adobe.com) and [Hasklig](https://github.com/i-tu/Hasklig) by [Ian Tuomi](https://github.com/i-tu).
 
 Please note that **fracture** is released with a [Contributor Code of Conduct](https://contributor-covenant.org/version/2/0/CODE_OF_CONDUCT.html).
 By contributing to this project, you agree to abide by its terms.

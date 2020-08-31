@@ -152,8 +152,8 @@ bench::mark(fracture(x[1]), MASS::fractions(x[1]), check = FALSE)
 #> # A tibble: 2 x 6
 #>   expression                 min   median `itr/sec` mem_alloc `gc/sec`
 #>   <bch:expr>            <bch:tm> <bch:tm>     <dbl> <bch:byt>    <dbl>
-#> 1 fracture(x[1])          39.4us   49.2us    19241.    2.49KB     26.2
-#> 2 MASS::fractions(x[1])     96us  134.5us     7317.  286.97KB     37.8
+#> 1 fracture(x[1])          41.2us   55.4us    17193.    2.49KB     21.7
+#> 2 MASS::fractions(x[1])   83.7us  128.7us     7380.  286.98KB     33.3
 
 # Performace with a large vector
 bench::mark(fracture(x), MASS::fractions(x), check = FALSE)
@@ -161,15 +161,15 @@ bench::mark(fracture(x), MASS::fractions(x), check = FALSE)
 #> # A tibble: 2 x 6
 #>   expression              min   median `itr/sec` mem_alloc `gc/sec`
 #>   <bch:expr>         <bch:tm> <bch:tm>     <dbl> <bch:byt>    <dbl>
-#> 1 fracture(x)           526ms    526ms      1.90    28.1MB     5.70
-#> 2 MASS::fractions(x)    537ms    537ms      1.86   276.8MB    14.9
+#> 1 fracture(x)           503ms    503ms      1.99    28.1MB     5.97
+#> 2 MASS::fractions(x)    561ms    561ms      1.78   276.8MB    16.0
 ```
 
 -----
 
 Hex sticker fonts are [Source Code
 Pro](https://github.com/adobe-fonts/source-code-pro) by
-[Adobe](https://adobe.com) and
+[Adobe](https://www.adobe.com) and
 [Hasklig](https://github.com/i-tu/Hasklig) by [Ian
 Tuomi](https://github.com/i-tu).
 
