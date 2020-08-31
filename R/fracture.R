@@ -127,7 +127,13 @@ Ops.fracture <- function(e1, e2) {
     e1 <- as.numeric(e1)
     if (!missing(e2)) {e2 <- as.numeric(e2)}
 
-    return(do.call("fracture", c(list(NextMethod(.Generic)), args)))
+    result <- NextMethod(.Generic)
+
+    if (is.numeric(result)) {
+      return(do.call("fracture", c(result, args)))
+    } else {
+      return(result)
+    }
   }
 
   if (is.character(e1) && is.character(e2)) {return(NextMethod(.Generic))}
