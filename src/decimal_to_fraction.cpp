@@ -22,7 +22,7 @@ IntegerVector decimal_to_fraction_cont(double x, int max_denom) {
     d0 = d1;
     d1 = d2;
     d2 = f * d1 + d0;
-    // if (fabs(x - (double) n1 / (double) d1) < DBL_EPSILON) {break;}
+    if (fabs(x - (double) n1 / (double) d1) < DBL_EPSILON) {break;}
     if (f == 0) {break;}
   }
 
