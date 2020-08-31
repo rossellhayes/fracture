@@ -76,8 +76,9 @@ fracture(1 / (2:12), base_10 = TRUE)
 #### Maximum denominators
 
 ```{r}
-fracture(1 / (2:12), base_10 = TRUE, max_denom = 100)
-fracture(1 / (2:12), base_10 = TRUE, common_denom = TRUE, max_denom = 100)
+fracture(1 / (2:12), base_10 = TRUE, max_denom = 1000)
+
+fracture(1 / (2:12), base_10 = TRUE, common_denom = TRUE, max_denom = 1000)
 ```
 
 #### Mixed fractions
@@ -99,7 +100,7 @@ frac_mat((1:11) / 12)
 When mixed fractions are used, `frac_mat()` has three rows:
 
 ```{r}
-frac_mat((1:9) / 3, mixed = TRUE)
+frac_mat((1:9) / 3, mixed = TRUE, common_denom = TRUE)
 ```
 
 ### Math with `fracture`s

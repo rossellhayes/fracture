@@ -69,12 +69,13 @@ fracture(1 / (2:12), base_10 = TRUE)
 #### Maximum denominators
 
 ``` r
-fracture(1 / (2:12), base_10 = TRUE, max_denom = 100)
-#>  [1] 5/10   33/100 25/100 2/10   17/100 14/100 12/100 11/100 1/10   9/100 
-#> [11] 8/100
-fracture(1 / (2:12), base_10 = TRUE, common_denom = TRUE, max_denom = 100)
-#>  [1] 50/100 33/100 25/100 20/100 17/100 14/100 12/100 11/100 10/100 9/100 
-#> [11] 8/100
+fracture(1 / (2:12), base_10 = TRUE, max_denom = 1000)
+#>  [1] 5/10     333/1000 25/100   2/10     167/1000 143/1000 125/1000 111/1000
+#>  [9] 1/10     91/1000  83/1000
+
+fracture(1 / (2:12), base_10 = TRUE, common_denom = TRUE, max_denom = 1000)
+#>  [1] 500/1000 333/1000 250/1000 200/1000 167/1000 143/1000 125/1000 111/1000
+#>  [9] 100/1000 91/1000  83/1000
 ```
 
 #### Mixed fractions
@@ -100,11 +101,11 @@ frac_mat((1:11) / 12)
 When mixed fractions are used, `frac_mat()` has three rows:
 
 ``` r
-frac_mat((1:9) / 3, mixed = TRUE)
+frac_mat((1:9) / 3, mixed = TRUE, common_denom = TRUE)
 #>             [,1] [,2] [,3] [,4] [,5] [,6] [,7] [,8] [,9]
 #> integer        0    0    1    1    1    2    2    2    3
 #> numerator      1    2    0    1    2    0    1    2    0
-#> denominator    3    3    1    3    3    1    3    3    1
+#> denominator    3    3    3    3    3    3    3    3    3
 ```
 
 ### Math with `fracture`s
@@ -151,8 +152,8 @@ bench::mark(fracture(x[1]), MASS::fractions(x[1]), check = FALSE)
 #> # A tibble: 2 x 6
 #>   expression                 min   median `itr/sec` mem_alloc `gc/sec`
 #>   <bch:expr>            <bch:tm> <bch:tm>     <dbl> <bch:byt>    <dbl>
-#> 1 fracture(x[1])          41.5us   54.7us    17246.    2.49KB     23.8
-#> 2 MASS::fractions(x[1])   95.4us  134.1us     7371.  286.97KB     37.7
+#> 1 fracture(x[1])          39.4us   49.2us    19241.    2.49KB     26.2
+#> 2 MASS::fractions(x[1])     96us  134.5us     7317.  286.97KB     37.8
 
 # Performace with a large vector
 bench::mark(fracture(x), MASS::fractions(x), check = FALSE)
@@ -160,8 +161,8 @@ bench::mark(fracture(x), MASS::fractions(x), check = FALSE)
 #> # A tibble: 2 x 6
 #>   expression              min   median `itr/sec` mem_alloc `gc/sec`
 #>   <bch:expr>         <bch:tm> <bch:tm>     <dbl> <bch:byt>    <dbl>
-#> 1 fracture(x)           398ms    405ms      2.47    28.1MB     4.93
-#> 2 MASS::fractions(x)    575ms    575ms      1.74   276.8MB    13.9
+#> 1 fracture(x)           526ms    526ms      1.90    28.1MB     5.70
+#> 2 MASS::fractions(x)    537ms    537ms      1.86   276.8MB    14.9
 ```
 
 -----
