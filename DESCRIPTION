@@ -1,5 +1,5 @@
 Package: fracture
-Title: Convert decimals to fractions
+Title: Convert Decimals to Fractions
 Version: 0.0.0.9000
 Authors@R: 
     person(given = "Alexander",
