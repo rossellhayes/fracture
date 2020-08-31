@@ -1,31 +1,37 @@
 #include <Rcpp.h>
-#include <limits>
 using namespace Rcpp;
 
 IntegerVector decimal_to_fraction_cont(double x, int max_denom) {
-  int n0;
+  int n0 = 0;
   int n1 = 1;
   int n2 = floor(x);
-  int d0;
+  int d0 = 0;
   int d1 = 0;
   int d2 = 1;
-  int i;
+  int f  = n2;
 
   double z = x - n2;
 
   while (d2 <= max_denom) {
     z  = 1 / z;
-    i  = (int) floor(z);
-    z  = z - i;
+    f  = (int) floor(z);
+    z  = z - f;
     n0 = n1;
     n1 = n2;
-    n2 = i * n1 + n0;
+    n2 = f * n1 + n0;
     d0 = d1;
     d1 = d2;
-    d2 = i * d1 + d0;
-    if (fabs(x - (double) n1 / (double) d1) <=
-        std::numeric_limits<double>::epsilon()) {break;}
-    if (fabs(i) <= std::numeric_limits<double>::epsilon()) {break;}
+    d2 = f * d1 + d0;
+    // if (fabs(x - (double) n1 / (double) d1) < DBL_EPSILON) {break;}
+    if (f == 0) {break;}
+  }
+
+  if (n1 == NA_INTEGER) {
+    n1 = (int) ceil(x);
+    d1 = 1;
+  } else if (d1 == NA_INTEGER) {
+    n1 = (int) floor(x);
+    d1 = 1;
   }
 
   return IntegerVector::create(n1, d1);
@@ -38,8 +44,7 @@ IntegerVector decimal_to_fraction_base_10(double x, int max_denom) {
   for (int i = 1; i <= max_denom; i *= 10) {
     d = i;
     n = (int) R::fround(x * d, 0);
-    if (fabs(x - (double) n / (double) d) <=
-        std::numeric_limits<double>::epsilon()) {break;}
+    if (fabs(x - (double) n / (double) d) <= DBL_EPSILON) {break;}
   }
 
   return IntegerVector::create(n, d);

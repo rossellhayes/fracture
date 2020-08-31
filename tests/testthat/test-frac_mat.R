@@ -14,9 +14,17 @@ test_that("big frac_mat()", {
   expect_equal(rownames(mat), c("numerator", "denominator"))
 })
 
-test_that("small scalar frac_mat()", {
+test_that("small frac_mat()", {
   mat <- frac_mat(1 / 1e5)
   expect_equivalent(mat, c(1, 100000))
+  expect_equal(nrow(mat), 2)
+  expect_equal(ncol(mat), 1)
+  expect_equal(rownames(mat), c("numerator", "denominator"))
+})
+
+test_that("irrational frac_mat()", {
+  mat <- frac_mat(pi, max_denom = 100)
+  expect_equivalent(mat, c(22, 7))
   expect_equal(nrow(mat), 2)
   expect_equal(ncol(mat), 1)
   expect_equal(rownames(mat), c("numerator", "denominator"))
@@ -111,10 +119,13 @@ test_that("base_10 common_denom max_denom frac_mat()", {
 })
 
 test_that("epsilon without common_denom frac_mat()", {
-  mat <- frac_mat(c(1e-10, 1 - 1e-10), max_denom = 100)
-  expect_equivalent(mat, matrix(c(0, 100, 100, 100), nrow = 2))
+  mat <- frac_mat(c(1e-10, 1 - 1e-10, 1 + 1e-10, 2 - 1e-10), max_denom = 100)
+  expect_equivalent(mat[1, 1], 0)
+  expect_equivalent(mat[1, 2], mat[2, 2])
+  expect_equivalent(mat[1, 3], mat[2, 3])
+  expect_equivalent(mat[1, 4], 2 * mat[2, 4])
   expect_equal(nrow(mat), 2)
-  expect_equal(ncol(mat), 2)
+  expect_equal(ncol(mat), 4)
   expect_equal(rownames(mat), c("numerator", "denominator"))
 })
 

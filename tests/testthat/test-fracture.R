@@ -19,6 +19,10 @@ test_that("small fracture()", {
   expect_comparable(as.fracture(1 / 1e5), "1/100000")
 })
 
+test_that("irrational fracture()", {
+  expect_comparable(fracture(pi, max_denom = 100), "22/7")
+})
+
 test_that("vector fracture()", {
   expect_comparable(fracture(c(0.5, 0.75, 2/3)), c("1/2", "3/4", "2/3"))
   expect_comparable(as.fracture(c(0.5, 0.75, 2/3)), c("1/2", "3/4", "2/3"))
