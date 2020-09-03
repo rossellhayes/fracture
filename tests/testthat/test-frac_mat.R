@@ -148,3 +148,18 @@ test_that("as.frac_mat()", {
   )
   expect_equal(frac_mat(1.5), as.frac_mat(1.5))
 })
+
+test_that("is.frac_mat()", {
+  expect_true(is.frac_mat(frac_mat(1.5)))
+  expect_true(is.frac_mat(as.frac_mat(1.5)))
+  expect_true(is.frac_mat(as.frac_mat(fracture(1.5))))
+
+  expect_true(is.frac_mat(frac_mat(1.5, mixed = TRUE)))
+  expect_true(is.frac_mat(as.frac_mat(fracture(1.5, mixed = TRUE))))
+
+  expect_false(is.frac_mat(1.5))
+  expect_false(is.frac_mat(fracture(1.5)))
+  expect_false(is.frac_mat(frac_mat(1.5) * 0.5))
+  expect_false(is.frac_mat(frac_mat(1.5)[1, ]))
+  expect_false(is.frac_mat(`rownames<-`(frac_mat(1.5), NULL)))
+})

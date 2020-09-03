@@ -99,3 +99,15 @@ as.frac_mat <- function(x) {
     frac_mat(x)
   }
 }
+
+#' @rdname frac_mat
+#' @export
+
+is.frac_mat <- function(x) {
+  is.matrix(x) &&
+    is.numeric(x) &&
+    all(x == as.integer(x)) &&
+    nrow(x) %in% 2:3 &&
+    !is.null(rownames(x)) &&
+    all(rownames(x) %in% c("integer", "numerator", "denominator"))
+}

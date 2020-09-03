@@ -3,6 +3,7 @@
 \name{frac_mat}
 \alias{frac_mat}
 \alias{as.frac_mat}
+\alias{is.frac_mat}
 \title{Convert decimals to a matrix of numerators and denominators}
 \usage{
 frac_mat(
@@ -14,6 +15,8 @@ frac_mat(
 )
 
 as.frac_mat(x)
+
+is.frac_mat(x)
 }
 \arguments{
 \item{x}{A vector of decimals or, for \code{as.frac_mat()}, a character vector
