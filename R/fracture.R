@@ -31,36 +31,38 @@ fracture <- function(
 #' @export
 
 as.fracture <- function(x) {
-  if (
-    is.matrix(x) &&
-    nrow(x) %in% c(2, 3) &&
-    all(c("numerator", "denominator") %in% rownames(x))
-  ) {
-    if (nrow(x) == 3) {
-      numeric        <- x[1, ] + x[2, ] / x[3, ]
-
-      x              <- rbind(x[1, ], " ", x[2, ], "/", x[3, ])
-      no_frac        <- which(x[3, ] == 0)
-      x[-1, no_frac] <- ""
-      no_int         <- which(x[1, ] == 0)
-      x[1:2, no_int] <- ""
-
-      structure(
-        unname(apply(x, 2, paste0, collapse = "")),
-        numeric = numeric,
-        class   = c("fracture", "character")
-      )
-
-    } else {
-      x <- structure(
-        paste0(x[1, ], "/", x[2, ]),
-        numeric = unname(x[1, ] / x[2, ])
-      )
-      class(x) <- c("fracture", "character")
-      x
-    }
+  if (is.frac_mat(x)) {
+    numeric  <- as.fracture_numeric(x)
+    fracture <- as.fracture_paste(x)
+    x        <- structure(fracture, numeric = numeric)
+    class(x) <- c("fracture", "character")
+    x
   } else {
     fracture(x)
+  }
+}
+
+as.fracture_numeric <- function(x) {
+  if (nrow(x) == 3) {
+    numeric <- x[1, ] + x[2, ] / x[3, ]
+  } else {
+    numeric <- x[1, ] / x[2, ]
+  }
+
+  as.numeric(numeric)
+}
+
+as.fracture_paste <- function(x) {
+  if (nrow(x) == 3) {
+    x              <- rbind(x[1, ], " ", x[2, ], "/", x[3, ])
+    no_frac        <- which(x[3, ] == 0)
+    x[-1, no_frac] <- ""
+    no_int         <- which(x[1, ] == 0)
+    x[1:2, no_int] <- ""
+
+    as.character(apply(x, 2, paste0, collapse = ""))
+  } else {
+    paste0(x[1, ], "/", x[2, ])
   }
 }
 
@@ -124,7 +126,7 @@ Ops.fracture <- function(e1, e2) {
     result <- NextMethod(.Generic)
 
     if (is.numeric(result)) {
-      return(do.call("fracture", c(result, args)))
+      return(do.call("fracture", c(list(result), args)))
     } else {
       return(result)
     }

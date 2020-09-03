@@ -215,6 +215,8 @@ test_that("Ops.fracture()", {
   expect_false(is.na(fracture(0.5)))
   expect_length(fracture(0.5) + NULL, 0)
   expect_length(NULL + fracture(0.5), 0)
+
+  expect_comparable(fracture(c(0.5, 1.5)) + 1, c("3/2", "5/2"))
 })
 
 test_that("recover_fracture_args()", {
