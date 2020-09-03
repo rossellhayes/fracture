@@ -9,7 +9,7 @@
 #'   denominators formatted with Unicode subscripts.
 #' @export
 #'
-#' @examples
+#' @example examples/frac_style.R
 
 frac_style <- function(fracture, ...) {
   if (!is.fracture(fracture)) {fracture <- fracture(fracture, ...)}
