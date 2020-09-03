@@ -5,13 +5,14 @@
 
 <!-- badges: start -->
 
+[![](https://www.r-pkg.org/badges/version/fracture?color=brightgreen)](https://cran.r-project.org/package=fracture)
 [![](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
 [![License:
 MIT](https://img.shields.io/badge/license-MIT-blueviolet.svg)](https://cran.r-project.org/web/licenses/MIT)
 [![R build
 status](https://github.com/rossellhayes/fracture/workflows/R-CMD-check/badge.svg)](https://github.com/rossellhayes/fracture/actions)
 [![](https://codecov.io/gh/rossellhayes/fracture/branch/master/graph/badge.svg)](https://codecov.io/gh/rossellhayes/fracture)
-
+[![Dependencies](https://tinyverse.netlify.com/badge/fracture)](https://cran.r-project.org/package=fracture)
 <!-- badges: end -->
 
 Convert decimals to fractions in R
@@ -152,8 +153,8 @@ bench::mark(fracture(x[1]), MASS::fractions(x[1]), check = FALSE)
 #> # A tibble: 2 x 6
 #>   expression                 min   median `itr/sec` mem_alloc `gc/sec`
 #>   <bch:expr>            <bch:tm> <bch:tm>     <dbl> <bch:byt>    <dbl>
-#> 1 fracture(x[1])          41.2us   55.4us    17193.    2.49KB     21.7
-#> 2 MASS::fractions(x[1])   83.7us  128.7us     7380.  286.98KB     33.3
+#> 1 fracture(x[1])          61.6us   84.2us    10904.    2.49KB     15.1
+#> 2 MASS::fractions(x[1])  178.3us  225.9us     4120.  286.97KB     19.6
 
 # Performace with a large vector
 bench::mark(fracture(x), MASS::fractions(x), check = FALSE)
@@ -161,8 +162,8 @@ bench::mark(fracture(x), MASS::fractions(x), check = FALSE)
 #> # A tibble: 2 x 6
 #>   expression              min   median `itr/sec` mem_alloc `gc/sec`
 #>   <bch:expr>         <bch:tm> <bch:tm>     <dbl> <bch:byt>    <dbl>
-#> 1 fracture(x)           503ms    503ms      1.99    28.1MB     5.97
-#> 2 MASS::fractions(x)    561ms    561ms      1.78   276.8MB    16.0
+#> 1 fracture(x)           696ms    696ms      1.44    28.1MB     1.44
+#> 2 MASS::fractions(x)    722ms    722ms      1.38   276.7MB    12.5
 ```
 
 -----

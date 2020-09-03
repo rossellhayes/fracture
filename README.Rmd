@@ -22,12 +22,12 @@ library(tex2img)
 # fracture <img src="man/figures/logo.png?raw=TRUE" align="right" height="138" />
 
 <!-- badges: start -->
-`r # badge_cran_release(color = "brightgreen")`
+`r badge_cran_release(color = "brightgreen")`
 `r badge_lifecycle("experimental")`
 `r badge_license(color = "blueviolet")`
 `r badge_github_actions(action = "R-CMD-check")`
 `r badge_codecov()`
-`r # badge_dependencies()`
+`r badge_dependencies()`
 <!-- badges: end -->
 
 Convert decimals to fractions in R
