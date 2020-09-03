@@ -2,9 +2,11 @@
 
 S3method(Math,fracture)
 S3method(Ops,fracture)
+S3method(as.character,frac_style)
 S3method(as.character,fracture)
 S3method(as.double,fracture)
 S3method(as.integer,fracture)
+S3method(print,frac_style)
 S3method(print,fracture)
 export(as.frac_mat)
 export(as.fracture)
