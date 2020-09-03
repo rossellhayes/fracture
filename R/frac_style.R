@@ -2,16 +2,17 @@
 #'
 #' Uses Unicode superscripts and subscripts to format a fracture.
 #'
-#' @param fracture A vector created by [fracture()] or [as.fracture()].
+#' @param fracture A [fracture] or a vector to be passed to [fracture()].
+#' @param ... Additional arguments passed to [fracture()].
 #'
-#' @return `fracture` with numerators formatted with Unicode superscripts and
+#' @return A `fracture` with numerators formatted with Unicode superscripts and
 #'   denominators formatted with Unicode subscripts.
 #' @export
 #'
 #' @examples
 
-frac_style <- function(fracture) {
-  if (!is.fracture(fracture)) {stop('Input must be a "fracture".')}
+frac_style <- function(fracture, ...) {
+  if (!is.fracture(fracture)) {fracture <- fracture(fracture, ...)}
   frac_style <- as.frac_mat(fracture)
 
   frac_style[] <- as.character(frac_style)
