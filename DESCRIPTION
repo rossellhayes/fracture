@@ -18,6 +18,8 @@ Description: Provides functions for converting decimals to a
 License: MIT + file LICENSE
 URL: https://github.com/rossellhayes/fracture
 BugReports: https://github.com/rossellhayes/fracture/issues
+Depends: 
+    R (>= 2.10)
 Imports: 
     Rcpp
 Suggests: 
@@ -30,5 +32,3 @@ LazyData: true
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.1.1
 SystemRequirements: C++11
-Depends: 
-    R (>= 2.10)
