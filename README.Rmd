@@ -15,8 +15,6 @@ knitr::opts_chunk$set(
 library(fracture)
 # remotes::install_github("GuangchuangYu/badger")
 library(badger)
-# remotes::install_github("rossellhayes/tex2img")
-library(tex2img)
 ```
 
 # fracture <img src="man/figures/logo.png?raw=TRUE" align="right" height="138" />
@@ -113,6 +111,16 @@ fracture(0.25) * 2
 fracture(0.25) + fracture(1/6)
 ```
 
+### Stylish `fracture`s
+
+`frac_style()` uses Unicode to provide stylish formatting for inline fractions.
+
+```{r eval = FALSE}
+`r frac_style(pi, mixed = TRUE, max_denom = 500)`
+```
+
+`r frac_style(pi, mixed = TRUE, max_denom = 500)`
+
 ### Just a fun example
 
 Use **fracture** to find the best approximations of π for each maximum denominator.
@@ -121,7 +129,7 @@ Use **fracture** to find the best approximations of π for each maximum denomina
 unique(purrr::map_chr(1:50000, ~ fracture(pi, max_denom = .x)))
 ```
 
-Isn't is interesting that there's such a wide gap between `r tex2img("\\frac{355}{113}")` and `r tex2img("\\frac{103993}{33102}")`?
+Isn't is interesting that there's such a wide gap between `r frac_style(355/113)` and `r frac_style(103993/33102)`?
 
 ## Advantages `r emo::ji("rocket")`
 

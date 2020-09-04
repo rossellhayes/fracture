@@ -122,6 +122,17 @@ fracture(0.25) + fracture(1/6)
 #> [1] 5/12
 ```
 
+### Stylish `fracture`s
+
+`frac_style()` uses Unicode to provide stylish formatting for inline
+fractions.
+
+``` r
+`r frac_style(pi, mixed = TRUE, max_denom = 500)`
+```
+
+3 ¹⁶/₁₁₃
+
 ### Just a fun example
 
 Use **fracture** to find the best approximations of π for each maximum
@@ -133,10 +144,8 @@ unique(purrr::map_chr(1:50000, ~ fracture(pi, max_denom = .x)))
 #> [6] "104348/33215"
 ```
 
-Isn’t is interesting that there’s such a wide gap between
-![](http://www.sciweavers.org/tex2img.php?eq=%5Cfrac%7B355%7D%7B113%7D&bc=white&fc=black&im=jpg&fs=8&ff=arev)
-and
-![](http://www.sciweavers.org/tex2img.php?eq=%5Cfrac%7B103993%7D%7B33102%7D&bc=white&fc=black&im=jpg&fs=8&ff=arev)?
+Isn’t is interesting that there’s such a wide gap between ³⁵⁵/₁₁₃ and
+¹⁰³⁹⁹³/₃₃₁₀₂?
 
 ## Advantages 🚀
 
@@ -153,8 +162,8 @@ bench::mark(fracture(x[1]), MASS::fractions(x[1]), check = FALSE)
 #> # A tibble: 2 x 6
 #>   expression                 min   median `itr/sec` mem_alloc `gc/sec`
 #>   <bch:expr>            <bch:tm> <bch:tm>     <dbl> <bch:byt>    <dbl>
-#> 1 fracture(x[1])          61.6us   84.2us    10904.    2.49KB     15.1
-#> 2 MASS::fractions(x[1])  178.3us  225.9us     4120.  286.97KB     19.6
+#> 1 fracture(x[1])          42.7us     64us    15434.    2.49KB     21.3
+#> 2 MASS::fractions(x[1])  101.7us    153us     6322.  286.97KB     33.5
 
 # Performace with a large vector
 bench::mark(fracture(x), MASS::fractions(x), check = FALSE)
@@ -162,8 +171,8 @@ bench::mark(fracture(x), MASS::fractions(x), check = FALSE)
 #> # A tibble: 2 x 6
 #>   expression              min   median `itr/sec` mem_alloc `gc/sec`
 #>   <bch:expr>         <bch:tm> <bch:tm>     <dbl> <bch:byt>    <dbl>
-#> 1 fracture(x)           696ms    696ms      1.44    28.1MB     1.44
-#> 2 MASS::fractions(x)    722ms    722ms      1.38   276.7MB    12.5
+#> 1 fracture(x)           450ms    468ms      2.14    29.6MB     4.28
+#> 2 MASS::fractions(x)    656ms    656ms      1.52   276.7MB    15.2
 ```
 
 -----
