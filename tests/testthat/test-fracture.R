@@ -7,6 +7,8 @@ expect_comparable <- function(object, expected, ...) {
 test_that("scalar fracture()", {
   expect_comparable(fracture(0.5), "1/2")
   expect_comparable(as.fracture(0.5), "1/2")
+  expect_comparable(fracture(355/113), "355/113")
+  expect_comparable(as.fracture(355/113), "355/113")
 })
 
 test_that("big fracture()", {

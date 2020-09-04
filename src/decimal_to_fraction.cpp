@@ -2,19 +2,19 @@
 using namespace Rcpp;
 
 IntegerVector decimal_to_fraction_cont(double x, int max_denom) {
-  int n0 = 0;
-  int n1 = 1;
-  int n2 = floor(x);
-  int d0 = 0;
-  int d1 = 0;
-  int d2 = 1;
-  int f  = n2;
+  int  n0 = 0;
+  int  n1 = 1;
+  long long n2 = floor(x);
+  int  d0 = 0;
+  int  d1 = 0;
+  long long d2 = 1;
+  long long f  = n2;
 
   double z = x - n2;
 
   while (d2 <= max_denom) {
     z  = 1 / z;
-    f  = (int) floor(z);
+    f  = (long long) floor(z);
     z  = z - f;
     n0 = n1;
     n1 = n2;
