@@ -278,3 +278,10 @@ test_that("Ops.fracture()", {
 test_that("recover_fracture_args()", {
   expect_null(recover_fracture_args(0, 0))
 })
+
+test_that("fracture() errors", {
+  expect_error(fracture(NA))
+  expect_error(fracture(Inf))
+  expect_error(fracture(-Inf))
+  expect_error(fracture(c(0.5, NA, 1.5)))
+})

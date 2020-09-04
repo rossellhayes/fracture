@@ -49,6 +49,10 @@ frac_mat <- function(
   integer <- ((x > 0) * 1 + (x < 0) * -1) * (abs(x) %/% 1)
   decimal <- x - integer
 
+  if (any(is.na(decimal)) || any(is.infinite(decimal))) {
+    stop("`x` must be a vector of finite numbers.")
+  }
+
   matrix <- decimal_to_fraction(decimal, base_10, max_denom)
 
   if (common_denom) {
