@@ -2,26 +2,25 @@
 using namespace Rcpp;
 
 IntegerVector decimal_to_fraction_cont(const double x, const int max_denom) {
-  int  n0 = 0;
-  int  n1 = 1;
+  int       n0 = 0;
+  int       n1 = 1;
   long long n2 = floor(x);
-  int  d0 = 0;
-  int  d1 = 0;
+  int       d0 = 0;
+  int       d1 = 0;
   long long d2 = 1;
   long long f  = n2;
-
-  double z = x - n2;
+  double    z  = x - n2;
 
   while (d2 <= max_denom) {
     z  = 1 / z;
     f  = (long long) floor(z);
-    z  = z - f;
+    z  = z - (double) f;
     n0 = n1;
-    n1 = n2;
-    n2 = f * n1 + n0;
+    n1 = (int) n2;
+    n2 = f * (long long) n1 + (long long) n0;
     d0 = d1;
-    d1 = d2;
-    d2 = f * d1 + d0;
+    d1 = (int) d2;
+    d2 = f * (long long) d1 + (long long) d0;
     if (fabs(x - (double) n1 / (double) d1) < DBL_EPSILON) {break;}
     if (f == 0) {break;}
   }
