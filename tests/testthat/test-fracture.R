@@ -33,25 +33,20 @@ test_that("vector fracture()", {
 test_that("long vector fracture()", {
   withr::local_options(list(scipen = 1000))
 
-  x             <- expand.grid(numerator = 1:100, denominator = 1:100)
-  test_decimal  <- x[, 1] / x[, 2]
-  unique        <- match(unique(test_decimal), test_decimal)
-  test_decimal  <- test_decimal[unique]
-  test_fraction <- paste(x[, 1][unique], x[, 2][unique], sep = "/")
-
-  expect_comparable(fracture(test_decimal), test_fraction)
-
   x <- expand.grid(
-    numerator   = round(runif(100, 100, 1e6)),
-    denominator = round(runif(100, 100, 1e6))
+    as.integer(c(1:100, round(runif(100, 100, 1e6)))),
+    as.integer(c(1:100, round(runif(100, 100, 1e6))))
   )
-  gcd           <- apply(x, 1, frac_gcd)
-  x             <- x / gcd
-  x             <- x[order(x$denominator, x$numerator), ]
+
   test_decimal  <- x[, 1] / x[, 2]
   unique        <- match(unique(test_decimal), test_decimal)
   test_decimal  <- test_decimal[unique]
-  test_fraction <- paste(x[, 1][unique], x[, 2][unique], sep = "/")
+
+  x   <- x[unique, ]
+  gcd <- apply(x, 1, frac_gcd)
+  x   <- x / gcd
+
+  test_fraction <- paste(x[, 1], x[, 2], sep = "/")
 
   expect_comparable(fracture(test_decimal), test_fraction)
 })
@@ -60,29 +55,20 @@ test_that("really long vector fracture()", {
   skip_on_cran()
   withr::local_options(list(scipen = 1000))
 
-  x             <- expand.grid(numerator = 1:3000, denominator = 1:3000)
-  test_decimal  <- x[, 1] / x[, 2]
-  unique        <- match(unique(test_decimal), test_decimal)
-  test_decimal  <- test_decimal[unique]
-  test_fraction <- paste(x[, 1][unique], x[, 2][unique], sep = "/")
-
-  expect_comparable(fracture(test_decimal), test_fraction)
-
   x <- expand.grid(
-    round(
-      c(runif(333, 3000, 1e4), runif(333, 1e4, 1e5), runif(333, 1e5, 1e6))
-    ),
-    round(
-      c(runif(333, 3000, 1e4), runif(333, 1e4, 1e5), runif(333, 1e5, 1e6))
-    )
+    as.integer(c(1:1000, round(runif(1000, 1000, 1e6)))),
+    as.integer(c(1:1000, round(runif(1000, 1000, 1e6))))
   )
-  gcd           <- apply(x, 1, frac_gcd)
-  x             <- x / gcd
-  x             <- x[order(x[, 1], x[, 2]), ]
+
   test_decimal  <- x[, 1] / x[, 2]
   unique        <- match(unique(test_decimal), test_decimal)
   test_decimal  <- test_decimal[unique]
-  test_fraction <- paste(x[, 1][unique], x[, 2][unique], sep = "/")
+
+  x   <- x[unique, ]
+  gcd <- apply(x, 1, frac_gcd)
+  x   <- x / gcd
+
+  test_fraction <- paste(x[, 1], x[, 2], sep = "/")
 
   expect_comparable(fracture(test_decimal), test_fraction)
 })
