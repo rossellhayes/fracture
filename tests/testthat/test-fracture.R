@@ -31,6 +31,30 @@ test_that("vector fracture()", {
 })
 
 test_that("long vector fracture()", {
+  x             <- expand.grid(numerator = 1:100, denominator = 1:100)
+  test_decimal  <- x[, 1] / x[, 2]
+  unique        <- match(unique(test_decimal), test_decimal)
+  test_decimal  <- test_decimal[unique]
+  test_fraction <- paste(x[, 1][unique], x[, 2][unique], sep = "/")
+
+  expect_comparable(fracture(test_decimal), test_fraction)
+
+  x <- expand.grid(
+    numerator   = round(runif(100, 100, 1e6)),
+    denominator = round(runif(100, 100, 1e6))
+  )
+  gcd           <- apply(x, 1, frac_gcd)
+  x             <- x / gcd
+  x             <- x[order(x$denominator, x$numerator), ]
+  test_decimal  <- x[, 1] / x[, 2]
+  unique        <- match(unique(test_decimal), test_decimal)
+  test_decimal  <- test_decimal[unique]
+  test_fraction <- paste(x[, 1][unique], x[, 2][unique], sep = "/")
+
+  expect_comparable(fracture(test_decimal), test_fraction)
+})
+
+test_that("really long vector fracture()", {
   skip_on_cran()
 
   x             <- expand.grid(numerator = 1:1000, denominator = 1:1000)
