@@ -6,7 +6,7 @@
 <!-- badges: start -->
 
 [![](https://www.r-pkg.org/badges/version/fracture?color=brightgreen)](https://cran.r-project.org/package=fracture)
-[![](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
+[![](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://www.tidyverse.org/lifecycle/#maturing)
 [![License:
 MIT](https://img.shields.io/badge/license-MIT-blueviolet.svg)](https://cran.r-project.org/web/licenses/MIT)
 [![R build
@@ -162,8 +162,8 @@ bench::mark(fracture(x[1]), MASS::fractions(x[1]), check = FALSE)
 #> # A tibble: 2 x 6
 #>   expression                 min   median `itr/sec` mem_alloc `gc/sec`
 #>   <bch:expr>            <bch:tm> <bch:tm>     <dbl> <bch:byt>    <dbl>
-#> 1 fracture(x[1])          42.7us     64us    15434.    2.49KB     21.3
-#> 2 MASS::fractions(x[1])  101.7us    153us     6322.  286.97KB     33.5
+#> 1 fracture(x[1])          42.2us   62.2us    15653.    2.49KB     21.3
+#> 2 MASS::fractions(x[1])   98.6us  137.6us     6994.  286.97KB     35.9
 
 # Performace with a large vector
 bench::mark(fracture(x), MASS::fractions(x), check = FALSE)
@@ -171,8 +171,8 @@ bench::mark(fracture(x), MASS::fractions(x), check = FALSE)
 #> # A tibble: 2 x 6
 #>   expression              min   median `itr/sec` mem_alloc `gc/sec`
 #>   <bch:expr>         <bch:tm> <bch:tm>     <dbl> <bch:byt>    <dbl>
-#> 1 fracture(x)           450ms    468ms      2.14    29.6MB     4.28
-#> 2 MASS::fractions(x)    656ms    656ms      1.52   276.7MB    15.2
+#> 1 fracture(x)           365ms    399ms      2.50    29.6MB     5.01
+#> 2 MASS::fractions(x)    626ms    626ms      1.60   276.7MB    16.0
 ```
 
 -----
