@@ -1,12 +1,12 @@
 #include <Rcpp.h>
 using namespace Rcpp;
 
-IntegerVector decimal_to_fraction_cont(const double x, const int max_denom) {
-  int       n0 = 0;
-  int       n1 = 1;
+IntegerVector decimal_to_fraction_cont(const double x, const long max_denom) {
+  long      n0 = 0;
+  long      n1 = 1;
   long long n2 = floor(x);
-  int       d0 = 0;
-  int       d1 = 0;
+  long      d0 = 0;
+  long      d1 = 0;
   long long d2 = 1;
   long long f  = n2;
   double    z  = x - n2;
@@ -16,33 +16,34 @@ IntegerVector decimal_to_fraction_cont(const double x, const int max_denom) {
     f  = (long long) floor(z);
     z  = z - (double) f;
     n0 = n1;
-    n1 = (int) n2;
+    n1 = (long) n2;
     n2 = f * (long long) n1 + (long long) n0;
     d0 = d1;
-    d1 = (int) d2;
+    d1 = (long) d2;
     d2 = f * (long long) d1 + (long long) d0;
     if (fabs(x - (double) n1 / (double) d1) < DBL_EPSILON) {break;}
     if (f == 0) {break;}
   }
 
-  if (n1 == NA_INTEGER) {
-    n1 = (int) ceil(x);
+  if (n1 == LONG_MIN) {
+    n1 = (long) ceil(x);
     d1 = 1;
-  } else if (d1 == NA_INTEGER) {
-    n1 = (int) floor(x);
+  } else if (d1 == LONG_MIN) {
+    n1 = (long) floor(x);
     d1 = 1;
   }
 
   return IntegerVector::create(n1, d1);
 }
 
-IntegerVector decimal_to_fraction_base_10(const double x, const int max_denom) {
-  int n = 0;
-  int d;
+IntegerVector decimal_to_fraction_base_10(const double x, const long max_denom)
+{
+  long n = 0;
+  long d;
 
-  for (int i = 1; i <= max_denom; i *= 10) {
+  for (long i = 1; i <= max_denom; i *= 10) {
     d = i;
-    n = (int) R::fround(x * d, 0);
+    n = (long) R::fround(x * d, 0);
     if (fabs(x - (double) n / (double) d) <= DBL_EPSILON) {break;}
   }
 
@@ -51,7 +52,7 @@ IntegerVector decimal_to_fraction_base_10(const double x, const int max_denom) {
 
 // [[Rcpp::export]]
 IntegerMatrix decimal_to_fraction(
-    const NumericVector x, const bool base_10, const int max_denom
+    const NumericVector x, const bool base_10, const long max_denom
 ) {
   IntegerMatrix result(2, x.size());
 

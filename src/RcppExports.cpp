@@ -6,14 +6,14 @@
 using namespace Rcpp;
 
 // decimal_to_fraction
-IntegerMatrix decimal_to_fraction(const NumericVector x, const bool base_10, const int max_denom);
+IntegerMatrix decimal_to_fraction(const NumericVector x, const bool base_10, const long max_denom);
 RcppExport SEXP _fracture_decimal_to_fraction(SEXP xSEXP, SEXP base_10SEXP, SEXP max_denomSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
     Rcpp::traits::input_parameter< const NumericVector >::type x(xSEXP);
     Rcpp::traits::input_parameter< const bool >::type base_10(base_10SEXP);
-    Rcpp::traits::input_parameter< const int >::type max_denom(max_denomSEXP);
+    Rcpp::traits::input_parameter< const long >::type max_denom(max_denomSEXP);
     rcpp_result_gen = Rcpp::wrap(decimal_to_fraction(x, base_10, max_denom));
     return rcpp_result_gen;
 END_RCPP
