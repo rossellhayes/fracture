@@ -1,7 +1,7 @@
 #include <Rcpp.h>
 using namespace Rcpp;
 
-IntegerVector decimal_to_fraction_cont(double x, int max_denom) {
+IntegerVector decimal_to_fraction_cont(const double x, const int max_denom) {
   int  n0 = 0;
   int  n1 = 1;
   long long n2 = floor(x);
@@ -37,7 +37,7 @@ IntegerVector decimal_to_fraction_cont(double x, int max_denom) {
   return IntegerVector::create(n1, d1);
 }
 
-IntegerVector decimal_to_fraction_base_10(double x, int max_denom) {
+IntegerVector decimal_to_fraction_base_10(const double x, const int max_denom) {
   int n = 0;
   int d;
 
@@ -51,8 +51,9 @@ IntegerVector decimal_to_fraction_base_10(double x, int max_denom) {
 }
 
 // [[Rcpp::export]]
-IntegerMatrix decimal_to_fraction(NumericVector x, bool base_10, int max_denom)
-{
+IntegerMatrix decimal_to_fraction(
+    const NumericVector x, const bool base_10, const int max_denom
+) {
   IntegerMatrix result(2, x.size());
 
   if (base_10) {
