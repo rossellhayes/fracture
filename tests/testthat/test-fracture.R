@@ -57,7 +57,7 @@ test_that("long vector fracture()", {
 test_that("really long vector fracture()", {
   skip_on_cran()
 
-  x             <- expand.grid(numerator = 1:2000, denominator = 1:2000)
+  x             <- expand.grid(numerator = 1:3000, denominator = 1:3000)
   test_decimal  <- x[, 1] / x[, 2]
   unique        <- match(unique(test_decimal), test_decimal)
   test_decimal  <- test_decimal[unique]
@@ -67,10 +67,10 @@ test_that("really long vector fracture()", {
 
   x <- expand.grid(
     round(
-      c(runif(333, 2000, 1e4), runif(333, 2000, 1e5), runif(333, 2000, 1e6))
+      c(runif(333, 3000, 1e4), runif(333, 1e4, 1e5), runif(333, 1e5, 1e6))
     ),
     round(
-      c(runif(333, 2000, 1e4), runif(333, 2000, 1e5), runif(333, 2000, 1e6))
+      c(runif(333, 3000, 1e4), runif(333, 1e4, 1e5), runif(333, 1e5, 1e6))
     )
   )
   gcd           <- apply(x, 1, frac_gcd)
