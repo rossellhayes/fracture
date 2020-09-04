@@ -31,6 +31,8 @@ test_that("vector fracture()", {
 })
 
 test_that("long vector fracture()", {
+  withr::local_options(list(scipen = 1000))
+
   x             <- expand.grid(numerator = 1:100, denominator = 1:100)
   test_decimal  <- x[, 1] / x[, 2]
   unique        <- match(unique(test_decimal), test_decimal)
@@ -56,6 +58,7 @@ test_that("long vector fracture()", {
 
 test_that("really long vector fracture()", {
   skip_on_cran()
+  withr::local_options(list(scipen = 1000))
 
   x             <- expand.grid(numerator = 1:3000, denominator = 1:3000)
   test_decimal  <- x[, 1] / x[, 2]

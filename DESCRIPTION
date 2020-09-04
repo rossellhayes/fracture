@@ -24,7 +24,8 @@ Imports:
     Rcpp
 Suggests: 
     covr,
-    testthat
+    testthat,
+    withr
 LinkingTo: 
     Rcpp
 Encoding: UTF-8
