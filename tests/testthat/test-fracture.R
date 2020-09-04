@@ -30,6 +30,32 @@ test_that("vector fracture()", {
   expect_comparable(as.fracture(c(0.5, 0.75, 2/3)), c("1/2", "3/4", "2/3"))
 })
 
+test_that("long vector fracture()", {
+  skip_on_cran()
+
+  x             <- expand.grid(numerator = 1:1000, denominator = 1:1000)
+  test_decimal  <- x[, 1] / x[, 2]
+  unique        <- match(unique(test_decimal), test_decimal)
+  test_decimal  <- test_decimal[unique]
+  test_fraction <- paste(x[, 1][unique], x[, 2][unique], sep = "/")
+
+  expect_comparable(fracture(test_decimal), test_fraction)
+
+  x <- expand.grid(
+    numerator   = round(runif(1000, 1000, 1e6)),
+    denominator = round(runif(1000, 1000, 1e6))
+  )
+  gcd           <- apply(x, 1, frac_gcd)
+  x             <- x / gcd
+  x             <- x[order(x$denominator, x$numerator), ]
+  test_decimal  <- x[, 1] / x[, 2]
+  unique        <- match(unique(test_decimal), test_decimal)
+  test_decimal  <- test_decimal[unique]
+  test_fraction <- paste(x[, 1][unique], x[, 2][unique], sep = "/")
+
+  expect_comparable(fracture(test_decimal), test_fraction)
+})
+
 test_that("improper fracture()", {
   expect_comparable(fracture(c(1.5, 2)), c("3/2", "2/1"))
   expect_comparable(as.fracture(c(1.5, 2)), c("3/2", "2/1"))
