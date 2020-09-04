@@ -5,7 +5,7 @@
 #' @param fracture A [fracture] or a vector to be passed to [fracture()].
 #' @param ... Additional arguments passed to [fracture()].
 #'
-#' @return A `fracture` with numerators formatted with Unicode superscripts and
+#' @return `fracture` with numerators formatted with Unicode superscripts and
 #'   denominators formatted with Unicode subscripts.
 #' @export
 #'
@@ -27,25 +27,5 @@ frac_style <- function(fracture, ...) {
     character(1)
   )
 
-  frac_style <- as.fracture_paste(frac_style)
-
-  structure(
-    fracture,
-    frac_style = frac_style,
-    numeric = as.numeric(fracture),
-    class   = c("frac_style", class(fracture))
-  )
-}
-
-#' @export
-
-as.character.frac_style <- function(x, ...) {
-  attr(x, "frac_style")
-}
-
-#' @export
-
-print.frac_style <- function(x, ...) {
-  x <- as.character(x)
-  NextMethod("print", quote = FALSE)
+  as.fracture_paste(frac_style)
 }

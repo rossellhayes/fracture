@@ -12,7 +12,7 @@ frac_style(fracture, ...)
 \item{...}{Additional arguments passed to \code{\link[=fracture]{fracture()}}.}
 }
 \value{
-A \code{fracture} with numerators formatted with Unicode superscripts and
+\code{fracture} with numerators formatted with Unicode superscripts and
 denominators formatted with Unicode subscripts.
 }
 \description{
