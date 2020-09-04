@@ -12,6 +12,10 @@
 * Fixed bug with fracture math where only the first element would be returned.
 * Added error handling for `NA` and infinite inputs to `frac_mat()`.
 
+## Miscellaneous
+
+* Added `pkgdown` site.
+
 # fracture 0.1.0
 
 * Initial release.
