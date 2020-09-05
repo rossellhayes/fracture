@@ -82,5 +82,5 @@ jobs:
         if: failure()
         uses: actions/upload-artifact@master
         with:
-          name: ${{ runner.os }}-r${{ matrix.config.r }}-results
+          name: r-devel-san-results
           path: check
