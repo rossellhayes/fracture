@@ -16,7 +16,8 @@ Description: Provides functions for converting decimals to a
     common divisor for a vector of integers.  Implemented using C++ for
     maximum speed.
 License: MIT + file LICENSE
-URL: http://fracture.rossellhayes.com/, https://github.com/rossellhayes/fracture
+URL: https://fracture.rossellhayes.com/,
+    https://github.com/rossellhayes/fracture
 BugReports: https://github.com/rossellhayes/fracture/issues
 Depends: 
     R (>= 2.10)
