@@ -196,28 +196,18 @@
 <span class="co">#&gt; # A tibble: 3 x 6</span>
 <span class="co">#&gt;   expression                            min median `itr/sec` mem_alloc `gc/sec`</span>
 <span class="co">#&gt;   &lt;bch:expr&gt;                          &lt;dbl&gt;  &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;</span>
-<span class="co">#&gt; 1 print(fracture(x[1]))                1      1         1.53       1       1.00</span>
-<span class="co">#&gt; 2 print(MASS::fractions(x[1]))         1.64   1.58      1         26.4     1.50</span>
-<span class="co">#&gt; 3 print(fractional::fractional(x[1]))  1.48   1.50      1.07      18.3     1</span>
+<span class="co">#&gt; 1 print(fracture(x[1]))                1      1         1.99       1       1   </span>
+<span class="co">#&gt; 2 print(MASS::fractions(x[1]))         2.04   1.87      1         26.4     2.00</span>
+<span class="co">#&gt; 3 print(fractional::fractional(x[1]))  1.35   1.30      1.49      18.3     1.33</span>
 
-<span class="co"># Performance with a vector of length 100</span>
-<span class="no">medium_benchmark</span>
-<span class="co">#&gt; # A tibble: 3 x 6</span>
-<span class="co">#&gt;   expression                                min median `itr/sec` mem_alloc</span>
-<span class="co">#&gt;   &lt;bch:expr&gt;                              &lt;dbl&gt;  &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;</span>
-<span class="co">#&gt; 1 print(fracture(x[1:100]))                1      1         1.98      1.80</span>
-<span class="co">#&gt; 2 print(MASS::fractions(x[1:100]))         1.82   1.59      1.18     15.8 </span>
-<span class="co">#&gt; 3 print(fractional::fractional(x[1:100]))  1.84   1.72      1         1   </span>
-<span class="co">#&gt; # ... with 1 more variable: `gc/sec` &lt;dbl&gt;</span>
-
-<span class="co"># Performance with a vector of length 10,000</span>
-<span class="no">large_benchmark</span>
+<span class="co"># Performance with a vector of length 1000</span>
+<span class="no">vector_benchmark</span>
 <span class="co">#&gt; # A tibble: 3 x 6</span>
 <span class="co">#&gt;   expression                         min median `itr/sec` mem_alloc `gc/sec`</span>
 <span class="co">#&gt;   &lt;bch:expr&gt;                       &lt;dbl&gt;  &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;</span>
-<span class="co">#&gt; 1 print(fracture(x))                1.02   1.02      1.00      1        1.05</span>
-<span class="co">#&gt; 2 print(MASS::fractions(x))         1      1         1.03      3.18     1   </span>
-<span class="co">#&gt; 3 print(fractional::fractional(x))  1.03   1.03      1         4.87     1.13</span></pre></div>
+<span class="co">#&gt; 1 print(fracture(x))                1      1         2.17      1        1   </span>
+<span class="co">#&gt; 2 print(MASS::fractions(x))         2.09   1.86      1.19      7.48     1.55</span>
+<span class="co">#&gt; 3 print(fractional::fractional(x))  2.61   2.04      1         1.91     1.41</span></pre></div>
 <p>* <code>fractional()</code> does not compute a decimal’s fractional equivalent until it is printed. Therefore, benchmarking the time to print provides a fairer test of the three packages’ capabilities.</p>
 <hr>
 <p>Hex sticker fonts are <a href="https://github.com/adobe-fonts/source-code-pro">Source Code Pro</a> by <a href="https://www.adobe.com">Adobe</a> and <a href="https://github.com/i-tu/Hasklig">Hasklig</a> by <a href="https://github.com/i-tu">Ian Tuomi</a>.</p>
@@ -264,8 +254,8 @@
 <li><a href="https://cran.r-project.org/package=fracture"><img src="https://www.r-pkg.org/badges/version/fracture?color=brightgreen"></a></li>
 <li><a href="https://www.tidyverse.org/lifecycle/#maturing"><img src="https://img.shields.io/badge/lifecycle-maturing-blue.svg"></a></li>
 <li><a href="https://cran.r-project.org/web/licenses/MIT"><img src="https://img.shields.io/badge/license-MIT-blueviolet.svg" alt="License: MIT"></a></li>
-<li><a href="https://github.com/https://fracture.rossellhayes.com/,%20rossellhayes/fracture/actions"><img src="https://github.com/https://fracture.rossellhayes.com/,%20rossellhayes/fracture/workflows/R-CMD-check/badge.svg" alt="R build status"></a></li>
-<li><a href="https://codecov.io/gh/https://fracture.rossellhayes.com/,%20rossellhayes/fracture"><img src="https://codecov.io/gh/https://fracture.rossellhayes.com/,%20rossellhayes/fracture/branch/master/graph/badge.svg"></a></li>
+<li><a href="https://github.com/rossellhayes/fracture/actions"><img src="https://github.com/rossellhayes/fracture/workflows/R-CMD-check/badge.svg" alt="R build status"></a></li>
+<li><a href="https://codecov.io/gh/rossellhayes/fracture"><img src="https://codecov.io/gh/rossellhayes/fracture/branch/master/graph/badge.svg"></a></li>
 <li><a href="https://cran.r-project.org/package=fracture"><img src="https://tinyverse.netlify.com/badge/fracture" alt="Dependencies"></a></li>
 </ul>
 </div>
