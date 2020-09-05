@@ -161,18 +161,18 @@ single_benchmark
 #> # A tibble: 3 x 6
 #>   expression                            min median `itr/sec` mem_alloc `gc/sec`
 #>   <bch:expr>                          <dbl>  <dbl>     <dbl>     <dbl>    <dbl>
-#> 1 print(fracture(x[1]))                1      1         1.53       1       1.00
-#> 2 print(MASS::fractions(x[1]))         1.64   1.58      1         26.4     1.50
-#> 3 print(fractional::fractional(x[1]))  1.48   1.50      1.07      18.3     1
+#> 1 print(fracture(x[1]))                1      1         1.78       1       1   
+#> 2 print(MASS::fractions(x[1]))         3.11   1.59      1.10      26.4     3.00
+#> 3 print(fractional::fractional(x[1]))  2.70   1.82      1         18.3     1.00
 
 # Performance with a vector of length 100
 medium_benchmark
 #> # A tibble: 3 x 6
 #>   expression                                min median `itr/sec` mem_alloc
 #>   <bch:expr>                              <dbl>  <dbl>     <dbl>     <dbl>
-#> 1 print(fracture(x[1:100]))                1      1         1.98      1.80
-#> 2 print(MASS::fractions(x[1:100]))         1.82   1.59      1.18     15.8 
-#> 3 print(fractional::fractional(x[1:100]))  1.84   1.72      1         1   
+#> 1 print(fracture(x[1:100]))                1      1         1.29      1.80
+#> 2 print(MASS::fractions(x[1:100]))         1.10   1.17      1        15.8 
+#> 3 print(fractional::fractional(x[1:100]))  1.25   1.13      1.14      1   
 #> # ... with 1 more variable: `gc/sec` <dbl>
 
 # Performance with a vector of length 10,000
@@ -180,9 +180,9 @@ large_benchmark
 #> # A tibble: 3 x 6
 #>   expression                         min median `itr/sec` mem_alloc `gc/sec`
 #>   <bch:expr>                       <dbl>  <dbl>     <dbl>     <dbl>    <dbl>
-#> 1 print(fracture(x))                1.02   1.02      1.00      1        1.05
-#> 2 print(MASS::fractions(x))         1      1         1.03      3.18     1   
-#> 3 print(fractional::fractional(x))  1.03   1.03      1         4.87     1.13
+#> 1 print(fracture(x))                1.17   1.17      1.25      1        1.23
+#> 2 print(MASS::fractions(x))         1.46   1.46      1         3.18     1   
+#> 3 print(fractional::fractional(x))  1      1         1.46      4.87     1.51
 ```
 
 \* `fractional()` does not compute a decimal’s fractional equivalent
