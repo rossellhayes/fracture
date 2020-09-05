@@ -1,4 +1,4 @@
-# fracture (development version)
+# fracture 0.1.1
 
 ## New features
 
