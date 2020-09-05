@@ -25,14 +25,6 @@ IntegerVector decimal_to_fraction_cont(const double x, const long max_denom) {
     if (f == 0) {break;}
   }
 
-  if (n1 == LONG_MIN) {
-    n1 = ceil(x);
-    d1 = 1;
-  } else if (d1 == LONG_MIN) {
-    n1 = floor(x);
-    d1 = 1;
-  }
-
   return IntegerVector::create((int) n1, (int) d1);
 }
 
