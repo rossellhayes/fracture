@@ -34,7 +34,7 @@ test_that("long vector fracture()", {
   withr::local_options(list(scipen = 1000))
 
   x <- expand.grid(
-    c(1:100, sample(100:1e6, 100)), c(1:100, sample(100:1e6, 100))
+    c(1:100, sample(100:1e7, 100)), c(1:100, sample(100:1e7, 100))
   )
 
   test_decimal  <- x[, 1] / x[, 2]
@@ -55,7 +55,7 @@ test_that("really long vector fracture()", {
   withr::local_options(list(scipen = 1000))
 
   x <- expand.grid(
-    c(1:1000, sample(1000:1e6, 1000)), c(1:1000, sample(1000:1e6, 1000))
+    c(1:1500, sample(1500:1e7, 1500)), c(1:1500, sample(1500:1e7, 1500))
   )
 
   test_decimal  <- x[, 1] / x[, 2]

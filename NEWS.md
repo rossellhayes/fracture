@@ -8,7 +8,7 @@
 ## Bug fixes 
 
 * Fixed bug where certain fractions (e.g. 16/113) would cause an integer overflow in C++.
-  * Added tests to cover all fractions below 1000/1000 (100/100 on CRAN) and a random sample of fractions below 1000000/1000000.
+  * Added tests to cover all fractions below 1500/1500 (reduced to 100/100 when testing on CRAN) and a random sample of fractions below 10,000,000/10,000,000.
 * Fixed bug with fracture math where only the first element would be returned.
 * Added error handling for `NA` and infinite inputs to `frac_mat()`.
 
