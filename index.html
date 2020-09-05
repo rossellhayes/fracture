@@ -45,7 +45,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">fracture</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.0.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.1</span>
       </span>
     </div>
 
@@ -93,12 +93,10 @@
 <div id="installation" class="section level2">
 <h2 class="hasAnchor">
 <a href="#installation" class="anchor"></a>Installation</h2>
-<!-- You can install the released version of **fracture** from [CRAN](https://CRAN.R-project.org) with: -->
-<!-- ``` {r eval = FALSE} -->
-<!-- install.packages("fracture") -->
-<!-- ``` -->
-<p>You can install the development version of <strong>fracture</strong> from <a href="https://github.com/rossellhayes/fracture">GitHub</a> with:</p>
-<div class="sourceCode" id="cb1"><pre class="r"><span class="co"># install.packages("remotes")</span>
+<p>You can install the released version of <strong>fracture</strong> from <a href="https://cran.r-project.org/package=fracture">CRAN</a> with:</p>
+<div class="sourceCode" id="cb1"><pre class="r"><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span>(<span class="st">"fracture"</span>)</pre></div>
+<p>or the development version from <a href="https://github.com/rossellhayes/fracture">GitHub</a> with:</p>
+<div class="sourceCode" id="cb2"><pre class="r"><span class="co"># install.packages("remotes")</span>
 <span class="kw pkg">remotes</span><span class="kw ns">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html">install_github</a></span>(<span class="st">"rossellhayes/fracture"</span>)</pre></div>
 </div>
 <div id="usage" class="section level2">
@@ -108,7 +106,7 @@
 <h3 class="hasAnchor">
 <a href="#convert-decimals-to-a-character-vector-of-fractions" class="anchor"></a>Convert decimals to a character vector of fractions</h3>
 <p><strong>fracture</strong> converts decimals into fractions.</p>
-<div class="sourceCode" id="cb2"><pre class="r"><span class="fu"><a href="reference/fracture.html">fracture</a></span>(<span class="fl">0.5</span>)
+<div class="sourceCode" id="cb3"><pre class="r"><span class="fu"><a href="reference/fracture.html">fracture</a></span>(<span class="fl">0.5</span>)
 <span class="co">#&gt; [1] 1/2</span>
 
 <span class="fu"><a href="reference/fracture.html">fracture</a></span>((<span class="fl">1</span>:<span class="fl">11</span>) / <span class="fl">12</span>)
@@ -117,13 +115,13 @@
 <div id="common-denominators" class="section level4">
 <h4 class="hasAnchor">
 <a href="#common-denominators" class="anchor"></a>Common denominators</h4>
-<div class="sourceCode" id="cb3"><pre class="r"><span class="fu"><a href="reference/fracture.html">fracture</a></span>((<span class="fl">1</span>:<span class="fl">11</span>) / <span class="fl">12</span>, <span class="kw">common_denom</span> <span class="kw">=</span> <span class="fl">TRUE</span>)
+<div class="sourceCode" id="cb4"><pre class="r"><span class="fu"><a href="reference/fracture.html">fracture</a></span>((<span class="fl">1</span>:<span class="fl">11</span>) / <span class="fl">12</span>, <span class="kw">common_denom</span> <span class="kw">=</span> <span class="fl">TRUE</span>)
 <span class="co">#&gt;  [1] 1/12  2/12  3/12  4/12  5/12  6/12  7/12  8/12  9/12  10/12 11/12</span></pre></div>
 </div>
 <div id="base-10-denominators" class="section level4">
 <h4 class="hasAnchor">
 <a href="#base-10-denominators" class="anchor"></a>Base-10 denominators</h4>
-<div class="sourceCode" id="cb4"><pre class="r"><span class="fu"><a href="reference/fracture.html">fracture</a></span>(<span class="fl">1</span> / (<span class="fl">2</span>:<span class="fl">12</span>), <span class="kw">base_10</span> <span class="kw">=</span> <span class="fl">TRUE</span>)
+<div class="sourceCode" id="cb5"><pre class="r"><span class="fu"><a href="reference/fracture.html">fracture</a></span>(<span class="fl">1</span> / (<span class="fl">2</span>:<span class="fl">12</span>), <span class="kw">base_10</span> <span class="kw">=</span> <span class="fl">TRUE</span>)
 <span class="co">#&gt;  [1] 5/10             3333333/10000000 25/100           2/10            </span>
 <span class="co">#&gt;  [5] 1666667/10000000 1428571/10000000 125/1000         1111111/10000000</span>
 <span class="co">#&gt;  [9] 1/10             909091/10000000  833333/10000000</span></pre></div>
@@ -131,7 +129,7 @@
 <div id="maximum-denominators" class="section level4">
 <h4 class="hasAnchor">
 <a href="#maximum-denominators" class="anchor"></a>Maximum denominators</h4>
-<div class="sourceCode" id="cb5"><pre class="r"><span class="fu"><a href="reference/fracture.html">fracture</a></span>(<span class="fl">1</span> / (<span class="fl">2</span>:<span class="fl">12</span>), <span class="kw">base_10</span> <span class="kw">=</span> <span class="fl">TRUE</span>, <span class="kw">max_denom</span> <span class="kw">=</span> <span class="fl">1000</span>)
+<div class="sourceCode" id="cb6"><pre class="r"><span class="fu"><a href="reference/fracture.html">fracture</a></span>(<span class="fl">1</span> / (<span class="fl">2</span>:<span class="fl">12</span>), <span class="kw">base_10</span> <span class="kw">=</span> <span class="fl">TRUE</span>, <span class="kw">max_denom</span> <span class="kw">=</span> <span class="fl">1000</span>)
 <span class="co">#&gt;  [1] 5/10     333/1000 25/100   2/10     167/1000 143/1000 125/1000 111/1000</span>
 <span class="co">#&gt;  [9] 1/10     91/1000  83/1000</span>
 
@@ -142,7 +140,7 @@
 <div id="mixed-fractions" class="section level4">
 <h4 class="hasAnchor">
 <a href="#mixed-fractions" class="anchor"></a>Mixed fractions</h4>
-<div class="sourceCode" id="cb6"><pre class="r"><span class="fu"><a href="reference/fracture.html">fracture</a></span>((<span class="fl">1</span>:<span class="fl">9</span>) / <span class="fl">3</span>, <span class="kw">mixed</span> <span class="kw">=</span> <span class="fl">TRUE</span>)
+<div class="sourceCode" id="cb7"><pre class="r"><span class="fu"><a href="reference/fracture.html">fracture</a></span>((<span class="fl">1</span>:<span class="fl">9</span>) / <span class="fl">3</span>, <span class="kw">mixed</span> <span class="kw">=</span> <span class="fl">TRUE</span>)
 <span class="co">#&gt; [1] 1/3   2/3   1     1 1/3 1 2/3 2     2 1/3 2 2/3 3</span></pre></div>
 </div>
 </div>
@@ -150,13 +148,13 @@
 <h3 class="hasAnchor">
 <a href="#convert-decimals-to-a-fraction-matrix" class="anchor"></a>Convert decimals to a fraction matrix</h3>
 <p>For more advanced work, you may prefer to work with a fraction matrix:</p>
-<div class="sourceCode" id="cb7"><pre class="r"><span class="fu"><a href="reference/frac_mat.html">frac_mat</a></span>((<span class="fl">1</span>:<span class="fl">11</span>) / <span class="fl">12</span>)
+<div class="sourceCode" id="cb8"><pre class="r"><span class="fu"><a href="reference/frac_mat.html">frac_mat</a></span>((<span class="fl">1</span>:<span class="fl">11</span>) / <span class="fl">12</span>)
 <span class="co">#&gt;             [,1] [,2] [,3] [,4] [,5] [,6] [,7] [,8] [,9] [,10] [,11]</span>
 <span class="co">#&gt; numerator      1    1    1    1    5    1    7    2    3     5    11</span>
 <span class="co">#&gt; denominator   12    6    4    3   12    2   12    3    4     6    12</span></pre></div>
 <p><code><a href="reference/frac_mat.html">frac_mat()</a></code> accepts all the same arguments as <code><a href="reference/fracture.html">fracture()</a></code>.</p>
 <p>When mixed fractions are used, <code><a href="reference/frac_mat.html">frac_mat()</a></code> has three rows:</p>
-<div class="sourceCode" id="cb8"><pre class="r"><span class="fu"><a href="reference/frac_mat.html">frac_mat</a></span>((<span class="fl">1</span>:<span class="fl">9</span>) / <span class="fl">3</span>, <span class="kw">mixed</span> <span class="kw">=</span> <span class="fl">TRUE</span>, <span class="kw">common_denom</span> <span class="kw">=</span> <span class="fl">TRUE</span>)
+<div class="sourceCode" id="cb9"><pre class="r"><span class="fu"><a href="reference/frac_mat.html">frac_mat</a></span>((<span class="fl">1</span>:<span class="fl">9</span>) / <span class="fl">3</span>, <span class="kw">mixed</span> <span class="kw">=</span> <span class="fl">TRUE</span>, <span class="kw">common_denom</span> <span class="kw">=</span> <span class="fl">TRUE</span>)
 <span class="co">#&gt;             [,1] [,2] [,3] [,4] [,5] [,6] [,7] [,8] [,9]</span>
 <span class="co">#&gt; integer        0    0    1    1    1    2    2    2    3</span>
 <span class="co">#&gt; numerator      1    2    0    1    2    0    1    2    0</span>
@@ -166,7 +164,7 @@
 <h3 class="hasAnchor">
 <a href="#math-with-fractures" class="anchor"></a>Math with <code>fracture</code>s</h3>
 <p><code>fracture</code>s are implemented using an S3 class. This means we can perform mathematical operations on them like real fractions.</p>
-<div class="sourceCode" id="cb9"><pre class="r"><span class="fu"><a href="reference/fracture.html">fracture</a></span>(<span class="fl">0.25</span>) * <span class="fl">2</span>
+<div class="sourceCode" id="cb10"><pre class="r"><span class="fu"><a href="reference/fracture.html">fracture</a></span>(<span class="fl">0.25</span>) * <span class="fl">2</span>
 <span class="co">#&gt; [1] 1/2</span>
 
 <span class="fu"><a href="reference/fracture.html">fracture</a></span>(<span class="fl">0.25</span>) + <span class="fu"><a href="reference/fracture.html">fracture</a></span>(<span class="fl">1</span>/<span class="fl">6</span>)
@@ -176,14 +174,14 @@
 <h3 class="hasAnchor">
 <a href="#stylish-fractures" class="anchor"></a>Stylish <code>fracture</code>s</h3>
 <p><code><a href="reference/frac_style.html">frac_style()</a></code> uses Unicode to provide stylish formatting for inline fractions.</p>
-<div class="sourceCode" id="cb10"><pre class="r"><span class="no">`r frac_style(pi, mixed = TRUE, max_denom = 500)`</span></pre></div>
+<div class="sourceCode" id="cb11"><pre class="r"><span class="no">`r frac_style(pi, mixed = TRUE, max_denom = 500)`</span></pre></div>
 <p>3 ¹⁶/₁₁₃</p>
 </div>
 <div id="just-a-fun-example" class="section level3">
 <h3 class="hasAnchor">
 <a href="#just-a-fun-example" class="anchor"></a>Just a fun example</h3>
 <p>Use <strong>fracture</strong> to find the best approximations of π for each maximum denominator.</p>
-<div class="sourceCode" id="cb11"><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/unique.html">unique</a></span>(<span class="kw pkg">purrr</span><span class="kw ns">::</span><span class="fu"><a href="https://purrr.tidyverse.org/reference/map.html">map_chr</a></span>(<span class="fl">1</span>:<span class="fl">50000</span>, ~ <span class="fu"><a href="reference/fracture.html">fracture</a></span>(<span class="no">pi</span>, <span class="kw">max_denom</span> <span class="kw">=</span> <span class="no">.x</span>)))
+<div class="sourceCode" id="cb12"><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/unique.html">unique</a></span>(<span class="kw pkg">purrr</span><span class="kw ns">::</span><span class="fu"><a href="https://purrr.tidyverse.org/reference/map.html">map_chr</a></span>(<span class="fl">1</span>:<span class="fl">50000</span>, ~ <span class="fu"><a href="reference/fracture.html">fracture</a></span>(<span class="no">pi</span>, <span class="kw">max_denom</span> <span class="kw">=</span> <span class="no">.x</span>)))
 <span class="co">#&gt; [1] "3/1"          "22/7"         "333/106"      "355/113"      "103993/33102"</span>
 <span class="co">#&gt; [6] "104348/33215"</span></pre></div>
 <p>Isn’t is interesting that there’s such a wide gap between ³⁵⁵/₁₁₃ and ¹⁰³⁹⁹³/₃₃₁₀₂?</p>
@@ -192,25 +190,35 @@
 <div id="advantages-" class="section level2">
 <h2 class="hasAnchor">
 <a href="#advantages-" class="anchor"></a>Advantages 🚀</h2>
-<p><strong>fracture</strong> is implemented using C++ with <a href="http://rcpp.org/"><strong>Rcpp</strong></a>. This allows it to run faster than alternatives like <a href="https://stat.ethz.ch/R-manual/R-devel/library/MASS/html/fractions.html"><code><a href="https://rdrr.io/pkg/MASS/man/fractions.html">MASS::fractions()</a></code></a> written in R.</p>
-<div class="sourceCode" id="cb12"><pre class="r"><span class="no">x</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/Round.html">round</a></span>(<span class="fu"><a href="https://rdrr.io/r/stats/Uniform.html">runif</a></span>(<span class="fl">1e5</span>, <span class="fl">1</span>, <span class="fl">1e5</span>)) / <span class="fu"><a href="https://rdrr.io/r/base/Round.html">round</a></span>(<span class="fu"><a href="https://rdrr.io/r/stats/Uniform.html">runif</a></span>(<span class="fl">1e5</span>, <span class="fl">1</span>, <span class="fl">1e5</span>))
+<p><strong>fracture</strong> is implemented using optimized C++ with <a href="http://rcpp.org/"><strong>Rcpp</strong></a> and S3 methods. This allows it to run faster than alternatives like <a href="https://stat.ethz.ch/R-manual/R-devel/library/MASS/html/fractions.html"><code><a href="https://rdrr.io/pkg/MASS/man/fractions.html">MASS::fractions()</a></code></a> or <a href="https://cran.r-project.org/web/packages/fractional/vignettes/Vulgar_Fractions_in_R.html"><code>fractional::fractional()</code></a>.*</p>
+<div class="sourceCode" id="cb13"><pre class="r"><span class="co"># Performance with a single value</span>
+<span class="no">single_benchmark</span>
+<span class="co">#&gt; # A tibble: 3 x 6</span>
+<span class="co">#&gt;   expression                            min median `itr/sec` mem_alloc `gc/sec`</span>
+<span class="co">#&gt;   &lt;bch:expr&gt;                          &lt;dbl&gt;  &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;</span>
+<span class="co">#&gt; 1 print(fracture(x[1]))                1      1         1.53       1       1.00</span>
+<span class="co">#&gt; 2 print(MASS::fractions(x[1]))         1.64   1.58      1         26.4     1.50</span>
+<span class="co">#&gt; 3 print(fractional::fractional(x[1]))  1.48   1.50      1.07      18.3     1</span>
 
-<span class="co"># Performance with a single value</span>
-<span class="kw pkg">bench</span><span class="kw ns">::</span><span class="fu">mark</span>(<span class="fu"><a href="reference/fracture.html">fracture</a></span>(<span class="no">x</span>[<span class="fl">1</span>]), <span class="kw pkg">MASS</span><span class="kw ns">::</span><span class="fu"><a href="https://rdrr.io/pkg/MASS/man/fractions.html">fractions</a></span>(<span class="no">x</span>[<span class="fl">1</span>]), <span class="kw">check</span> <span class="kw">=</span> <span class="fl">FALSE</span>)
-<span class="co">#&gt; # A tibble: 2 x 6</span>
-<span class="co">#&gt;   expression                 min   median `itr/sec` mem_alloc `gc/sec`</span>
-<span class="co">#&gt;   &lt;bch:expr&gt;            &lt;bch:tm&gt; &lt;bch:tm&gt;     &lt;dbl&gt; &lt;bch:byt&gt;    &lt;dbl&gt;</span>
-<span class="co">#&gt; 1 fracture(x[1])          42.2us   62.2us    15653.    2.49KB     21.3</span>
-<span class="co">#&gt; 2 MASS::fractions(x[1])   98.6us  137.6us     6994.  286.97KB     35.9</span>
+<span class="co"># Performance with a vector of length 100</span>
+<span class="no">medium_benchmark</span>
+<span class="co">#&gt; # A tibble: 3 x 6</span>
+<span class="co">#&gt;   expression                                min median `itr/sec` mem_alloc</span>
+<span class="co">#&gt;   &lt;bch:expr&gt;                              &lt;dbl&gt;  &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;</span>
+<span class="co">#&gt; 1 print(fracture(x[1:100]))                1      1         1.98      1.80</span>
+<span class="co">#&gt; 2 print(MASS::fractions(x[1:100]))         1.82   1.59      1.18     15.8 </span>
+<span class="co">#&gt; 3 print(fractional::fractional(x[1:100]))  1.84   1.72      1         1   </span>
+<span class="co">#&gt; # ... with 1 more variable: `gc/sec` &lt;dbl&gt;</span>
 
-<span class="co"># Performace with a large vector</span>
-<span class="kw pkg">bench</span><span class="kw ns">::</span><span class="fu">mark</span>(<span class="fu"><a href="reference/fracture.html">fracture</a></span>(<span class="no">x</span>), <span class="kw pkg">MASS</span><span class="kw ns">::</span><span class="fu"><a href="https://rdrr.io/pkg/MASS/man/fractions.html">fractions</a></span>(<span class="no">x</span>), <span class="kw">check</span> <span class="kw">=</span> <span class="fl">FALSE</span>)
-<span class="co">#&gt; Warning: Some expressions had a GC in every iteration; so filtering is disabled.</span>
-<span class="co">#&gt; # A tibble: 2 x 6</span>
-<span class="co">#&gt;   expression              min   median `itr/sec` mem_alloc `gc/sec`</span>
-<span class="co">#&gt;   &lt;bch:expr&gt;         &lt;bch:tm&gt; &lt;bch:tm&gt;     &lt;dbl&gt; &lt;bch:byt&gt;    &lt;dbl&gt;</span>
-<span class="co">#&gt; 1 fracture(x)           365ms    399ms      2.50    29.6MB     5.01</span>
-<span class="co">#&gt; 2 MASS::fractions(x)    626ms    626ms      1.60   276.7MB    16.0</span></pre></div>
+<span class="co"># Performance with a vector of length 10,000</span>
+<span class="no">large_benchmark</span>
+<span class="co">#&gt; # A tibble: 3 x 6</span>
+<span class="co">#&gt;   expression                         min median `itr/sec` mem_alloc `gc/sec`</span>
+<span class="co">#&gt;   &lt;bch:expr&gt;                       &lt;dbl&gt;  &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;</span>
+<span class="co">#&gt; 1 print(fracture(x))                1.02   1.02      1.00      1        1.05</span>
+<span class="co">#&gt; 2 print(MASS::fractions(x))         1      1         1.03      3.18     1   </span>
+<span class="co">#&gt; 3 print(fractional::fractional(x))  1.03   1.03      1         4.87     1.13</span></pre></div>
+<p>* <code>fractional()</code> does not compute a decimal’s fractional equivalent until it is printed. Therefore, benchmarking the time to print provides a fairer test of the three packages’ capabilities.</p>
 <hr>
 <p>Hex sticker fonts are <a href="https://github.com/adobe-fonts/source-code-pro">Source Code Pro</a> by <a href="https://www.adobe.com">Adobe</a> and <a href="https://github.com/i-tu/Hasklig">Hasklig</a> by <a href="https://github.com/i-tu">Ian Tuomi</a>.</p>
 <p>Please note that <strong>fracture</strong> is released with a <a href="https://contributor-covenant.org/version/2/0/CODE_OF_CONDUCT.html">Contributor Code of Conduct</a>. By contributing to this project, you agree to abide by its terms.</p>
@@ -256,8 +264,8 @@
 <li><a href="https://cran.r-project.org/package=fracture"><img src="https://www.r-pkg.org/badges/version/fracture?color=brightgreen"></a></li>
 <li><a href="https://www.tidyverse.org/lifecycle/#maturing"><img src="https://img.shields.io/badge/lifecycle-maturing-blue.svg"></a></li>
 <li><a href="https://cran.r-project.org/web/licenses/MIT"><img src="https://img.shields.io/badge/license-MIT-blueviolet.svg" alt="License: MIT"></a></li>
-<li><a href="https://github.com/rossellhayes/fracture/actions"><img src="https://github.com/rossellhayes/fracture/workflows/R-CMD-check/badge.svg" alt="R build status"></a></li>
-<li><a href="https://codecov.io/gh/rossellhayes/fracture"><img src="https://codecov.io/gh/rossellhayes/fracture/branch/master/graph/badge.svg"></a></li>
+<li><a href="https://github.com/https://fracture.rossellhayes.com/,%20rossellhayes/fracture/actions"><img src="https://github.com/https://fracture.rossellhayes.com/,%20rossellhayes/fracture/workflows/R-CMD-check/badge.svg" alt="R build status"></a></li>
+<li><a href="https://codecov.io/gh/https://fracture.rossellhayes.com/,%20rossellhayes/fracture"><img src="https://codecov.io/gh/https://fracture.rossellhayes.com/,%20rossellhayes/fracture/branch/master/graph/badge.svg"></a></li>
 <li><a href="https://cran.r-project.org/package=fracture"><img src="https://tinyverse.netlify.com/badge/fracture" alt="Dependencies"></a></li>
 </ul>
 </div>
