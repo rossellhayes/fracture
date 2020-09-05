@@ -10,8 +10,8 @@
 [![License:
 MIT](https://img.shields.io/badge/license-MIT-blueviolet.svg)](https://cran.r-project.org/web/licenses/MIT)
 [![R build
-status](https://github.com/rossellhayes/fracture/workflows/R-CMD-check/badge.svg)](https://github.com/rossellhayes/fracture/actions)
-[![](https://codecov.io/gh/rossellhayes/fracture/branch/master/graph/badge.svg)](https://codecov.io/gh/rossellhayes/fracture)
+status](https://github.com/https://fracture.rossellhayes.com/,%20rossellhayes/fracture/workflows/R-CMD-check/badge.svg)](https://github.com/https://fracture.rossellhayes.com/,%20rossellhayes/fracture/actions)
+[![](https://codecov.io/gh/https://fracture.rossellhayes.com/,%20rossellhayes/fracture/branch/master/graph/badge.svg)](https://codecov.io/gh/https://fracture.rossellhayes.com/,%20rossellhayes/fracture)
 [![Dependencies](https://tinyverse.netlify.com/badge/fracture)](https://cran.r-project.org/package=fracture)
 <!-- badges: end -->
 
@@ -149,31 +149,59 @@ Isn’t is interesting that there’s such a wide gap between ³⁵⁵/₁₁₃
 
 ## Advantages 🚀
 
-**fracture** is implemented using C++ with [**Rcpp**](http://rcpp.org/).
-This allows it to run faster than alternatives like
+**fracture** is implemented using optimized C++ with
+[**Rcpp**](http://rcpp.org/) and S3 methods. This allows it to run
+faster than alternatives like
 [`MASS::fractions()`](https://stat.ethz.ch/R-manual/R-devel/library/MASS/html/fractions.html)
-written in R.
+or
+[`fractional::fractional()`](https://cran.r-project.org/web/packages/fractional/vignettes/Vulgar_Fractions_in_R.html).\*
 
 ``` r
 x <- round(runif(1e5, 1, 1e5)) / round(runif(1e5, 1, 1e5))
 
 # Performance with a single value
-bench::mark(fracture(x[1]), MASS::fractions(x[1]), check = FALSE)
-#> # A tibble: 2 x 6
-#>   expression                 min   median `itr/sec` mem_alloc `gc/sec`
-#>   <bch:expr>            <bch:tm> <bch:tm>     <dbl> <bch:byt>    <dbl>
-#> 1 fracture(x[1])          42.2us   62.2us    15653.    2.49KB     21.3
-#> 2 MASS::fractions(x[1])   98.6us  137.6us     6994.  286.97KB     35.9
-
-# Performace with a large vector
-bench::mark(fracture(x), MASS::fractions(x), check = FALSE)
-#> Warning: Some expressions had a GC in every iteration; so filtering is disabled.
-#> # A tibble: 2 x 6
-#>   expression              min   median `itr/sec` mem_alloc `gc/sec`
-#>   <bch:expr>         <bch:tm> <bch:tm>     <dbl> <bch:byt>    <dbl>
-#> 1 fracture(x)           365ms    399ms      2.50    29.6MB     5.01
-#> 2 MASS::fractions(x)    626ms    626ms      1.60   276.7MB    16.0
+single_time <- bench::mark(
+  print(fracture(x[1])),
+  print(MASS::fractions(x[1])),
+  print(fractional::fractional(x[1])),
+  check = FALSE, relative = TRUE
+)
 ```
+
+``` r
+single_time
+#> # A tibble: 3 x 6
+#>   expression                            min median `itr/sec` mem_alloc `gc/sec`
+#>   <bch:expr>                          <dbl>  <dbl>     <dbl>     <dbl>    <dbl>
+#> 1 print(fracture(x[1]))                1      1         2.04       1       2.02
+#> 2 print(MASS::fractions(x[1]))         2.14   2.20      1         26.4     3.19
+#> 3 print(fractional::fractional(x[1]))  1.74   2.14      1.05      18.3     1
+```
+
+``` r
+# Performance with a large vector
+vector_time <- bench::mark(
+  print(fracture(x)),
+  print(MASS::fractions(x)),
+  print(fractional::fractional(x)),
+  check = FALSE, relative = TRUE
+)
+#> Warning: Some expressions had a GC in every iteration; so filtering is disabled.
+```
+
+``` r
+vector_time
+#> # A tibble: 3 x 6
+#>   expression                         min median `itr/sec` mem_alloc `gc/sec`
+#>   <bch:expr>                       <dbl>  <dbl>     <dbl>     <dbl>    <dbl>
+#> 1 print(fracture(x))                1      1         1.74      1        1.97
+#> 2 print(MASS::fractions(x))         1.06   1.06      1.65      2.50     1.72
+#> 3 print(fractional::fractional(x))  1.74   1.74      1         3.68     1
+```
+
+\* `fractional()` does not compute a decimal’s fractional equivalent
+until it is printed. Therefore, benchmarking the time to print provides
+a fairer test of the three packages’ capabilities.
 
 -----
 
