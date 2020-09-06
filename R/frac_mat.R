@@ -110,7 +110,7 @@ as.frac_mat <- function(x) {
 is.frac_mat <- function(x) {
   is.matrix(x) &&
     is.numeric(x) &&
-    all(x == as.integer(x)) &&
+    all(x %% 1 == 0) &&
     nrow(x) %in% 2:3 &&
     !is.null(rownames(x)) &&
     all(rownames(x) %in% c("integer", "numerator", "denominator"))
