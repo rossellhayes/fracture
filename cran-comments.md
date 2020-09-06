@@ -1,5 +1,7 @@
 # Resubmission
 
+* This is an amendment to a previous submission of fracture 0.1.1.
+It fixes a floating point rounding error that can occur with `frac_mat(base_10 = TRUE)`.
 * In this resubmission, I have fixed C++ code and tested with `rhub::check_with_sanitizers()` to address UBSAN errors.
 
 # Test environments
@@ -18,5 +20,5 @@
 
 0 errors | 0 warnings | 1 note
 
-* Days since last update: 2
+* Days since last update: 3
     * The previous release of this package raised UBSAN errors. This release fixes them.
