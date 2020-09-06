@@ -79,7 +79,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">fracture</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.1.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.1</span>
       </span>
     </div>
 
@@ -122,11 +122,6 @@
       <small>Source: <a href='https://github.com/rossellhayes/fracture/blob/master/NEWS.md'><code>NEWS.md</code></a></small>
     </div>
 
-    <div id="fracture-development-version" class="section level1">
-<h1 class="page-header" data-toc-text="development version">
-<a href="#fracture-development-version" class="anchor"></a>fracture (development version)<small> Unreleased </small>
-</h1>
-</div>
     <div id="fracture-011" class="section level1">
 <h1 class="page-header" data-toc-text="0.1.1">
 <a href="#fracture-011" class="anchor"></a>fracture 0.1.1<small> Unreleased </small>
@@ -146,6 +141,7 @@
 <li>Fixed bug where certain fractions (e.g. <code><a href="../reference/fracture.html">fracture(16/113)</a></code>, <code><a href="../reference/fracture.html">fracture(1307.36, base_10 = TRUE)</a></code>) would cause an integer overflow in C++.
 <ul>
 <li>Added tests to cover all fractions below 1000/1000 (reduced to 100/100 when testing on CRAN) and a random sample of fractions below 10,000,000/10,000,000.</li>
+<li>Added tests to cover all base_10 fractions below 10,000/10,000 (reduced to 100/100 when testing on CRAN) and a random sample of base_10 fractions below 10,000,000/10,000,000.</li>
 </ul>
 </li>
 <li>Fixed bug with fracture math where only the first element would be returned.</li>
