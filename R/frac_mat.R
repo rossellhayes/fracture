@@ -19,9 +19,9 @@
 #'   If `base_10` is `TRUE`, the maximum denominator will be the largest power
 #'   of 10 less than `max_denom`.
 #'
-#'   A `max_denom` greater than the square root of [machine epsilon][.Machine]
-#'   will produce a warning because floating point rounding errors can occur
-#'   when denominators grow too large.
+#'   A `max_denom` greater than the inverse square root of
+#'   [machine double epsilon][.Machine] will produce a warning because floating
+#'   point rounding errors can occur when denominators grow too large.
 #'
 #' @return A matrix with the same number of columns as the length of `x` and
 #'   rows for `integer`s (if `mixed` is `TRUE`), `numerator`s,
