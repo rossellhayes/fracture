@@ -1,3 +1,8 @@
+# fracture 0.1.2
+
+* Fixed bug where certain fractions (e.g. `frac_mat(1307.36, base_10 = TRUE)`) would cause an floating point rounding error.
+  * Added tests to cover all base_10 fractions below 10,000/10,000 (reduced to 100/100 when testing on CRAN) and a random sample of base_10 fractions below 10,000,000/10,000,000.
+
 # fracture 0.1.1
 
 ## New features
@@ -7,9 +12,8 @@
 
 ## Bug fixes 
 
-* Fixed bug where certain fractions (e.g. `fracture(16/113)`, `fracture(1307.36, base_10 = TRUE)`) would cause an integer overflow in C++.
+* Fixed bug where certain fractions (e.g. 16/113) would cause an integer overflow in C++.
   * Added tests to cover all fractions below 1000/1000 (reduced to 100/100 when testing on CRAN) and a random sample of fractions below 10,000,000/10,000,000.
-  * Added tests to cover all base_10 fractions below 10,000/10,000 (reduced to 100/100 when testing on CRAN) and a random sample of base_10 fractions below 10,000,000/10,000,000.
 * Fixed bug with fracture math where only the first element would be returned.
 * Added error handling for `NA` and infinite inputs to `frac_mat()`.
 
