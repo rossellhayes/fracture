@@ -1,3 +1,5 @@
+# fracture (development version)
+
 # fracture 0.1.2
 
 * Fixed bug where certain fractions (e.g. `frac_mat(1307.36, base_10 = TRUE)`) would cause an floating point rounding error.
