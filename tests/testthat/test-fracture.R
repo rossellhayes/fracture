@@ -83,6 +83,7 @@ test_that("negative fracture()", {
 
 test_that("base_10 fracture()", {
   expect_comparable(fracture(0.5, base_10 = TRUE), "5/10")
+  expect_comparable(fracture(1307.36, base_10 = TRUE), "130736/100")
 })
 
 test_that("common_denom fracture()", {

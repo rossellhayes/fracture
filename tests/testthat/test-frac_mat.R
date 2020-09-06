@@ -60,6 +60,12 @@ test_that("base_10 frac_mat()", {
   expect_equal(nrow(mat), 2)
   expect_equal(ncol(mat), 1)
   expect_equal(rownames(mat), c("numerator", "denominator"))
+
+  mat <- frac_mat(1307.36, base_10 = TRUE)
+  expect_equivalent(mat, c(130736, 100))
+  expect_equal(nrow(mat), 2)
+  expect_equal(ncol(mat), 1)
+  expect_equal(rownames(mat), c("numerator", "denominator"))
 })
 
 test_that("common_denom frac_mat()", {

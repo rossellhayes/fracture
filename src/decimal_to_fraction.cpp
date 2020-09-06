@@ -30,16 +30,16 @@ IntegerVector decimal_to_fraction_cont(const double x, const long max_denom) {
 
 IntegerVector decimal_to_fraction_base_10(const double x, const long max_denom)
 {
-  long n = 0;
-  long d;
+  double n = 0;
+  double d;
 
   for (long i = 1; i <= max_denom; i *= 10) {
     d = i;
-    n = (long) R::fround(x * d, 0);
-    if (fabs(x - (double) n / (double) d) <= DBL_EPSILON) {break;}
+    n = R::fround(x * d, 0);
+    if (fabs(x - n / d) <= sqrt(DBL_EPSILON)) {break;}
   }
 
-  return IntegerVector::create(n, d);
+  return IntegerVector::create((int) n, (int) d);
 }
 
 // [[Rcpp::export]]
