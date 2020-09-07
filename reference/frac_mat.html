@@ -170,9 +170,9 @@ from fractional components for <code>x</code> values greater than 1.</p>
 <code>max_denom</code>.</p>
 <p>If <code>base_10</code> is <code>TRUE</code>, the maximum denominator will be the largest power
 of 10 less than <code>max_denom</code>.</p>
-<p>A <code>max_denom</code> greater than the square root of <a href='https://rdrr.io/r/base/zMachine.html'>machine epsilon</a>
-will produce a warning because floating point rounding errors can occur
-when denominators grow too large.</p></td>
+<p>A <code>max_denom</code> greater than the inverse square root of
+<a href='https://rdrr.io/r/base/zMachine.html'>machine double epsilon</a> will produce a warning because floating
+point rounding errors can occur when denominators grow too large.</p></td>
     </tr>
     </table>
 
