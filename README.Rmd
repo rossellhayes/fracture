@@ -136,7 +136,7 @@ Isn't is interesting that there's such a wide gap between `r frac_style(355/113)
 ## Advantages `r emo::ji("rocket")`
 
 **fracture** is implemented using optimized C++ with [**Rcpp**](http://rcpp.org/) and S3 methods.
-This allows it to run faster than alternatives like [`MASS::fractions()`](https://stat.ethz.ch/R-manual/R-devel/library/MASS/html/fractions.html) or [`fractional::fractional()`](https://cran.r-project.org/web/packages/fractional/vignettes/Vulgar_Fractions_in_R.html).*
+This allows it to run faster than alternatives like [`MASS::fractions()`](https://cran.r-project.org/package=MASS) or [`fractional::fractional()`](https://cran.r-project.org/package=fractional).*
 
 ```{r include = FALSE}
 x <- round(runif(1000, 1, 1e6)) / round(runif(1000, 1, 1e6))

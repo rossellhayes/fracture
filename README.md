@@ -151,9 +151,8 @@ Isn’t is interesting that there’s such a wide gap between ³⁵⁵/₁₁₃
 **fracture** is implemented using optimized C++ with
 [**Rcpp**](http://rcpp.org/) and S3 methods. This allows it to run
 faster than alternatives like
-[`MASS::fractions()`](https://stat.ethz.ch/R-manual/R-devel/library/MASS/html/fractions.html)
-or
-[`fractional::fractional()`](https://cran.r-project.org/web/packages/fractional/vignettes/Vulgar_Fractions_in_R.html).\*
+[`MASS::fractions()`](https://cran.r-project.org/package=MASS) or
+[`fractional::fractional()`](https://cran.r-project.org/package=fractional).\*
 
 ``` r
 # Performance with a single value
@@ -161,18 +160,18 @@ single_benchmark
 #> # A tibble: 3 x 6
 #>   expression                            min median `itr/sec` mem_alloc `gc/sec`
 #>   <bch:expr>                          <dbl>  <dbl>     <dbl>     <dbl>    <dbl>
-#> 1 print(fracture(x[1]))                1      1         1.99       1       1   
-#> 2 print(MASS::fractions(x[1]))         2.04   1.87      1         26.4     2.00
-#> 3 print(fractional::fractional(x[1]))  1.35   1.30      1.49      18.3     1.33
+#> 1 print(fracture(x[1]))                1      1         2.39       1       1.33
+#> 2 print(MASS::fractions(x[1]))         2.14   2.47      1         26.4     1.98
+#> 3 print(fractional::fractional(x[1]))  1.55   1.53      1.60      18.3     1
 
 # Performance with a vector of length 1000
 vector_benchmark
 #> # A tibble: 3 x 6
 #>   expression                         min median `itr/sec` mem_alloc `gc/sec`
 #>   <bch:expr>                       <dbl>  <dbl>     <dbl>     <dbl>    <dbl>
-#> 1 print(fracture(x))                1      1         2.17      1        1   
-#> 2 print(MASS::fractions(x))         2.09   1.86      1.19      7.48     1.55
-#> 3 print(fractional::fractional(x))  2.61   2.04      1         1.91     1.41
+#> 1 print(fracture(x))                1      1         1.78      1        1   
+#> 2 print(MASS::fractions(x))         2.18   1.52      1.18      7.24     2.17
+#> 3 print(fractional::fractional(x))  2.77   1.94      1         1.85     2.21
 ```
 
 \* `fractional()` does not compute a decimal’s fractional equivalent
