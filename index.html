@@ -190,24 +190,24 @@
 <div id="advantages-" class="section level2">
 <h2 class="hasAnchor">
 <a href="#advantages-" class="anchor"></a>Advantages 🚀</h2>
-<p><strong>fracture</strong> is implemented using optimized C++ with <a href="http://rcpp.org/"><strong>Rcpp</strong></a> and S3 methods. This allows it to run faster than alternatives like <a href="https://stat.ethz.ch/R-manual/R-devel/library/MASS/html/fractions.html"><code><a href="https://rdrr.io/pkg/MASS/man/fractions.html">MASS::fractions()</a></code></a> or <a href="https://cran.r-project.org/web/packages/fractional/vignettes/Vulgar_Fractions_in_R.html"><code>fractional::fractional()</code></a>.*</p>
+<p><strong>fracture</strong> is implemented using optimized C++ with <a href="http://rcpp.org/"><strong>Rcpp</strong></a> and S3 methods. This allows it to run faster than alternatives like <a href="https://cran.r-project.org/package=MASS"><code><a href="https://rdrr.io/pkg/MASS/man/fractions.html">MASS::fractions()</a></code></a> or <a href="https://cran.r-project.org/package=fractional"><code>fractional::fractional()</code></a>.*</p>
 <div class="sourceCode" id="cb13"><pre class="r"><span class="co"># Performance with a single value</span>
 <span class="no">single_benchmark</span>
 <span class="co">#&gt; # A tibble: 3 x 6</span>
 <span class="co">#&gt;   expression                            min median `itr/sec` mem_alloc `gc/sec`</span>
 <span class="co">#&gt;   &lt;bch:expr&gt;                          &lt;dbl&gt;  &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;</span>
-<span class="co">#&gt; 1 print(fracture(x[1]))                1      1         1.99       1       1   </span>
-<span class="co">#&gt; 2 print(MASS::fractions(x[1]))         2.04   1.87      1         26.4     2.00</span>
-<span class="co">#&gt; 3 print(fractional::fractional(x[1]))  1.35   1.30      1.49      18.3     1.33</span>
+<span class="co">#&gt; 1 print(fracture(x[1]))                1      1         2.39       1       1.33</span>
+<span class="co">#&gt; 2 print(MASS::fractions(x[1]))         2.14   2.47      1         26.4     1.98</span>
+<span class="co">#&gt; 3 print(fractional::fractional(x[1]))  1.55   1.53      1.60      18.3     1</span>
 
 <span class="co"># Performance with a vector of length 1000</span>
 <span class="no">vector_benchmark</span>
 <span class="co">#&gt; # A tibble: 3 x 6</span>
 <span class="co">#&gt;   expression                         min median `itr/sec` mem_alloc `gc/sec`</span>
 <span class="co">#&gt;   &lt;bch:expr&gt;                       &lt;dbl&gt;  &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;</span>
-<span class="co">#&gt; 1 print(fracture(x))                1      1         2.17      1        1   </span>
-<span class="co">#&gt; 2 print(MASS::fractions(x))         2.09   1.86      1.19      7.48     1.55</span>
-<span class="co">#&gt; 3 print(fractional::fractional(x))  2.61   2.04      1         1.91     1.41</span></pre></div>
+<span class="co">#&gt; 1 print(fracture(x))                1      1         1.78      1        1   </span>
+<span class="co">#&gt; 2 print(MASS::fractions(x))         2.18   1.52      1.18      7.24     2.17</span>
+<span class="co">#&gt; 3 print(fractional::fractional(x))  2.77   1.94      1         1.85     2.21</span></pre></div>
 <p>* <code>fractional()</code> does not compute a decimal’s fractional equivalent until it is printed. Therefore, benchmarking the time to print provides a fairer test of the three packages’ capabilities.</p>
 <hr>
 <p>Hex sticker fonts are <a href="https://github.com/adobe-fonts/source-code-pro">Source Code Pro</a> by <a href="https://www.adobe.com">Adobe</a> and <a href="https://github.com/i-tu/Hasklig">Hasklig</a> by <a href="https://github.com/i-tu">Ian Tuomi</a>.</p>
