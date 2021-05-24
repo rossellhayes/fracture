@@ -23,7 +23,7 @@ library(fractional)
 
 <!-- badges: start -->
 `r badge_cran_release(color = "brightgreen")`
-`r badge_lifecycle("maturing")`
+`r badge_lifecycle("stable")`
 `r badge_license(color = "blueviolet")`
 `r badge_github_actions(action = "R-CMD-check")`
 `r badge_codecov()`
@@ -170,7 +170,7 @@ Therefore, benchmarking the time to print provides a fairer test of the three pa
 
 ---
 
-Hex sticker fonts are [Source Code Pro](https://github.com/adobe-fonts/source-code-pro) by [Adobe](https://www.adobe.com) and [Hasklig](https://github.com/i-tu/Hasklig) by [Ian Tuomi](https://github.com/i-tu).
+Hex sticker fonts are [Source Sans](https://github.com/adobe-fonts/source-sans) and [Hasklig](https://github.com/i-tu/Hasklig).
 
 Please note that **fracture** is released with a [Contributor Code of Conduct](https://contributor-covenant.org/version/2/0/CODE_OF_CONDUCT.html).
 By contributing to this project, you agree to abide by its terms.

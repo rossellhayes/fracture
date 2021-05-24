@@ -6,7 +6,7 @@
 <!-- badges: start -->
 
 [![](https://www.r-pkg.org/badges/version/fracture?color=brightgreen)](https://cran.r-project.org/package=fracture)
-[![](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://www.tidyverse.org/lifecycle/#maturing)
+[![](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://lifecycle.r-lib.org/articles/stages.html#stable)
 [![License:
 MIT](https://img.shields.io/badge/license-MIT-blueviolet.svg)](https://cran.r-project.org/web/licenses/MIT)
 [![R build
@@ -160,31 +160,29 @@ single_benchmark
 #> # A tibble: 3 x 6
 #>   expression                            min median `itr/sec` mem_alloc `gc/sec`
 #>   <bch:expr>                          <dbl>  <dbl>     <dbl>     <dbl>    <dbl>
-#> 1 print(fracture(x[1]))                1      1         2.39       1       1.33
-#> 2 print(MASS::fractions(x[1]))         2.14   2.47      1         26.4     1.98
-#> 3 print(fractional::fractional(x[1]))  1.55   1.53      1.60      18.3     1
+#> 1 print(fracture(x[1]))                1      1         1.50       1       1.00
+#> 2 print(MASS::fractions(x[1]))         1.63   1.46      1         26.4     3.00
+#> 3 print(fractional::fractional(x[1]))  1.27   1.12      1.41      18.3     1
 
 # Performance with a vector of length 1000
 vector_benchmark
 #> # A tibble: 3 x 6
 #>   expression                         min median `itr/sec` mem_alloc `gc/sec`
 #>   <bch:expr>                       <dbl>  <dbl>     <dbl>     <dbl>    <dbl>
-#> 1 print(fracture(x))                1      1         1.78      1        1   
-#> 2 print(MASS::fractions(x))         2.18   1.52      1.18      7.24     2.17
-#> 3 print(fractional::fractional(x))  2.77   1.94      1         1.85     2.21
+#> 1 print(fracture(x))                1      1         2.01      1        1   
+#> 2 print(MASS::fractions(x))         2.70   2.01      1.06      7.24     1.79
+#> 3 print(fractional::fractional(x))  3.30   1.97      1         1.85     1.54
 ```
 
 \* `fractional()` does not compute a decimal’s fractional equivalent
 until it is printed. Therefore, benchmarking the time to print provides
 a fairer test of the three packages’ capabilities.
 
------
+------------------------------------------------------------------------
 
-Hex sticker fonts are [Source Code
-Pro](https://github.com/adobe-fonts/source-code-pro) by
-[Adobe](https://www.adobe.com) and
-[Hasklig](https://github.com/i-tu/Hasklig) by [Ian
-Tuomi](https://github.com/i-tu).
+Hex sticker fonts are [Source
+Sans](https://github.com/adobe-fonts/source-sans) and
+[Hasklig](https://github.com/i-tu/Hasklig).
 
 Please note that **fracture** is released with a [Contributor Code of
 Conduct](https://contributor-covenant.org/version/2/0/CODE_OF_CONDUCT.html).
