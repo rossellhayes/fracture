@@ -1,3 +1,7 @@
+# fracture 0.1.3
+
+* Implemented STRICT_R_HEADERS in accordance with RcppCore/Rcpp#1158
+
 # fracture 0.1.2
 
 ## Bug fixes
