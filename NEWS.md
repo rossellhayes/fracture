@@ -1,5 +1,14 @@
 # fracture (development version)
 
+## Breaking changes
+* The second argument to `fracture()` and `frac_mat()` is now `...`, which must be empty. As a result, all arguments besides `x` must now be named. (#5)
+
+## New features
+* `fracture()` and `frac_mat()` gain the argument `denom`, which allows the user to set an explicit denominator used by all fractions. (#5)
+
+## Miscellaneous
+* Updated `testthat` to 3rd edition.
+
 # fracture 0.1.3
 
 * Implemented STRICT_R_HEADERS in accordance with RcppCore/Rcpp#1158
