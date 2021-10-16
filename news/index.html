@@ -79,7 +79,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">fracture</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.3.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.3.9001</span>
       </span>
     </div>
 
@@ -131,6 +131,8 @@
 <a href="#breaking-changes" class="anchor"></a>Breaking changes</h2>
 <ul>
 <li>The second argument to <code><a href="../reference/fracture.html">fracture()</a></code> and <code><a href="../reference/frac_mat.html">frac_mat()</a></code> is now <code>...</code>, which must be empty. As a result, all arguments besides <code>x</code> must now be named. (<a href='https://github.com/rossellhayes/fracture/issues/5'>#5</a>)</li>
+<li>
+<code><a href="../reference/fracture.html">fracture()</a></code> and <code><a href="../reference/frac_mat.html">frac_mat()</a></code> now default to a denominator of <code>1</code> when <code>x</code> equals <code>0</code> or <code>1</code>. Previously, these would default to a denominator of <code>max_denom</code>. <code>max_denom</code> is still used as the denominator when <code>x</code> is <code>0</code> or <code>1</code> ± ε. (<a href='https://github.com/rossellhayes/fracture/issues/6'>#6</a>)</li>
 </ul>
 </div>
 <div id="new-features" class="section level2">
