@@ -85,20 +85,24 @@ frac_mat <- function(
   integer <- ((x > 0) * 1 + (x < 0) * -1) * (abs(x) %/% 1)
   decimal <- x - integer
 
-  matrix <- decimal_to_fraction(decimal, base_10, max_denom)
+  matrix                 <- rbind(decimal, decimal)
+  matrix[, decimal == 0] <- c(0, 1)
+  matrix[, decimal != 0] <- decimal_to_fraction(
+    decimal[decimal != 0], base_10, max_denom
+  )
+  rownames(matrix) <- c("numerator", "denominator")
 
   if (common_denom) {
     denom       <- lcm(matrix[2, ], max_denom)
     matrix[1, ] <- round(matrix[1, ] * (denom / matrix[2, ]))
     matrix[2, ] <- denom
   } else {
-    extrema           <- which(
-      (matrix[1, ] == 1 & matrix[2, ] == 1) | (matrix[1, ] == 0 & integer == 0)
+    extrema <- which(
+      (matrix[1, ] == matrix[2, ] & decimal != 1) |
+      (matrix[1, ] == 0 & decimal != 0)
     )
     matrix[, extrema] <- matrix[, extrema] * max_denom
   }
-
-  rownames(matrix) <- c("numerator", "denominator")
 
   if (mixed) {
     matrix              <- rbind(integer, matrix)
