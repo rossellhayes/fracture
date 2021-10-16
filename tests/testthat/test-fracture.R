@@ -1,7 +1,5 @@
 expect_comparable <- function(object, expected, ...) {
-  object   <- unclass(object)
-  expected <- unclass(expected)
-  expect_equivalent(object, expected, ...)
+  testthat::expect_equal(object, expected, ..., ignore_attr = TRUE)
 }
 
 test_that("scalar fracture()", {
