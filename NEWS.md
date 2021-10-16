@@ -8,7 +8,8 @@
 * `fracture()` and `frac_mat()` gain the argument `denom`, which allows the user to set an explicit denominator used by all fractions. (#5)
 
 ## Miscellaneous
-* Updated `testthat` to 3rd edition.
+* The `print()` method for `fracture`s now puts quotes around mixed fractions to increase legibility. (#7)
+* Updated `testthat` to 3rd edition. (#5)
 
 # fracture 0.1.3
 

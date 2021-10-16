@@ -102,7 +102,12 @@ as.integer.fracture <- function(x, ...) {
 
 print.fracture <- function(x, ...) {
   x <- as.character(x)
-  NextMethod("print", quote = FALSE)
+  NextMethod(
+    "print",
+    # Include quotes if there are any mixed fractions (e.g. "1 1/2") OR
+    # if there is a mix of fractions and integers (e.g. "1" "1/2")
+    quote = any(grepl(" ", x)) || length(unique(grepl("/", x))) > 1
+  )
 }
 
 #' @export
