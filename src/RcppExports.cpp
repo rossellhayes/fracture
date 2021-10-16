@@ -5,6 +5,11 @@
 
 using namespace Rcpp;
 
+#ifdef RCPP_USE_GLOBAL_ROSTREAM
+Rcpp::Rostream<true>&  Rcpp::Rcout = Rcpp::Rcpp_cout_get();
+Rcpp::Rostream<false>& Rcpp::Rcerr = Rcpp::Rcpp_cerr_get();
+#endif
+
 // decimal_to_fraction
 IntegerMatrix decimal_to_fraction(const NumericVector x, const bool base_10, const long max_denom);
 RcppExport SEXP _fracture_decimal_to_fraction(SEXP xSEXP, SEXP base_10SEXP, SEXP max_denomSEXP) {

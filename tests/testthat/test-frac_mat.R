@@ -1,3 +1,7 @@
+expect_equivalent <- function(...) {
+  testthat::expect_equal(..., ignore_attr = TRUE)
+}
+
 test_that("scalar frac_mat()", {
   mat <- frac_mat(0.5)
   expect_equivalent(mat, c(1, 2))

@@ -11,13 +11,17 @@
 #' @example examples/fracture.R
 
 fracture <- function(
-  x, base_10 = FALSE, common_denom = FALSE, mixed = FALSE, max_denom = 1e7
+  x, ..., denom = NULL,
+  base_10 = FALSE, common_denom = FALSE, mixed = FALSE, max_denom = 1e7
 ) {
+  check_dots_empty0(..., match.call = match.call())
+
   op <- options(scipen = 100)
   on.exit(options(op), add = TRUE)
 
   matrix <- frac_mat(
     x            = x,
+    denom        = denom,
     base_10      = base_10,
     common_denom = common_denom,
     mixed        = mixed,

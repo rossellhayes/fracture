@@ -8,6 +8,8 @@
 \usage{
 frac_mat(
   x,
+  ...,
+  denom = NULL,
   base_10 = FALSE,
   common_denom = FALSE,
   mixed = FALSE,
@@ -21,6 +23,12 @@ is.frac_mat(x)
 \arguments{
 \item{x}{A vector of decimals or, for \code{as.frac_mat()}, a character vector
 created by \code{\link[=fracture]{fracture()}}}
+
+\item{...}{These dots are for future extensions and must be empty.}
+
+\item{denom}{If \code{denom} is not \code{\link{NULL}}, all fractions will have a
+denominator of \code{denom}. This will ignore all other arguments that affect
+the denominator.}
 
 \item{base_10}{If \code{TRUE}, all denominators will be a power of 10.}
 

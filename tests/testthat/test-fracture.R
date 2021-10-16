@@ -1,7 +1,5 @@
 expect_comparable <- function(object, expected, ...) {
-  object   <- unclass(object)
-  expected <- unclass(expected)
-  expect_equivalent(object, expected, ...)
+  testthat::expect_equal(object, expected, ..., ignore_attr = TRUE)
 }
 
 test_that("scalar fracture()", {
@@ -69,6 +67,19 @@ test_that("really long vector fracture()", {
   test_fraction <- paste(x[, 1], x[, 2], sep = "/")
 
   expect_comparable(fracture(test_decimal), test_fraction)
+})
+
+test_that("explicit denom fracture()", {
+  expect_comparable(fracture(2 / 11, denom = 10), "2/10")
+  expect_comparable(
+    fracture(rep(2 / 11, 2), denom = c(10, 12)), c("2/10", "2/12")
+  )
+  expect_comparable(
+    fracture(24 / 11, denom = 10, mixed = TRUE), "2 2/10"
+  )
+  expect_comparable(
+    fracture(c(6, 20) / 11, denom = 10, mixed = TRUE), c("5/10", "1 8/10")
+  )
 })
 
 test_that("improper fracture()", {
@@ -309,4 +320,8 @@ test_that("fracture() errors", {
   expect_error(fracture(Inf))
   expect_error(fracture(-Inf))
   expect_error(fracture(c(0.5, NA, 1.5)))
+  expect_error(fracture(1, denom = NA))
+  expect_error(fracture(1, denom = Inf))
+  expect_error(fracture(1, denom = 1:2))
+  expect_error(fracture(1:10, denom = 1:2))
 })
