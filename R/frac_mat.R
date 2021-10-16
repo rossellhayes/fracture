@@ -2,7 +2,15 @@
 #'
 #' @param x A vector of decimals or, for `as.frac_mat()`, a character vector
 #'   created by [fracture()]
+#'
+#' @param ... These dots are for future extensions and must be empty.
+#'
+#' @param denom If `denom` is not [`NULL`], all fractions will have a
+#'   denominator of `denom`. This will ignore all other arguments that affect
+#'   the denominator.
+#'
 #' @param base_10 If `TRUE`, all denominators will be a power of 10.
+#'
 #' @param common_denom If `TRUE`, all fractions will have the same denominator.
 #'
 #'   If the least common denominator is greater than `max_denom`,
@@ -32,8 +40,36 @@
 #' @example examples/frac_mat.R
 
 frac_mat <- function(
-  x, base_10 = FALSE, common_denom = FALSE, mixed = FALSE, max_denom = 1e7
+  x, ..., denom = NULL,
+  base_10 = FALSE, common_denom = FALSE, mixed = FALSE, max_denom = 1e7
 ) {
+  check_dots_empty0(..., match.call = match.call())
+
+  if (!is.numeric(x) || any(is.na(x)) || any(is.infinite(x))) {
+    stop("`x` must be a vector of finite numbers.", call. = FALSE)
+  }
+
+  if (!is.null(denom)) {
+    if (!is.numeric(denom) || any(is.na(denom)) || any(is.infinite(denom))) {
+      stop("`denom` must be a vector of finite numbers.", call. = FALSE)
+    }
+
+    if (length(denom) != 1 && length(denom) != length(x)) {
+      stop("`denom` must be length 1 or the same length as `x`.", call. = FALSE)
+    }
+
+    numerator   <- round(x * denom)
+    denominator <- rep_len(denom, length(x))
+
+    if (mixed) {
+      integer   <- numerator %/% denominator
+      numerator <- numerator %%  denominator
+      return(rbind(integer, numerator, denominator))
+    }
+
+    return(rbind(numerator, denominator))
+  }
+
   if (base_10) {max_denom <- 10 ^ floor(log(max_denom, base = 10))}
 
   max_max_denom <- 1 / sqrt(.Machine$double.eps)
@@ -48,10 +84,6 @@ frac_mat <- function(
   integer <- ifelse(x >= 0, x %/% 1, (x %/% 1 + 1))
   integer <- ((x > 0) * 1 + (x < 0) * -1) * (abs(x) %/% 1)
   decimal <- x - integer
-
-  if (any(is.na(decimal)) || any(is.infinite(decimal))) {
-    stop("`x` must be a vector of finite numbers.")
-  }
 
   matrix <- decimal_to_fraction(decimal, base_10, max_denom)
 
