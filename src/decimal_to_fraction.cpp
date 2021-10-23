@@ -1,9 +1,13 @@
 #define STRICT_R_HEADERS
 #include <cfloat>
-#include <Rcpp.h>
-using namespace Rcpp;
+#include <Rmath.h>
+#include <cpp11/integers.hpp>
+#include <cpp11/doubles.hpp>
+#include <cpp11/matrix.hpp>
+using namespace cpp11;
+namespace writable = cpp11::writable;
 
-IntegerVector decimal_to_fraction_cont(const double x, const long max_denom) {
+integers decimal_to_fraction_cont(const double x, const long max_denom) {
   double n0 = 0;
   double n1 = 1;
   double n2 = floor(x);
@@ -12,6 +16,7 @@ IntegerVector decimal_to_fraction_cont(const double x, const long max_denom) {
   double d2 = 1;
   double f  = n2;
   double z  = x - n2;
+  writable::integers result(2);
 
   while (d2 <= max_denom) {
     z  = 1 / z;
@@ -27,38 +32,49 @@ IntegerVector decimal_to_fraction_cont(const double x, const long max_denom) {
     if (f == 0) {break;}
   }
 
-  return IntegerVector::create((int) n1, (int) d1);
+  result[0] = n1;
+  result[1] = d1;
+  return result;
 }
 
-IntegerVector decimal_to_fraction_base_10(const double x, const long max_denom)
+integers decimal_to_fraction_base_10(const double x, const long max_denom)
 {
   double n = 0;
   double d;
+  writable::integers result(2);
 
   for (long i = 1; i <= max_denom; i *= 10) {
     d = i;
-    n = R::fround(x * d, 0);
+    n = Rf_fround(x * d, 0);
     if (fabs(x - n / d) <= sqrt(DBL_EPSILON)) {break;}
   }
 
-  return IntegerVector::create((int) n, (int) d);
+  result[0] = n;
+  result[1] = d;
+  return result;
 }
 
-// [[Rcpp::export]]
-IntegerMatrix decimal_to_fraction(
-    const NumericVector x, const bool base_10, const long max_denom
+[[cpp11::register]]
+integers_matrix<> decimal_to_fraction(
+    const doubles x, const bool base_10, const long max_denom
 ) {
-  IntegerMatrix result(2, x.size());
+  writable::integers_matrix<> matrix(2, x.size());
 
   if (base_10) {
     for (int i = 0; i < x.size(); i++) {
-      result(_, i) = decimal_to_fraction_base_10(x[i], max_denom);
+      integers vector = decimal_to_fraction_base_10(x[i], max_denom);
+      matrix(0, i) = vector[0];
+      matrix(1, i) = vector[1];
     }
-  } else {
-    for (int i = 0; i < x.size(); i++) {
-      result(_, i) = decimal_to_fraction_cont(x[i], max_denom);
-    }
+
+    return matrix;
   }
 
-  return result;
+  for (int i = 0; i < x.size(); i++) {
+    integers vector = decimal_to_fraction_cont(x[i], max_denom);
+    matrix(0, i) = vector[0];
+    matrix(1, i) = vector[1];
+  }
+
+  return matrix;
 }

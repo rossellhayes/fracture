@@ -93,7 +93,7 @@ frac_mat <- function(
   rownames(matrix) <- c("numerator", "denominator")
 
   if (common_denom) {
-    denom       <- lcm(matrix[2, ], max_denom)
+    denom       <- lcm(as.integer(matrix[2, ]), max_denom)
     matrix[1, ] <- round(matrix[1, ] * (denom / matrix[2, ]))
     matrix[2, ] <- denom
   } else {
