@@ -1,4 +1,4 @@
-# fracture (development version)
+# fracture 0.2.0
 
 ## Breaking changes
 * The second argument to `fracture()` and `frac_mat()` is now `...`, which must be empty. As a result, all arguments besides `x` must now be named. (#5)
