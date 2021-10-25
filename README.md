@@ -11,7 +11,7 @@
 MIT](https://img.shields.io/badge/license-MIT-blueviolet.svg)](https://cran.r-project.org/web/licenses/MIT)
 [![R build
 status](https://github.com/rossellhayes/fracture/workflows/R-CMD-check/badge.svg)](https://github.com/rossellhayes/fracture/actions)
-[![](https://codecov.io/gh/rossellhayes/fracture/branch/master/graph/badge.svg)](https://codecov.io/gh/rossellhayes/fracture)
+[![](https://codecov.io/gh/rossellhayes/fracture/branch/main/graph/badge.svg)](https://app.codecov.io/gh/rossellhayes/fracture)
 [![Dependencies](https://tinyverse.netlify.com/badge/fracture)](https://cran.r-project.org/package=fracture)
 <!-- badges: end -->
 
@@ -82,7 +82,7 @@ fracture(1 / (2:12), base_10 = TRUE, common_denom = TRUE, max_denom = 1000)
 
 ``` r
 fracture((1:9) / 3, mixed = TRUE)
-#> [1] 1/3   2/3   1     1 1/3 1 2/3 2     2 1/3 2 2/3 3
+#> [1] "1/3"   "2/3"   "1"     "1 1/3" "1 2/3" "2"     "2 1/3" "2 2/3" "3"
 ```
 
 ### Convert decimals to a fraction matrix
@@ -157,21 +157,21 @@ faster than alternatives like
 ``` r
 # Performance with a single value
 single_benchmark
-#> # A tibble: 3 x 6
+#> # A tibble: 3 × 6
 #>   expression                            min median `itr/sec` mem_alloc `gc/sec`
 #>   <bch:expr>                          <dbl>  <dbl>     <dbl>     <dbl>    <dbl>
-#> 1 print(fracture(x[1]))                1      1         1.50       1       1.00
-#> 2 print(MASS::fractions(x[1]))         1.63   1.46      1         26.4     3.00
-#> 3 print(fractional::fractional(x[1]))  1.27   1.12      1.41      18.3     1
+#> 1 print(fracture(x[1]))                1      1         1.84       1       1.33
+#> 2 print(MASS::fractions(x[1]))         1.87   1.77      1         26.6     2.00
+#> 3 print(fractional::fractional(x[1]))  1.45   1.55      1.18      18.3     1
 
 # Performance with a vector of length 1000
 vector_benchmark
-#> # A tibble: 3 x 6
+#> # A tibble: 3 × 6
 #>   expression                         min median `itr/sec` mem_alloc `gc/sec`
 #>   <bch:expr>                       <dbl>  <dbl>     <dbl>     <dbl>    <dbl>
-#> 1 print(fracture(x))                1      1         2.01      1        1   
-#> 2 print(MASS::fractions(x))         2.70   2.01      1.06      7.24     1.79
-#> 3 print(fractional::fractional(x))  3.30   1.97      1         1.85     1.54
+#> 1 print(fracture(x))                1      1         2.23      1        1   
+#> 2 print(MASS::fractions(x))         2.48   1.89      1.27      7.01     1.69
+#> 3 print(fractional::fractional(x))  3.47   2.49      1         1.79     1.67
 ```
 
 \* `fractional()` does not compute a decimal’s fractional equivalent
