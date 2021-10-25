@@ -1,3 +1,5 @@
+* This submission fixes the URL redirect present in the last submission.
+
 # Test environments
 * Local R installation, R 4.1.0 on Windows 10
 * GitHub Actions
