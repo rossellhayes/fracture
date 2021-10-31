@@ -48,13 +48,47 @@ fracture((1:11) / 12)
 #>  [1] 1/12  1/6   1/4   1/3   5/12  1/2   7/12  2/3   3/4   5/6   11/12
 ```
 
+### Math with `fracture`s
+
+`fracture`s are implemented using an S3 class. This means we can perform
+mathematical operations on them like real fractions.
+
+``` r
+fracture(0.25) * 2
+#> [1] 1/2
+
+fracture(0.25) + fracture(1/6)
+#> [1] 5/12
+```
+
+### Stylish `fracture`s
+
+`frac_style()` uses Unicode to provide stylish formatting for inline
+fractions.
+
+``` r
+`r frac_style(pi, mixed = TRUE, max_denom = 500)`
+```
+
+3 ¹⁶/₁₁₃
+
+### Arguments
+
 Additional arguments help you get exactly the result you expect:
+
+#### Set denominator
+
+``` r
+fracture((1:12) / 12, denom = 100)
+#>  [1] 8/100   17/100  25/100  33/100  42/100  50/100  58/100  67/100  75/100 
+#> [10] 83/100  92/100  100/100
+```
 
 #### Common denominators
 
 ``` r
-fracture((1:11) / 12, common_denom = TRUE)
-#>  [1] 1/12  2/12  3/12  4/12  5/12  6/12  7/12  8/12  9/12  10/12 11/12
+fracture((1:12) / 12, common_denom = TRUE)
+#>  [1] 1/12  2/12  3/12  4/12  5/12  6/12  7/12  8/12  9/12  10/12 11/12 12/12
 ```
 
 #### Base-10 denominators
@@ -69,13 +103,8 @@ fracture(1 / (2:12), base_10 = TRUE)
 #### Maximum denominators
 
 ``` r
-fracture(1 / (2:12), base_10 = TRUE, max_denom = 1000)
-#>  [1] 5/10     333/1000 25/100   2/10     167/1000 143/1000 125/1000 111/1000
-#>  [9] 1/10     91/1000  83/1000
-
-fracture(1 / (2:12), base_10 = TRUE, common_denom = TRUE, max_denom = 1000)
-#>  [1] 500/1000 333/1000 250/1000 200/1000 167/1000 143/1000 125/1000 111/1000
-#>  [9] 100/1000 91/1000  83/1000
+fracture(sqrt(1 / (1:12)), max_denom = 100)
+#>  [1] 1/1   70/99 56/97 1/2   17/38 20/49 31/82 35/99 1/3   6/19  19/63 28/97
 ```
 
 #### Mixed fractions
@@ -108,30 +137,6 @@ frac_mat((1:9) / 3, mixed = TRUE, common_denom = TRUE)
 #> denominator    3    3    3    3    3    3    3    3    3
 ```
 
-### Math with `fracture`s
-
-`fracture`s are implemented using an S3 class. This means we can perform
-mathematical operations on them like real fractions.
-
-``` r
-fracture(0.25) * 2
-#> [1] 1/2
-
-fracture(0.25) + fracture(1/6)
-#> [1] 5/12
-```
-
-### Stylish `fracture`s
-
-`frac_style()` uses Unicode to provide stylish formatting for inline
-fractions.
-
-``` r
-`r frac_style(pi, mixed = TRUE, max_denom = 500)`
-```
-
-3 ¹⁶/₁₁₃
-
 ### Just a fun example
 
 Use **fracture** to find the best approximations of π for each maximum
@@ -139,8 +144,9 @@ denominator.
 
 ``` r
 unique(purrr::map_chr(1:50000, ~ fracture(pi, max_denom = .x)))
-#> [1] "3/1"          "22/7"         "333/106"      "355/113"      "103993/33102"
-#> [6] "104348/33215"
+#>  [1] "3/1"          "6/2"          "9/3"          "12/4"         "15/5"        
+#>  [6] "18/6"         "22/7"         "333/106"      "355/113"      "103993/33102"
+#> [11] "104348/33215"
 ```
 
 Isn’t is interesting that there’s such a wide gap between ³⁵⁵/₁₁₃ and
@@ -160,18 +166,18 @@ single_benchmark
 #> # A tibble: 3 × 6
 #>   expression                            min median `itr/sec` mem_alloc `gc/sec`
 #>   <bch:expr>                          <dbl>  <dbl>     <dbl>     <dbl>    <dbl>
-#> 1 print(fracture(x[1]))                1      1         1.84       1       1.33
-#> 2 print(MASS::fractions(x[1]))         1.87   1.77      1         26.6     2.00
-#> 3 print(fractional::fractional(x[1]))  1.45   1.55      1.18      18.3     1
+#> 1 print(fracture(x[1]))                1      1         1.77       1       1.67
+#> 2 print(MASS::fractions(x[1]))         1.64   1.70      1         26.6     2.00
+#> 3 print(fractional::fractional(x[1]))  1.49   1.49      1.20      18.3     1
 
 # Performance with a vector of length 1000
 vector_benchmark
 #> # A tibble: 3 × 6
 #>   expression                         min median `itr/sec` mem_alloc `gc/sec`
 #>   <bch:expr>                       <dbl>  <dbl>     <dbl>     <dbl>    <dbl>
-#> 1 print(fracture(x))                1      1         2.23      1        1   
-#> 2 print(MASS::fractions(x))         2.48   1.89      1.27      7.01     1.69
-#> 3 print(fractional::fractional(x))  3.47   2.49      1         1.79     1.67
+#> 1 print(fracture(x))                1      1         2.05      1        1   
+#> 2 print(MASS::fractions(x))         3.01   2.03      1.07      6.35     1.54
+#> 3 print(fractional::fractional(x))  3.54   2.19      1         1.34     1.20
 ```
 
 \* `fractional()` does not compute a decimal’s fractional equivalent
