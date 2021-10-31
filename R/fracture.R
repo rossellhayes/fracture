@@ -59,7 +59,7 @@ as.fracture_numeric <- function(x) {
 as.fracture_paste <- function(x) {
   if (nrow(x) == 3) {
     x              <- rbind(x[1, ], " ", x[2, ], "/", x[3, ])
-    no_frac        <- which(x[3, ] == 0)
+    no_frac        <- which(x[3, ] == 0 & x[5, ] %in% c(0, 1))
     x[-1, no_frac] <- ""
     no_int         <- which(x[1, ] == 0)
     x[1:2, no_int] <- ""
