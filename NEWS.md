@@ -1,3 +1,8 @@
+# fracture (development version)
+
+## Bug fixes
+* Fixed a bug where `frac_style()` would print integers in mixed `fracture`s as "1 ⁰/₀" instead of "1" (#12).
+
 # fracture 0.2.0
 
 ## Breaking changes
