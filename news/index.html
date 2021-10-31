@@ -79,7 +79,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">fracture</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.0.9000</span>
       </span>
     </div>
 
@@ -122,9 +122,21 @@
       <small>Source: <a href='https://github.com/rossellhayes/fracture/blob/master/NEWS.md'><code>NEWS.md</code></a></small>
     </div>
 
+    <div id="fracture-development-version" class="section level1">
+<h1 class="page-header" data-toc-text="development version">
+<a href="#fracture-development-version" class="anchor"></a>fracture (development version)<small> Unreleased </small>
+</h1>
+<div id="bug-fixes" class="section level2">
+<h2 class="hasAnchor">
+<a href="#bug-fixes" class="anchor"></a>Bug fixes</h2>
+<ul>
+<li>Fixed a bug where <code><a href="../reference/frac_style.html">frac_style()</a></code> would print integers in mixed <code>fracture</code>s as “1 ⁰/₀” instead of “1” (<a href='https://github.com/rossellhayes/fracture/issues/12'>#12</a>).</li>
+</ul>
+</div>
+</div>
     <div id="fracture-020" class="section level1">
 <h1 class="page-header" data-toc-text="0.2.0">
-<a href="#fracture-020" class="anchor"></a>fracture 0.2.0<small> Unreleased </small>
+<a href="#fracture-020" class="anchor"></a>fracture 0.2.0<small> 2021-10-25 </small>
 </h1>
 <div id="breaking-changes" class="section level2">
 <h2 class="hasAnchor">
@@ -164,9 +176,9 @@
 <h1 class="page-header" data-toc-text="0.1.2">
 <a href="#fracture-012" class="anchor"></a>fracture 0.1.2<small> 2020-09-08 </small>
 </h1>
-<div id="bug-fixes" class="section level2">
+<div id="bug-fixes-1" class="section level2">
 <h2 class="hasAnchor">
-<a href="#bug-fixes" class="anchor"></a>Bug fixes</h2>
+<a href="#bug-fixes-1" class="anchor"></a>Bug fixes</h2>
 <ul>
 <li>Fixed bug where certain fractions (e.g. <code><a href="../reference/frac_mat.html">frac_mat(1307.36, base_10 = TRUE)</a></code>) would cause an floating point rounding error.
 <ul>
@@ -197,9 +209,9 @@
 <li>Added <code><a href="../reference/frac_mat.html">is.frac_mat()</a></code> which tests if a matrix is formatted like the output of <code><a href="../reference/frac_mat.html">frac_mat()</a></code>.</li>
 </ul>
 </div>
-<div id="bug-fixes-1" class="section level2">
+<div id="bug-fixes-2" class="section level2">
 <h2 class="hasAnchor">
-<a href="#bug-fixes-1" class="anchor"></a>Bug fixes</h2>
+<a href="#bug-fixes-2" class="anchor"></a>Bug fixes</h2>
 <ul>
 <li>Fixed bug where certain fractions (e.g. 16/113) would cause an integer overflow in C++.
 <ul>
