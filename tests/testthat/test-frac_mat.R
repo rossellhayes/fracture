@@ -186,3 +186,7 @@ test_that("frac_mat(NA)", {
     )
   )
 })
+
+test_that("early returns", {
+  expect_equal(frac_mat(numeric(0)), numeric(0))
+})

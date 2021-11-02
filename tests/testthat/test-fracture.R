@@ -341,7 +341,14 @@ test_that("non-finite fracture()", {
   expect_comparable(fracture(-Inf, mixed = TRUE), "-Inf")
 })
 
+test_that("early returns", {
+  expect_equal(fracture(numeric(0)), numeric(0))
+  expect_equal(fracture(NA), NA)
+  expect_equal(fracture(NA, mixed = TRUE), NA)
+})
+
 test_that("fracture() errors", {
+  expect_error(fracture(character(1)))
   expect_error(fracture(1, denom = NA))
   expect_error(fracture(1, denom = Inf))
   expect_error(fracture(1, denom = 1:2))
