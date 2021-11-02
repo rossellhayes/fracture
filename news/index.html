@@ -79,7 +79,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">fracture</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.0.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.0.9001</span>
       </span>
     </div>
 
@@ -126,11 +126,26 @@
 <h1 class="page-header" data-toc-text="development version">
 <a href="#fracture-development-version" class="anchor"></a>fracture (development version)<small> Unreleased </small>
 </h1>
+<div id="new-features" class="section level2">
+<h2 class="hasAnchor">
+<a href="#new-features" class="anchor"></a>New features</h2>
+<ul>
+<li>
+<code><a href="../reference/fracture.html">fracture()</a></code> and <code><a href="../reference/frac_mat.html">frac_mat()</a></code> no longer return an error when receiving a vector containing <code>NA</code> or <code>Inf</code> values (<a href='https://github.com/rossellhayes/fracture/issues/14'>#14</a>).
+<ul>
+<li>
+<code><a href="../reference/fracture.html">fracture(NA)</a></code> now returns <code>NA</code>.</li>
+<li>
+<code><a href="../reference/fracture.html">fracture(Inf)</a></code> now returns <code>"Inf/1"</code>.</li>
+</ul>
+</li>
+</ul>
+</div>
 <div id="bug-fixes" class="section level2">
 <h2 class="hasAnchor">
 <a href="#bug-fixes" class="anchor"></a>Bug fixes</h2>
 <ul>
-<li>Fixed a bug where <code><a href="../reference/frac_style.html">frac_style()</a></code> would print integers in mixed <code>fracture</code>s as “1 ⁰/₀” instead of “1” (<a href='https://github.com/rossellhayes/fracture/issues/12'>#12</a>).</li>
+<li>Fixed a bug where <code><a href="../reference/frac_style.html">frac_style()</a></code> would print integers in mixed <code>fracture</code>s as <code>"1 ⁰/₀"</code> instead of <code>"1"</code> (<a href='https://github.com/rossellhayes/fracture/issues/12'>#12</a>).</li>
 </ul>
 </div>
 </div>
@@ -147,9 +162,9 @@
 <code><a href="../reference/fracture.html">fracture()</a></code> and <code><a href="../reference/frac_mat.html">frac_mat()</a></code> now default to a denominator of <code>1</code> when <code>x</code> equals <code>0</code> or <code>1</code>. Previously, these would default to a denominator of <code>max_denom</code>. <code>max_denom</code> is still used as the denominator when <code>x</code> is <code>0</code> or <code>1</code> ± ε. (<a href='https://github.com/rossellhayes/fracture/issues/6'>#6</a>)</li>
 </ul>
 </div>
-<div id="new-features" class="section level2">
+<div id="new-features-1" class="section level2">
 <h2 class="hasAnchor">
-<a href="#new-features" class="anchor"></a>New features</h2>
+<a href="#new-features-1" class="anchor"></a>New features</h2>
 <ul>
 <li>
 <code><a href="../reference/fracture.html">fracture()</a></code> and <code><a href="../reference/frac_mat.html">frac_mat()</a></code> gain the argument <code>denom</code>, which allows the user to set an explicit denominator used by all fractions. (<a href='https://github.com/rossellhayes/fracture/issues/5'>#5</a>)</li>
@@ -201,9 +216,9 @@
 <h1 class="page-header" data-toc-text="0.1.1">
 <a href="#fracture-011" class="anchor"></a>fracture 0.1.1<small> Unreleased </small>
 </h1>
-<div id="new-features-1" class="section level2">
+<div id="new-features-2" class="section level2">
 <h2 class="hasAnchor">
-<a href="#new-features-1" class="anchor"></a>New features</h2>
+<a href="#new-features-2" class="anchor"></a>New features</h2>
 <ul>
 <li>Added <code><a href="../reference/frac_style.html">frac_style()</a></code> which formats fractures using Unicode superscripts and subscripts.</li>
 <li>Added <code><a href="../reference/frac_mat.html">is.frac_mat()</a></code> which tests if a matrix is formatted like the output of <code><a href="../reference/frac_mat.html">frac_mat()</a></code>.</li>
