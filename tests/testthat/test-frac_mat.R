@@ -173,3 +173,20 @@ test_that("is.frac_mat()", {
   expect_false(is.frac_mat(frac_mat(1.5)[1, ]))
   expect_false(is.frac_mat(`rownames<-`(frac_mat(1.5), NULL)))
 })
+
+test_that("frac_mat(NA)", {
+  expect_equal(
+    frac_mat(NA),
+    rbind(numerator = NA_integer_, denominator = NA_integer_)
+  )
+  expect_equal(
+    frac_mat(NA, mixed = TRUE),
+    rbind(
+      integer = NA_integer_, numerator = NA_integer_, denominator = NA_integer_
+    )
+  )
+})
+
+test_that("early returns", {
+  expect_equal(frac_mat(numeric(0)), numeric(0))
+})

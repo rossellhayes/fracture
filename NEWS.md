@@ -1,7 +1,12 @@
 # fracture (development version)
 
+## New features
+* `fracture()` and `frac_mat()` no longer return an error when receiving a vector containing `NA` or `Inf` values (#14).
+  * `fracture(NA)` now returns `NA`.
+  * `fracture(Inf)` now returns `"Inf/1"`.
+
 ## Bug fixes
-* Fixed a bug where `frac_style()` would print integers in mixed `fracture`s as "1 ⁰/₀" instead of "1" (#12).
+* Fixed a bug where `frac_style()` would print integers in mixed `fracture`s as `"1 ⁰/₀"` instead of `"1"` (#12).
 
 # fracture 0.2.0
 
