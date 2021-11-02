@@ -46,10 +46,13 @@ frac_mat <- function(
   check_dots_empty0(..., match.call = match.call())
 
   if (length(x) == 0) {return(x)}
-  if (all(is.na(x)))  {return(x)}
 
   if (!is.numeric(x)) {
-    stop("`x` must be a vector of finite numbers.", call. = FALSE)
+    if (all(is.na(x))) {
+      x <- as.integer(x)
+    } else {
+      stop("`x` must be a vector of numbers.", call. = FALSE)
+    }
   }
 
   if (!is.null(denom)) {
