@@ -330,11 +330,18 @@ test_that("recover_fracture_args()", {
   expect_null(recover_fracture_args(0, 0))
 })
 
+test_that("non-finite fracture()", {
+  expect_comparable(fracture(NA), NA)
+  expect_comparable(fracture(c(0.5, NA, 1.5)), c("1/2", NA, "3/2"))
+
+  expect_comparable(fracture(Inf), "Inf/1")
+  expect_comparable(fracture(-Inf), "-Inf/1")
+
+  expect_comparable(fracture(Inf,  mixed = TRUE), "Inf")
+  expect_comparable(fracture(-Inf, mixed = TRUE), "-Inf")
+})
+
 test_that("fracture() errors", {
-  expect_error(fracture(NA))
-  expect_error(fracture(Inf))
-  expect_error(fracture(-Inf))
-  expect_error(fracture(c(0.5, NA, 1.5)))
   expect_error(fracture(1, denom = NA))
   expect_error(fracture(1, denom = Inf))
   expect_error(fracture(1, denom = 1:2))

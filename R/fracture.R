@@ -16,6 +16,9 @@ fracture <- function(
 ) {
   check_dots_empty0(..., match.call = match.call())
 
+  if (length(x) == 0) {return(x)}
+  if (all(is.na(x)))  {return(x)}
+
   op <- options(scipen = 100)
   on.exit(options(op), add = TRUE)
 
@@ -57,17 +60,25 @@ as.fracture_numeric <- function(x) {
 }
 
 as.fracture_paste <- function(x) {
-  if (nrow(x) == 3) {
-    x              <- rbind(x[1, ], " ", x[2, ], "/", x[3, ])
-    no_frac        <- which(x[3, ] == 0 & x[5, ] %in% c(0, 1))
-    x[-1, no_frac] <- ""
-    no_int         <- which(x[1, ] == 0)
-    x[1:2, no_int] <- ""
+  result  <- character(ncol(x))
+  na      <- is.na(x[1, ])
+  numbers <- matrix(x[, !na], nrow = nrow(x))
 
-    as.character(apply(x, 2, paste0, collapse = ""))
+  if (nrow(numbers) == 3) {
+    numbers <- rbind(numbers[1, ], " ", numbers[2, ], "/", numbers[3, ])
+    no_frac <- which(numbers[3, ] == 0 & numbers[5, ] %in% c(0, 1))
+    numbers[-1, no_frac] <- ""
+
+    no_int <- which(numbers[1, ] == 0)
+    numbers[1:2, no_int] <- ""
+
+    result[!na] <- as.character(apply(numbers, 2, paste0, collapse = ""))
   } else {
-    paste0(x[1, ], "/", x[2, ])
+    result[!na] <- paste0(numbers[1, ], "/", numbers[2, ])
   }
+
+  result[na] <- NA
+  result
 }
 
 #' @rdname fracture
