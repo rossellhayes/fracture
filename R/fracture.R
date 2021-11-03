@@ -61,7 +61,7 @@ as.fracture_numeric <- function(x) {
 
 as.fracture_paste <- function(x) {
   result  <- character(ncol(x))
-  na      <- is.na(x[1, ])
+  na      <- is.na(x[1, ]) | x[1, ] == "NaN"
   numbers <- matrix(x[, !na], nrow = nrow(x))
 
   if (nrow(numbers) == 3) {
@@ -78,6 +78,7 @@ as.fracture_paste <- function(x) {
   }
 
   result[na] <- NA
+  result[x[1, ] == "NaN"] <- NaN
   result
 }
 

@@ -49,7 +49,7 @@ frac_mat <- function(
 
   if (!is.numeric(x)) {
     if (all(is.na(x))) {
-      x <- as.integer(x)
+      x <- as.numeric(x)
     } else {
       stop("`x` must be a vector of numbers.", call. = FALSE)
     }
@@ -123,6 +123,7 @@ frac_mat <- function(
     )
     result[, is.finite(x)] <- matrix
     result[, is.na(x)]     <- rbind(NA, NA, NA)
+    result[, is.nan(x)]    <- rbind(NaN, NaN, NaN)
 
     if (any(is.infinite(x))) {
       result[, is.infinite(x)] <- rbind(x[is.infinite(x)], 0, denom)
@@ -133,6 +134,7 @@ frac_mat <- function(
     result                 <- rbind(numerator = result, denominator = result)
     result[, is.finite(x)] <- matrix
     result[, is.na(x)]     <- rbind(NA, NA)
+    result[, is.nan(x)]    <- rbind(NaN, NaN)
 
     if (any(is.infinite(x))) {
       result[, is.infinite(x)] <- rbind(x[is.infinite(x)], denom)
@@ -150,7 +152,7 @@ as.frac_mat <- function(x) {
     split               <- strsplit(x, " |/")
     lengths             <- vapply(split, length, integer(1))
 
-    if (all(lengths == 2)) {
+    if (all(lengths <= 2)) {
       matrix              <- do.call("cbind", split)
       rownames(matrix)    <- c("numerator", "denominator")
     } else {
@@ -160,7 +162,7 @@ as.frac_mat <- function(x) {
       rownames(matrix)    <- c("integer", "numerator", "denominator")
     }
 
-    mode(matrix) <- "integer"
+    mode(matrix) <- "double"
     matrix
   } else {
     frac_mat(x)
