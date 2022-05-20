@@ -155,7 +155,7 @@ Isn’t is interesting that there’s such a wide gap between ³⁵⁵/₁₁₃
 ## Advantages 🚀
 
 **fracture** is implemented using optimized C++ with
-[**Rcpp**](http://rcpp.org/) and S3 methods. This allows it to run
+[**Rcpp**](https://www.rcpp.org/) and S3 methods. This allows it to run
 faster than alternatives like
 [`MASS::fractions()`](https://cran.r-project.org/package=MASS) or
 [`fractional::fractional()`](https://cran.r-project.org/package=fractional).\*
@@ -166,18 +166,18 @@ single_benchmark
 #> # A tibble: 3 × 6
 #>   expression                            min median `itr/sec` mem_alloc `gc/sec`
 #>   <bch:expr>                          <dbl>  <dbl>     <dbl>     <dbl>    <dbl>
-#> 1 print(fracture(x[1]))                1      1         1.77       1       1.67
-#> 2 print(MASS::fractions(x[1]))         1.64   1.70      1         26.6     2.00
-#> 3 print(fractional::fractional(x[1]))  1.49   1.49      1.20      18.3     1
+#> 1 print(fracture(x[1]))                1      1         1.47       1       1.50
+#> 2 print(MASS::fractions(x[1]))         1.38   1.37      1.06      26.4     2.50
+#> 3 print(fractional::fractional(x[1]))  1.29   1.40      1         18.3     1
 
 # Performance with a vector of length 1000
 vector_benchmark
 #> # A tibble: 3 × 6
 #>   expression                         min median `itr/sec` mem_alloc `gc/sec`
 #>   <bch:expr>                       <dbl>  <dbl>     <dbl>     <dbl>    <dbl>
-#> 1 print(fracture(x))                1      1         2.05      1        1   
-#> 2 print(MASS::fractions(x))         3.01   2.03      1.07      6.35     1.54
-#> 3 print(fractional::fractional(x))  3.54   2.19      1         1.34     1.20
+#> 1 print(fracture(x))                1      1         2.37      1        1   
+#> 2 print(MASS::fractions(x))         3.29   1.82      1.29      6.47     1.64
+#> 3 print(fractional::fractional(x))  4.25   2.26      1         1.66     1.57
 ```
 
 \* `fractional()` does not compute a decimal’s fractional equivalent

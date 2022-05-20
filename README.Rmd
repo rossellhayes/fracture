@@ -26,7 +26,7 @@ library(fractional)
 `r badge_lifecycle("stable")`
 `r badge_license(color = "blueviolet")`
 `r badge_github_actions(action = "R-CMD-check")`
-`r badge_codecov()`
+[![](https://codecov.io/gh/rossellhayes/fracture/branch/main/graph/badge.svg)](https://app.codecov.io/gh/rossellhayes/fracture)
 `r badge_dependencies()`
 <!-- badges: end -->
 
@@ -141,7 +141,7 @@ Isn't is interesting that there's such a wide gap between `r frac_style(355/113)
 
 ## Advantages `r emo::ji("rocket")`
 
-**fracture** is implemented using optimized C++ with [**Rcpp**](http://rcpp.org/) and S3 methods.
+**fracture** is implemented using optimized C++ with [**Rcpp**](https://www.rcpp.org/) and S3 methods.
 This allows it to run faster than alternatives like [`MASS::fractions()`](https://cran.r-project.org/package=MASS) or [`fractional::fractional()`](https://cran.r-project.org/package=fractional).*
 
 ```{r include = FALSE}
