@@ -33,6 +33,8 @@
 <![endif]-->
 </head>
 <body data-spy="scroll" data-target="#toc">
+    
+
     <div class="container template-home">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -45,18 +47,12 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">fracture</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.0.9001</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.2.1</span>
       </span>
     </div>
 
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
-<li>
-  <a href="index.html">
-    <span class="fas fa-home fa-lg"></span>
-     
-  </a>
-</li>
 <li>
   <a href="reference/index.html">Reference</a>
 </li>
@@ -66,7 +62,7 @@
       </ul>
 <ul class="nav navbar-nav navbar-right">
 <li>
-  <a href="https://github.com/rossellhayes/fracture/">
+  <a href="https://github.com/rossellhayes/fracture/" class="external-link">
     <span class="fab fa-github fa-lg"></span>
      
   </a>
@@ -83,30 +79,28 @@
 
       </header><div class="row">
   <div class="contents col-md-9">
-<div id="fracture-" class="section level1">
-<div class="page-header"><h1 class="hasAnchor">
-<a href="#fracture-" class="anchor"></a>fracture <img src="reference/figures/logo.png?raw=TRUE" align="right" height="138">
+<div class="section level1">
+<div class="page-header"><h1 id="fracture-">fracture <img src="reference/figures/logo.png?raw=TRUE" align="right" height="138"><a class="anchor" aria-label="anchor" href="#fracture-"></a>
 </h1></div>
 <!-- badges: start -->
-
 <p>Convert decimals to fractions in R</p>
-<div id="installation" class="section level2">
-<h2 class="hasAnchor">
-<a href="#installation" class="anchor"></a>Installation</h2>
-<p>You can install the released version of <strong>fracture</strong> from <a href="https://cran.r-project.org/package=fracture">CRAN</a> with:</p>
+<div class="section level2">
+<h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
+</h2>
+<p>You can install the released version of <strong>fracture</strong> from <a href="https://cran.r-project.org/package=fracture" class="external-link">CRAN</a> with:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"fracture"</span><span class="op">)</span></code></pre></div>
-<p>or the development version from <a href="https://github.com/rossellhayes/fracture">GitHub</a> with:</p>
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"fracture"</span><span class="op">)</span></code></pre></div>
+<p>or the development version from <a href="https://github.com/rossellhayes/fracture" class="external-link">GitHub</a> with:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># install.packages("remotes")</span>
-<span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html">install_github</a></span><span class="op">(</span><span class="st">"rossellhayes/fracture"</span><span class="op">)</span></code></pre></div>
+<span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">"rossellhayes/fracture"</span><span class="op">)</span></code></pre></div>
 </div>
-<div id="usage" class="section level2">
-<h2 class="hasAnchor">
-<a href="#usage" class="anchor"></a>Usage</h2>
-<div id="convert-decimals-to-a-character-vector-of-fractions" class="section level3">
-<h3 class="hasAnchor">
-<a href="#convert-decimals-to-a-character-vector-of-fractions" class="anchor"></a>Convert decimals to a character vector of fractions</h3>
+<div class="section level2">
+<h2 id="usage">Usage<a class="anchor" aria-label="anchor" href="#usage"></a>
+</h2>
+<div class="section level3">
+<h3 id="convert-decimals-to-a-character-vector-of-fractions">Convert decimals to a character vector of fractions<a class="anchor" aria-label="anchor" href="#convert-decimals-to-a-character-vector-of-fractions"></a>
+</h3>
 <p><strong>fracture</strong> converts decimals into fractions.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="reference/fracture.html">fracture</a></span><span class="op">(</span><span class="fl">0.5</span><span class="op">)</span>
@@ -115,9 +109,9 @@
 <span class="fu"><a href="reference/fracture.html">fracture</a></span><span class="op">(</span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">11</span><span class="op">)</span> <span class="op">/</span> <span class="fl">12</span><span class="op">)</span>
 <span class="co">#&gt;  [1] 1/12  1/6   1/4   1/3   5/12  1/2   7/12  2/3   3/4   5/6   11/12</span></code></pre></div>
 </div>
-<div id="math-with-fractures" class="section level3">
-<h3 class="hasAnchor">
-<a href="#math-with-fractures" class="anchor"></a>Math with <code>fracture</code>s</h3>
+<div class="section level3">
+<h3 id="math-with-fractures">Math with <code>fracture</code>s<a class="anchor" aria-label="anchor" href="#math-with-fractures"></a>
+</h3>
 <p><code>fracture</code>s are implemented using an S3 class. This means we can perform mathematical operations on them like real fractions.</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="reference/fracture.html">fracture</a></span><span class="op">(</span><span class="fl">0.25</span><span class="op">)</span> <span class="op">*</span> <span class="fl">2</span>
@@ -126,60 +120,60 @@
 <span class="fu"><a href="reference/fracture.html">fracture</a></span><span class="op">(</span><span class="fl">0.25</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="reference/fracture.html">fracture</a></span><span class="op">(</span><span class="fl">1</span><span class="op">/</span><span class="fl">6</span><span class="op">)</span>
 <span class="co">#&gt; [1] 5/12</span></code></pre></div>
 </div>
-<div id="stylish-fractures" class="section level3">
-<h3 class="hasAnchor">
-<a href="#stylish-fractures" class="anchor"></a>Stylish <code>fracture</code>s</h3>
+<div class="section level3">
+<h3 id="stylish-fractures">Stylish <code>fracture</code>s<a class="anchor" aria-label="anchor" href="#stylish-fractures"></a>
+</h3>
 <p><code><a href="reference/frac_style.html">frac_style()</a></code> uses Unicode to provide stylish formatting for inline fractions.</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">`r frac_style(pi, mixed = TRUE, max_denom = 500)`</span></code></pre></div>
 <p>3 ¹⁶/₁₁₃</p>
 </div>
-<div id="arguments" class="section level3">
-<h3 class="hasAnchor">
-<a href="#arguments" class="anchor"></a>Arguments</h3>
+<div class="section level3">
+<h3 id="arguments">Arguments<a class="anchor" aria-label="anchor" href="#arguments"></a>
+</h3>
 <p>Additional arguments help you get exactly the result you expect:</p>
-<div id="set-denominator" class="section level4">
-<h4 class="hasAnchor">
-<a href="#set-denominator" class="anchor"></a>Set denominator</h4>
+<div class="section level4">
+<h4 id="set-denominator">Set denominator<a class="anchor" aria-label="anchor" href="#set-denominator"></a>
+</h4>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="reference/fracture.html">fracture</a></span><span class="op">(</span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">12</span><span class="op">)</span> <span class="op">/</span> <span class="fl">12</span>, denom <span class="op">=</span> <span class="fl">100</span><span class="op">)</span>
 <span class="co">#&gt;  [1] 8/100   17/100  25/100  33/100  42/100  50/100  58/100  67/100  75/100 </span>
 <span class="co">#&gt; [10] 83/100  92/100  100/100</span></code></pre></div>
 </div>
-<div id="common-denominators" class="section level4">
-<h4 class="hasAnchor">
-<a href="#common-denominators" class="anchor"></a>Common denominators</h4>
+<div class="section level4">
+<h4 id="common-denominators">Common denominators<a class="anchor" aria-label="anchor" href="#common-denominators"></a>
+</h4>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="reference/fracture.html">fracture</a></span><span class="op">(</span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">12</span><span class="op">)</span> <span class="op">/</span> <span class="fl">12</span>, common_denom <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>
 <span class="co">#&gt;  [1] 1/12  2/12  3/12  4/12  5/12  6/12  7/12  8/12  9/12  10/12 11/12 12/12</span></code></pre></div>
 </div>
-<div id="base-10-denominators" class="section level4">
-<h4 class="hasAnchor">
-<a href="#base-10-denominators" class="anchor"></a>Base-10 denominators</h4>
+<div class="section level4">
+<h4 id="base-10-denominators">Base-10 denominators<a class="anchor" aria-label="anchor" href="#base-10-denominators"></a>
+</h4>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="reference/fracture.html">fracture</a></span><span class="op">(</span><span class="fl">1</span> <span class="op">/</span> <span class="op">(</span><span class="fl">2</span><span class="op">:</span><span class="fl">12</span><span class="op">)</span>, base_10 <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>
 <span class="co">#&gt;  [1] 5/10             3333333/10000000 25/100           2/10            </span>
 <span class="co">#&gt;  [5] 1666667/10000000 1428571/10000000 125/1000         1111111/10000000</span>
 <span class="co">#&gt;  [9] 1/10             909091/10000000  833333/10000000</span></code></pre></div>
 </div>
-<div id="maximum-denominators" class="section level4">
-<h4 class="hasAnchor">
-<a href="#maximum-denominators" class="anchor"></a>Maximum denominators</h4>
+<div class="section level4">
+<h4 id="maximum-denominators">Maximum denominators<a class="anchor" aria-label="anchor" href="#maximum-denominators"></a>
+</h4>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="reference/fracture.html">fracture</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">sqrt</a></span><span class="op">(</span><span class="fl">1</span> <span class="op">/</span> <span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">12</span><span class="op">)</span><span class="op">)</span>, max_denom <span class="op">=</span> <span class="fl">100</span><span class="op">)</span>
+<code class="sourceCode R"><span class="fu"><a href="reference/fracture.html">fracture</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/MathFun.html" class="external-link">sqrt</a></span><span class="op">(</span><span class="fl">1</span> <span class="op">/</span> <span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">12</span><span class="op">)</span><span class="op">)</span>, max_denom <span class="op">=</span> <span class="fl">100</span><span class="op">)</span>
 <span class="co">#&gt;  [1] 1/1   70/99 56/97 1/2   17/38 20/49 31/82 35/99 1/3   6/19  19/63 28/97</span></code></pre></div>
 </div>
-<div id="mixed-fractions" class="section level4">
-<h4 class="hasAnchor">
-<a href="#mixed-fractions" class="anchor"></a>Mixed fractions</h4>
+<div class="section level4">
+<h4 id="mixed-fractions">Mixed fractions<a class="anchor" aria-label="anchor" href="#mixed-fractions"></a>
+</h4>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="reference/fracture.html">fracture</a></span><span class="op">(</span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">9</span><span class="op">)</span> <span class="op">/</span> <span class="fl">3</span>, mixed <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>
 <span class="co">#&gt; [1] "1/3"   "2/3"   "1"     "1 1/3" "1 2/3" "2"     "2 1/3" "2 2/3" "3"</span></code></pre></div>
 </div>
 </div>
-<div id="convert-decimals-to-a-fraction-matrix" class="section level3">
-<h3 class="hasAnchor">
-<a href="#convert-decimals-to-a-fraction-matrix" class="anchor"></a>Convert decimals to a fraction matrix</h3>
+<div class="section level3">
+<h3 id="convert-decimals-to-a-fraction-matrix">Convert decimals to a fraction matrix<a class="anchor" aria-label="anchor" href="#convert-decimals-to-a-fraction-matrix"></a>
+</h3>
 <p>For more advanced work, you may prefer to work with a fraction matrix:</p>
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="reference/frac_mat.html">frac_mat</a></span><span class="op">(</span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">11</span><span class="op">)</span> <span class="op">/</span> <span class="fl">12</span><span class="op">)</span>
@@ -195,101 +189,111 @@
 <span class="co">#&gt; numerator      1    2    0    1    2    0    1    2    0</span>
 <span class="co">#&gt; denominator    3    3    3    3    3    3    3    3    3</span></code></pre></div>
 </div>
-<div id="just-a-fun-example" class="section level3">
-<h3 class="hasAnchor">
-<a href="#just-a-fun-example" class="anchor"></a>Just a fun example</h3>
+<div class="section level3">
+<h3 id="just-a-fun-example">Just a fun example<a class="anchor" aria-label="anchor" href="#just-a-fun-example"></a>
+</h3>
 <p>Use <strong>fracture</strong> to find the best approximations of π for each maximum denominator.</p>
 <div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/unique.html">unique</a></span><span class="op">(</span><span class="fu">purrr</span><span class="fu">::</span><span class="fu"><a href="https://purrr.tidyverse.org/reference/map.html">map_chr</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">50000</span>, <span class="op">~</span> <span class="fu"><a href="reference/fracture.html">fracture</a></span><span class="op">(</span><span class="va">pi</span>, max_denom <span class="op">=</span> <span class="va">.x</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/unique.html" class="external-link">unique</a></span><span class="op">(</span><span class="fu">purrr</span><span class="fu">::</span><span class="fu"><a href="https://purrr.tidyverse.org/reference/map.html" class="external-link">map_chr</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">50000</span>, <span class="op">~</span> <span class="fu"><a href="reference/fracture.html">fracture</a></span><span class="op">(</span><span class="va">pi</span>, max_denom <span class="op">=</span> <span class="va">.x</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>
 <span class="co">#&gt;  [1] "3/1"          "6/2"          "9/3"          "12/4"         "15/5"        </span>
 <span class="co">#&gt;  [6] "18/6"         "22/7"         "333/106"      "355/113"      "103993/33102"</span>
 <span class="co">#&gt; [11] "104348/33215"</span></code></pre></div>
 <p>Isn’t is interesting that there’s such a wide gap between ³⁵⁵/₁₁₃ and ¹⁰³⁹⁹³/₃₃₁₀₂?</p>
 </div>
 </div>
-<div id="advantages-" class="section level2">
-<h2 class="hasAnchor">
-<a href="#advantages-" class="anchor"></a>Advantages 🚀</h2>
-<p><strong>fracture</strong> is implemented using optimized C++ with <a href="http://rcpp.org/"><strong>Rcpp</strong></a> and S3 methods. This allows it to run faster than alternatives like <a href="https://cran.r-project.org/package=MASS"><code>MASS::fractions()</code></a> or <a href="https://cran.r-project.org/package=fractional"><code>fractional::fractional()</code></a>.*</p>
+<div class="section level2">
+<h2 id="advantages-">Advantages 🚀<a class="anchor" aria-label="anchor" href="#advantages-"></a>
+</h2>
+<p><strong>fracture</strong> is implemented using optimized C++ with <a href="https://www.rcpp.org/" class="external-link"><strong>Rcpp</strong></a> and S3 methods. This allows it to run faster than alternatives like <a href="https://cran.r-project.org/package=MASS" class="external-link"><code>MASS::fractions()</code></a> or <a href="https://cran.r-project.org/package=fractional" class="external-link"><code>fractional::fractional()</code></a>.*</p>
 <div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Performance with a single value</span>
 <span class="va">single_benchmark</span>
 <span class="co">#&gt; # A tibble: 3 × 6</span>
 <span class="co">#&gt;   expression                            min median `itr/sec` mem_alloc `gc/sec`</span>
 <span class="co">#&gt;   &lt;bch:expr&gt;                          &lt;dbl&gt;  &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;</span>
-<span class="co">#&gt; 1 print(fracture(x[1]))                1      1         1.77       1       1.67</span>
-<span class="co">#&gt; 2 print(MASS::fractions(x[1]))         1.64   1.70      1         26.6     2.00</span>
-<span class="co">#&gt; 3 print(fractional::fractional(x[1]))  1.49   1.49      1.20      18.3     1</span>
+<span class="co">#&gt; 1 print(fracture(x[1]))                1      1         1.47       1       1.50</span>
+<span class="co">#&gt; 2 print(MASS::fractions(x[1]))         1.38   1.37      1.06      26.4     2.50</span>
+<span class="co">#&gt; 3 print(fractional::fractional(x[1]))  1.29   1.40      1         18.3     1</span>
 
 <span class="co"># Performance with a vector of length 1000</span>
 <span class="va">vector_benchmark</span>
 <span class="co">#&gt; # A tibble: 3 × 6</span>
 <span class="co">#&gt;   expression                         min median `itr/sec` mem_alloc `gc/sec`</span>
 <span class="co">#&gt;   &lt;bch:expr&gt;                       &lt;dbl&gt;  &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;</span>
-<span class="co">#&gt; 1 print(fracture(x))                1      1         2.05      1        1   </span>
-<span class="co">#&gt; 2 print(MASS::fractions(x))         3.01   2.03      1.07      6.35     1.54</span>
-<span class="co">#&gt; 3 print(fractional::fractional(x))  3.54   2.19      1         1.34     1.20</span></code></pre></div>
+<span class="co">#&gt; 1 print(fracture(x))                1      1         2.37      1        1   </span>
+<span class="co">#&gt; 2 print(MASS::fractions(x))         3.29   1.82      1.29      6.47     1.64</span>
+<span class="co">#&gt; 3 print(fractional::fractional(x))  4.25   2.26      1         1.66     1.57</span></code></pre></div>
 <p>* <code>fractional()</code> does not compute a decimal’s fractional equivalent until it is printed. Therefore, benchmarking the time to print provides a fairer test of the three packages’ capabilities.</p>
 <hr>
-<p>Hex sticker fonts are <a href="https://github.com/adobe-fonts/source-sans">Source Sans</a> and <a href="https://github.com/i-tu/Hasklig">Hasklig</a>.</p>
-<p>Please note that <strong>fracture</strong> is released with a <a href="https://contributor-covenant.org/version/2/0/CODE_OF_CONDUCT.html">Contributor Code of Conduct</a>. By contributing to this project, you agree to abide by its terms.</p>
+<p>Hex sticker fonts are <a href="https://github.com/adobe-fonts/source-sans" class="external-link">Source Sans</a> and <a href="https://github.com/i-tu/Hasklig" class="external-link">Hasklig</a>.</p>
+<p>Please note that <strong>fracture</strong> is released with a <a href="https://contributor-covenant.org/version/2/0/CODE_OF_CONDUCT.html" class="external-link">Contributor Code of Conduct</a>. By contributing to this project, you agree to abide by its terms.</p>
 </div>
 </div>
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <div class="links">
-<h2>Links</h2>
+<h2 data-toc-skip>Links</h2>
 <ul class="list-unstyled">
-<li>Download from CRAN at <br><a href="https://cloud.r-project.org/package=fracture">https://​cloud.r-project.org/​package=fracture</a>
-</li>
-<li>Browse source code at <br><a href="https://github.com/rossellhayes/fracture/">https://​github.com/​rossellhayes/​fracture/​</a>
-</li>
-<li>Report a bug at <br><a href="https://github.com/rossellhayes/fracture/issues">https://​github.com/​rossellhayes/​fracture/​issues</a>
-</li>
+<li><a href="https://cloud.r-project.org/package=fracture" class="external-link">View on CRAN</a></li>
+<li><a href="https://github.com/rossellhayes/fracture/" class="external-link">Browse source code</a></li>
+<li><a href="https://github.com/rossellhayes/fracture/issues" class="external-link">Report a bug</a></li>
 </ul>
 </div>
+
 <div class="license">
-<h2>License</h2>
+<h2 data-toc-skip>License</h2>
 <ul class="list-unstyled">
 <li><a href="LICENSE.html">Full license</a></li>
-<li><small><a href="https://opensource.org/licenses/mit-license.php">MIT</a> + file <a href="LICENSE-text.html">LICENSE</a></small></li>
+<li><small><a href="https://opensource.org/licenses/mit-license.php" class="external-link">MIT</a> + file <a href="LICENSE-text.html">LICENSE</a></small></li>
 </ul>
 </div>
+
 <div class="community">
-<h2>Community</h2>
+<h2 data-toc-skip>Community</h2>
 <ul class="list-unstyled">
 <li><a href="CODE_OF_CONDUCT.html">Code of conduct</a></li>
 </ul>
 </div>
-<div class="developers">
-<h2>Developers</h2>
+
+<div class="citation">
+<h2 data-toc-skip>Citation</h2>
 <ul class="list-unstyled">
-<li>Alexander Rossell Hayes <br><small class="roles"> Author, maintainer, copyright holder </small> <a href="https://orcid.org/0000-0001-9412-0457" target="orcid.widget" aria-label="ORCID"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
+<li><a href="authors.html#citation">Citing fracture</a></li>
 </ul>
 </div>
 
-  <div class="dev-status">
-<h2>Dev status</h2>
+<div class="developers">
+<h2 data-toc-skip>Developers</h2>
 <ul class="list-unstyled">
-<li><a href="https://cran.r-project.org/package=fracture"><img src="https://www.r-pkg.org/badges/version/fracture?color=brightgreen"></a></li>
-<li><a href="https://lifecycle.r-lib.org/articles/stages.html#stable"><img src="https://img.shields.io/badge/lifecycle-stable-brightgreen.svg"></a></li>
-<li><a href="https://cran.r-project.org/web/licenses/MIT"><img src="https://img.shields.io/badge/license-MIT-blueviolet.svg" alt="License: MIT"></a></li>
-<li><a href="https://github.com/rossellhayes/fracture/actions"><img src="https://github.com/rossellhayes/fracture/workflows/R-CMD-check/badge.svg" alt="R build status"></a></li>
-<li><a href="https://app.codecov.io/gh/rossellhayes/fracture"><img src="https://codecov.io/gh/rossellhayes/fracture/branch/main/graph/badge.svg"></a></li>
-<li><a href="https://cran.r-project.org/package=fracture"><img src="https://tinyverse.netlify.com/badge/fracture" alt="Dependencies"></a></li>
+<li>Alexander Rossell Hayes <br><small class="roles"> Author, maintainer, copyright holder </small> <a href="https://orcid.org/0000-0001-9412-0457" target="orcid.widget" aria-label="ORCID" class="external-link"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
 </ul>
 </div>
+
+<div class="dev-status">
+<h2 data-toc-skip>Dev status</h2>
+<ul class="list-unstyled">
+<li><a href="https://cran.r-project.org/package=fracture" class="external-link"><img src="https://www.r-pkg.org/badges/version/fracture?color=brightgreen"></a></li>
+<li><a href="https://lifecycle.r-lib.org/articles/stages.html#stable" class="external-link"><img src="https://img.shields.io/badge/lifecycle-stable-brightgreen.svg"></a></li>
+<li><a href="https://cran.r-project.org/web/licenses/MIT" class="external-link"><img src="https://img.shields.io/badge/license-MIT-blueviolet.svg" alt="License: MIT"></a></li>
+<li><a href="https://github.com/rossellhayes/fracture/actions" class="external-link"><img src="https://github.com/rossellhayes/fracture/workflows/R-CMD-check/badge.svg" alt="R build status"></a></li>
+<li><a href="https://app.codecov.io/gh/rossellhayes/fracture" class="external-link"><img src="https://codecov.io/gh/rossellhayes/fracture/branch/main/graph/badge.svg"></a></li>
+<li><a href="https://cran.r-project.org/package=fracture" class="external-link"><img src="https://tinyverse.netlify.com/badge/fracture" alt="Dependencies"></a></li>
+</ul>
 </div>
+
+  </div>
 </div>
 
 
       <footer><div class="copyright">
-  <p>Developed by Alexander Rossell Hayes.</p>
+  <p></p>
+<p>Developed by Alexander Rossell Hayes.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
+  <p></p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
 </div>
 
       </footer>
@@ -297,6 +301,8 @@
 
   
 
+
+  
 
   </body>
 </html>
