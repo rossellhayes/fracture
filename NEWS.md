@@ -1,4 +1,4 @@
-# fracture (development version)
+# fracture 0.2.1
 
 ## New features
 * `fracture()` and `frac_mat()` no longer return an error when receiving a vector containing `NA` or `Inf` values (#14).
