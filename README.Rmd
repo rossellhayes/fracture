@@ -25,9 +25,8 @@ library(fractional)
 `r badge_cran_release(color = "brightgreen")`
 `r badge_lifecycle("stable")`
 `r badge_license(color = "blueviolet")`
-`r badge_github_actions(action = "R-CMD-check")`
-[![](https://codecov.io/gh/rossellhayes/fracture/branch/main/graph/badge.svg)](https://app.codecov.io/gh/rossellhayes/fracture)
-`r badge_dependencies()`
+[![R-CMD-check](https://github.com/rossellhayes/fracture/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/rossellhayes/fracture/actions/workflows/R-CMD-check.yaml)
+[![Codecov test coverage](https://codecov.io/gh/rossellhayes/fracture/graph/badge.svg)](https://app.codecov.io/gh/rossellhayes/fracture)
 <!-- badges: end -->
 
 Convert decimals to fractions in R
@@ -43,8 +42,8 @@ install.packages("fracture")
 or the development version from [GitHub](https://github.com/rossellhayes/fracture) with:
 
 ``` {r eval = FALSE}
-# install.packages("remotes")
-remotes::install_github("rossellhayes/fracture")
+# install.packages("pak")
+pak::pkg_install("rossellhayes/fracture")
 ```
 
 ## Usage
@@ -139,7 +138,7 @@ unique(purrr::map_chr(1:50000, ~ fracture(pi, max_denom = .x)))
 
 Isn't is interesting that there's such a wide gap between `r frac_style(355/113)` and `r frac_style(103993/33102)`?
 
-## Advantages `r emo::ji("rocket")`
+## Advantages 🚀
 
 **fracture** is implemented using optimized C++ with [**Rcpp**](https://www.rcpp.org/) and S3 methods.
 This allows it to run faster than alternatives like [`MASS::fractions()`](https://cran.r-project.org/package=MASS) or [`fractional::fractional()`](https://cran.r-project.org/package=fractional).*

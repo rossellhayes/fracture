@@ -9,10 +9,9 @@
 [![](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://lifecycle.r-lib.org/articles/stages.html#stable)
 [![License:
 MIT](https://img.shields.io/badge/license-MIT-blueviolet.svg)](https://cran.r-project.org/web/licenses/MIT)
-[![R build
-status](https://github.com/rossellhayes/fracture/workflows/R-CMD-check/badge.svg)](https://github.com/rossellhayes/fracture/actions)
-[![](https://codecov.io/gh/rossellhayes/fracture/branch/main/graph/badge.svg)](https://app.codecov.io/gh/rossellhayes/fracture)
-[![Dependencies](https://tinyverse.netlify.com/badge/fracture)](https://cran.r-project.org/package=fracture)
+[![R-CMD-check](https://github.com/rossellhayes/fracture/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/rossellhayes/fracture/actions/workflows/R-CMD-check.yaml)
+[![Codecov test
+coverage](https://codecov.io/gh/rossellhayes/fracture/graph/badge.svg)](https://app.codecov.io/gh/rossellhayes/fracture)
 <!-- badges: end -->
 
 Convert decimals to fractions in R
@@ -30,8 +29,8 @@ or the development version from
 [GitHub](https://github.com/rossellhayes/fracture) with:
 
 ``` r
-# install.packages("remotes")
-remotes::install_github("rossellhayes/fracture")
+# install.packages("pak")
+pak::pkg_install("rossellhayes/fracture")
 ```
 
 ## Usage
@@ -166,18 +165,18 @@ single_benchmark
 #> # A tibble: 3 × 6
 #>   expression                            min median `itr/sec` mem_alloc `gc/sec`
 #>   <bch:expr>                          <dbl>  <dbl>     <dbl>     <dbl>    <dbl>
-#> 1 print(fracture(x[1]))                1      1         1.47       1       1.50
-#> 2 print(MASS::fractions(x[1]))         1.38   1.37      1.06      26.4     2.50
-#> 3 print(fractional::fractional(x[1]))  1.29   1.40      1         18.3     1
+#> 1 print(fracture(x[1]))                1.28   1.25      1.50       NaN     1.56
+#> 2 print(MASS::fractions(x[1]))         1.74   1.85      1          Inf     1.97
+#> 3 print(fractional::fractional(x[1]))  1      1         1.74       Inf     1
 
 # Performance with a vector of length 1000
 vector_benchmark
 #> # A tibble: 3 × 6
 #>   expression                         min median `itr/sec` mem_alloc `gc/sec`
 #>   <bch:expr>                       <dbl>  <dbl>     <dbl>     <dbl>    <dbl>
-#> 1 print(fracture(x))                1      1         2.37      1        1   
-#> 2 print(MASS::fractions(x))         3.29   1.82      1.29      6.47     1.64
-#> 3 print(fractional::fractional(x))  4.25   2.26      1         1.66     1.57
+#> 1 print(fracture(x))                1.10   1.09      1         6.18      Inf
+#> 2 print(MASS::fractions(x))         1      1         1.04     33.0       Inf
+#> 3 print(fractional::fractional(x))  1.03   1.02      1.07      1         NaN
 ```
 
 \* `fractional()` does not compute a decimal’s fractional equivalent
