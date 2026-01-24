@@ -1,6 +1,6 @@
 # fracture 0.2.2
 
-* Remve unnecessary system requirement for C++11. R's default is now C++17.
+* Remove unnecessary system requirement for C++11. R's default is now C++17.
 
 # fracture 0.2.1
 
